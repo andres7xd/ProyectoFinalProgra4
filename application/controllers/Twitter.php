@@ -3,208 +3,208 @@
 class Twitter extends CI_Controller
 {
 
-    function __construct()
-    {
-        parent::__construct();
-        $this->load->model('Twitter_model');
-        $this->load->library('session');
-    }
+    // function __construct()
+    // {
+    //     parent::__construct();
+    //     $this->load->model('Twitter_model');
+    //     $this->load->library('session');
+    // }
 
-    function index($tweets_data = array())
-    {   
-        $data['reacciones'] = $this->Twitter_model->get_nombres();
-        $data['reacciones_usuario'] = $this->Twitter_model->get_reacciones_usuario($this->session->userdata['logged_in']['users_id']);
+    // function index($tweets_data = array())
+    // {   
+    //     $data['reacciones'] = $this->Twitter_model->get_nombres();
+    //     $data['reacciones_usuario'] = $this->Twitter_model->get_reacciones_usuario($this->session->userdata['logged_in']['users_id']);
 
-        if ($tweets_data == null){
-            $data['tweets'] = $this->Twitter_model->get_all_tweets();
+    //     if ($tweets_data == null){
+    //         $data['tweets'] = $this->Twitter_model->get_all_tweets();
         
-        }
+    //     }
            
 
-        else
-            $data['tweets'] = $tweets_data;
+    //     else
+    //         $data['tweets'] = $tweets_data;
 
-        $data['_view'] = 'twitter/index';
-        $this->load->view('layouts/main', $data);
-
-
-
-    }
-
-    function process()
-    {
-        if ($this->input->post('btn_save')) {
-
-            $this->add();
-        }
-
-        if ($this->input->post('btn_search')) {
-            $this->search();
-        }
-    }
-
-    function add()
-    {
-        $config['upload_path']          = './resources/files/';
-        $config['allowed_types']        = 'gif|jpg|png|txt|docx|pdf|pptx|xlsx';
-        $config['max_size']             = 2000; //2MB
-        $config['overwrite']            = true;
-
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('txt_post', 'Post/Tweet', 'required|max_length[128]');
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('txt_file')) {
-            if ($this->form_validation->run()) {
-                $params = array(
-                    'post' => $this->input->post('txt_post'),
-                    'date' => date('Y-m-d H:i:s'),
-                    'users_id' => $this->session->userdata['logged_in']['users_id'],
-
-                );
-
-                $this->Twitter_model->add_tweet($params);
-            }
-        } else {
-            $data = array('upload_data' => $this->upload->data());
-            $params = array(
-                'archivo' => $this->upload->data('file_name'),
-                'post' => $this->input->post('txt_post'),
-                'date' => date('Y-m-d H:i:s'),
-                'users_id' => $this->session->userdata['logged_in']['users_id'],
-            );
-
-            $this->Twitter_model->add_tweet($params);
-
-            $this->session->set_flashdata('success', "Archivo cargado al sistema exitosamente.");
-        }
+    //     $data['_view'] = 'twitter/index';
+    //     $this->load->view('layouts/main', $data);
 
 
-        $this->index();
-    }
 
-    function edit($id)
-    {
-        $config['upload_path']          = './resources/files/';
-        $config['allowed_types']        = 'gif|jpg|png|txt|docx|pdf|pptx|xlsx';
-        $config['max_size']             = 2000; //2MB
-        $config['overwrite']            = true;
+    // }
 
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('txt_post', 'Post/Tweet', 'required|max_length[128]');
-        $this->load->library('upload', $config);
+    // function process()
+    // {
+    //     if ($this->input->post('btn_save')) {
 
-        $data['tweet'] = $this->Twitter_model->get_data_tweet($id);
+    //         $this->add();
+    //     }
 
-        if (isset($data['tweet']['tweets_id']) && $this->session->userdata['logged_in']['users_id'] == $data['tweet']['users_id']) {
-            $this->load->library('form_validation');
-            $this->form_validation->set_rules('txt_post', 'Post/Tweet', 'required|max_length[128]');
+    //     if ($this->input->post('btn_search')) {
+    //         $this->search();
+    //     }
+    // }
+
+    // function add()
+    // {
+    //     $config['upload_path']          = './resources/files/';
+    //     $config['allowed_types']        = 'gif|jpg|png|txt|docx|pdf|pptx|xlsx';
+    //     $config['max_size']             = 2000; //2MB
+    //     $config['overwrite']            = true;
+
+    //     $this->load->library('form_validation');
+    //     $this->form_validation->set_rules('txt_post', 'Post/Tweet', 'required|max_length[128]');
+    //     $this->load->library('upload', $config);
+
+    //     if (!$this->upload->do_upload('txt_file')) {
+    //         if ($this->form_validation->run()) {
+    //             $params = array(
+    //                 'post' => $this->input->post('txt_post'),
+    //                 'date' => date('Y-m-d H:i:s'),
+    //                 'users_id' => $this->session->userdata['logged_in']['users_id'],
+
+    //             );
+
+    //             $this->Twitter_model->add_tweet($params);
+    //         }
+    //     } else {
+    //         $data = array('upload_data' => $this->upload->data());
+    //         $params = array(
+    //             'archivo' => $this->upload->data('file_name'),
+    //             'post' => $this->input->post('txt_post'),
+    //             'date' => date('Y-m-d H:i:s'),
+    //             'users_id' => $this->session->userdata['logged_in']['users_id'],
+    //         );
+
+    //         $this->Twitter_model->add_tweet($params);
+
+    //         $this->session->set_flashdata('success', "Archivo cargado al sistema exitosamente.");
+    //     }
 
 
-            if ($this->form_validation->run()) {
-                $params = array();
-                if ($this->upload->do_upload('txt_file')) {
+    //     $this->index();
+    // }
 
-                    $params = array(
-                        'post' => $this->input->post('txt_post'),
-                        'date' => date('Y-m-d H:i:s'),
-                        'users_id' => $this->session->userdata['logged_in']['users_id'],
-                        'archivo' => $this->upload->data('file_name'),
-                    );
-                } else {
+    // function edit($id)
+    // {
+    //     $config['upload_path']          = './resources/files/';
+    //     $config['allowed_types']        = 'gif|jpg|png|txt|docx|pdf|pptx|xlsx';
+    //     $config['max_size']             = 2000; //2MB
+    //     $config['overwrite']            = true;
 
-                    $params = array(
+    //     $this->load->library('form_validation');
+    //     $this->form_validation->set_rules('txt_post', 'Post/Tweet', 'required|max_length[128]');
+    //     $this->load->library('upload', $config);
 
-                        'post' => $this->input->post('txt_post'),
-                        'date' => date('Y-m-d H:i:s'),
-                        'users_id' => $this->session->userdata['logged_in']['users_id'],
-                    );
-                }
+    //     $data['tweet'] = $this->Twitter_model->get_data_tweet($id);
 
-                $this->Twitter_model->edit_tweet($params, $data['tweet']['tweets_id']);
+    //     if (isset($data['tweet']['tweets_id']) && $this->session->userdata['logged_in']['users_id'] == $data['tweet']['users_id']) {
+    //         $this->load->library('form_validation');
+    //         $this->form_validation->set_rules('txt_post', 'Post/Tweet', 'required|max_length[128]');
 
-                redirect('twitter/index');
-            } else {
-                $data['_view'] = 'twitter/edit';
-                $this->load->view('layouts/main', $data);
-            }
-        } else {
 
-            $this->index();
-        }
-    }
+    //         if ($this->form_validation->run()) {
+    //             $params = array();
+    //             if ($this->upload->do_upload('txt_file')) {
 
-    function search()
-    {
-        $result = $this->Twitter_model->search_tweets($this->input->post('txt_post'));
-        $this->index($result);
-    }
+    //                 $params = array(
+    //                     'post' => $this->input->post('txt_post'),
+    //                     'date' => date('Y-m-d H:i:s'),
+    //                     'users_id' => $this->session->userdata['logged_in']['users_id'],
+    //                     'archivo' => $this->upload->data('file_name'),
+    //                 );
+    //             } else {
 
-    function delete($id)
-    {
-        $data['tweet'] = $this->Twitter_model->get_data_tweet($id);
+    //                 $params = array(
 
-        if ($this->session->userdata['logged_in']['users_id'] == $data['tweet']['users_id'])
-            $this->Twitter_model->delete_tweet($id);
+    //                     'post' => $this->input->post('txt_post'),
+    //                     'date' => date('Y-m-d H:i:s'),
+    //                     'users_id' => $this->session->userdata['logged_in']['users_id'],
+    //                 );
+    //             }
 
-        $this->index();
-    }
+    //             $this->Twitter_model->edit_tweet($params, $data['tweet']['tweets_id']);
 
-    function add_reaccionD($id)
-    {
+    //             redirect('twitter/index');
+    //         } else {
+    //             $data['_view'] = 'twitter/edit';
+    //             $this->load->view('layouts/main', $data);
+    //         }
+    //     } else {
 
-        if ($data['tweet'] = $this->Twitter_model->reaccion_existe($id, $this->session->userdata['logged_in']['users_id'])) {
+    //         $this->index();
+    //     }
+    // }
+
+    // function search()
+    // {
+    //     $result = $this->Twitter_model->search_tweets($this->input->post('txt_post'));
+    //     $this->index($result);
+    // }
+
+    // function delete($id)
+    // {
+    //     $data['tweet'] = $this->Twitter_model->get_data_tweet($id);
+
+    //     if ($this->session->userdata['logged_in']['users_id'] == $data['tweet']['users_id'])
+    //         $this->Twitter_model->delete_tweet($id);
+
+    //     $this->index();
+    // }
+
+    // function add_reaccionD($id)
+    // {
+
+    //     if ($data['tweet'] = $this->Twitter_model->reaccion_existe($id, $this->session->userdata['logged_in']['users_id'])) {
             
-            $params = array(
+    //         $params = array(
                 
-                'estado_reaccion' => 'D',
+    //             'estado_reaccion' => 'D',
                
                 
-            );
+    //         );
         
-            $this->Twitter_model->update_reaccion($id,$params,$this->session->userdata['logged_in']['users_id']);
-        }
-        else{
-            $params = array(
+    //         $this->Twitter_model->update_reaccion($id,$params,$this->session->userdata['logged_in']['users_id']);
+    //     }
+    //     else{
+    //         $params = array(
                 
-                'estado_reaccion' => 'D',
-                'tweets_id' => $id,
-                'users_id' => $this->session->userdata['logged_in']['users_id'],
+    //             'estado_reaccion' => 'D',
+    //             'tweets_id' => $id,
+    //             'users_id' => $this->session->userdata['logged_in']['users_id'],
                 
-            );
+    //         );
         
-            $this->Twitter_model->add_reac($params);
-        }
-        $this->index();
-    }
+    //         $this->Twitter_model->add_reac($params);
+    //     }
+    //     $this->index();
+    // }
 
-    function add_reaccionL($id)
-    {
+    // function add_reaccionL($id)
+    // {
         
-        if ($data['tweet'] = $this->Twitter_model->reaccion_existe($id, $this->session->userdata['logged_in']['users_id'])) {
+    //     if ($data['tweet'] = $this->Twitter_model->reaccion_existe($id, $this->session->userdata['logged_in']['users_id'])) {
             
-            $params = array(
+    //         $params = array(
                 
-                'estado_reaccion' => 'L',
+    //             'estado_reaccion' => 'L',
                
                 
-            );
+    //         );
         
-            $this->Twitter_model->update_reaccion($id,$params,$this->session->userdata['logged_in']['users_id']);
-        }
-        else{
-            $params = array(
+    //         $this->Twitter_model->update_reaccion($id,$params,$this->session->userdata['logged_in']['users_id']);
+    //     }
+    //     else{
+    //         $params = array(
                 
-                'estado_reaccion' => 'L',
-                'tweets_id' => $id,
-                'users_id' => $this->session->userdata['logged_in']['users_id'],
+    //             'estado_reaccion' => 'L',
+    //             'tweets_id' => $id,
+    //             'users_id' => $this->session->userdata['logged_in']['users_id'],
                 
-            );
+    //         );
         
-            $this->Twitter_model->add_reac($params);
-        }
-        $this->index();
-    }
+    //         $this->Twitter_model->add_reac($params);
+    //     }
+    //     $this->index();
+    // }
 
  
 }

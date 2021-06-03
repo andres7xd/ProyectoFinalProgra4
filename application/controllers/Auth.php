@@ -21,7 +21,7 @@ Class Auth extends CI_Controller {
     {
     	//precarga todos los datos con los que la vista debe iniciar
     	$this->load->model('Twitter_model');
-        $data['tweets'] = $this->Twitter_model->get_all_tweets();
+       // $data['tweets'] = $this->Twitter_model->get_all_tweets();
         $data['_view'] = $view;
 		$this->load->view('layouts/main',$data);
     }

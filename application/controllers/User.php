@@ -26,10 +26,10 @@ class User extends CI_Controller{
 		if($this->form_validation->run())     
         {   
             $params = array(
-				'username' => $this->input->post('txt_usuario'),
-				'password' => password_hash($this->input->post('txt_clave'), PASSWORD_BCRYPT),
-				'realname' => $this->input->post('txt_nombre'),
-                'photo' => 'unknown.jpg',
+				'nombre_usuario' => $this->input->post('txt_usuario'),
+				'contrasena' => password_hash($this->input->post('txt_clave'), PASSWORD_BCRYPT),
+				'nombre_real' => $this->input->post('txt_nombre'),
+                'foto' => 'unknown.jpg',
             );
             
             $user_id = $this->User_model->add_user($params);

@@ -13,7 +13,7 @@ class User_model extends CI_Model
 
  function add_user($params)
  {
- $this->db->insert('users',$params);
+ $this->db->insert('usuarios',$params);
  return $this->db->insert_id();
  }
 

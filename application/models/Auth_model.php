@@ -8,7 +8,7 @@ Class Auth_model extends CI_Model {
 		$userExists = $this->get_user_information($data['username']);
 
 		//Se compara el password que viene por POST con el encriptado de la BD por medio de password_verify()
-		if ($userExists != false && password_verify($data['password'], $userExists[0]->password)) {
+		if ($userExists != false && password_verify($data['password'], $userExists[0]->contrasena)) {
 			return true; //Existe: autenticado
 		} else {
 			return false; //No autenticado
@@ -18,7 +18,7 @@ Class Auth_model extends CI_Model {
 	//Retorna los datos del usuario indicado por parámetro
 	public function get_user_information($username) {
 
-		$query = $this->db->query("SELECT users.* from users WHERE users.username = '$username'");
+		$query = $this->db->query("SELECT usuarios.* from usuarios WHERE usuarios.	nombre_usuario = '$username'");
 
 		if ($query->num_rows() == 1) {
 			return $query->result();
