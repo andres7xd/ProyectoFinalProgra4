@@ -30,6 +30,11 @@ class User extends CI_Controller{
 				'contrasena' => password_hash($this->input->post('txt_clave'), PASSWORD_BCRYPT),
 				'nombre_real' => $this->input->post('txt_nombre'),
                 'foto' => 'unknown.jpg',
+                'cedula' =>  $this->input->post('txt_cedula'),
+                'direccion' =>  $this->input->post('txt_direccion'),
+                'telefono' =>  $this->input->post('txt_telefono'),
+                'email' =>  $this->input->post('txt_email'),
+                'tipo_usuario' =>  $this->input->post('select_tipo_usuario'),
             );
             
             $user_id = $this->User_model->add_user($params);
