@@ -20,7 +20,7 @@ Class Auth extends CI_Controller {
 	function load_data_view($view)
     {
     	//precarga todos los datos con los que la vista debe iniciar
-    	$this->load->model('Twitter_model');
+    	//$this->load->model('Twitter_model');
        // $data['tweets'] = $this->Twitter_model->get_all_tweets();
         $data['_view'] = $view;
 		$this->load->view('layouts/main',$data);
@@ -39,7 +39,7 @@ Class Auth extends CI_Controller {
 			//Esto es para el caso de si la sesión aún está activa
 			if(isset($this->session->userdata['logged_in'])){
 				 //Función propia para cargar la vista indicada con datos precargados
-				$this->load_data_view('twitter/index');
+				$this->load_data_view('home/index');
 			}else{
 				$this->load->view('auth/login');
 			}
@@ -72,8 +72,8 @@ Class Auth extends CI_Controller {
 					// Agregamos la infomación del usuario en forma de arreglo a la Variable de Sesion con nombre logged_in
 					$this->session->set_userdata('logged_in', $session_data);
 					//Función propia para cargar la vista indicada con datos precargados
-					redirect('twitter/index', 'refresh'); //redireccionamos a la URL raíz para evitar que nos quede auth/login/ en la URL
-					$this->load_data_view('twitter/index'); //luego cargamos la vista
+					redirect('home/index', 'refresh'); //redireccionamos a la URL raíz para evitar que nos quede auth/login/ en la URL
+					$this->load_data_view('home/index'); //luego cargamos la vista
 
 				}
 			} else { //Si No autenticamos regreamos a la vista Login con un mensaje de error seteado
