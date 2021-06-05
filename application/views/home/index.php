@@ -44,19 +44,55 @@
 
   <div>
 
+  
+
 
     <div id="main_panel">
-      <?php foreach ($usuarios_empresa as $u) { ?>
 
-        <div class='post_block'>
+    <h1 align="center">LISTA DE TIENDAS</h1>
+    <table width="70%" border="1px" align="center">
+
+    <tr align="center">
+        
+        <td>Icono</td>
+        <td>Nombre</td>
+        <td>Perfil</td>
+       
+    </tr>
+
+      <?php foreach ($usuarios_empresa as $u) { ?>
+      
+
+        <!-- <div class='post_block'>
           <span class='post_text' id='post_<?php echo $u['usuario_id']; ?>'>
           </span>
-          <div id='content_post_<?php echo $u['usuario_id']; ?>'>
+          <div id='content_post_<?php echo $u['usuario_id']; ?>'> -->
 
-            <div class='post_detail'><?php echo $u['nombre_real']; ?></div><br />
+          
+            <tr>
+                
+                <td width="150"><?php echo "<img src='" . site_url('/resources/photos/' . $u['foto'])
+                . "' alt=' Foto' title=' Foto'  width=150 height=100 id='foto_file' />"; ?></td>
+                <td align="center"><?php echo $u["nombre_real"]?></td>
+                <td>
+                <input type="button">
+                </td>
+               
+            </tr>
+        
 
 
-          </div>
+          <!-- </div> -->
+
+         
+
+
+
+
+
+
+
+
 
         <?php } ?>
 
