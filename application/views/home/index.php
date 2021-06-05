@@ -3,11 +3,12 @@
   <div id="panel_app">
 
     <div id="user_box">
-      <a href="<?php echo site_url('user/edit/' . $this->session->userdata['logged_in']['users_id']); ?>" title="Editar Perfil">
+      <a href="<?php echo site_url('user/edit/' . $this->session->userdata['logged_in']['usuario_id']); ?>" title="Editar Perfil">
         <?php
-        echo "<img src='" . site_url('/resources/photos/' . $this->session->userdata['logged_in']['photo'])
+        echo "<img src='" . site_url('/resources/photos/' . $this->session->userdata['logged_in']['foto'])
           . "' alt='photo_profile' width=50 height=50 id='photo_profile' />" .
-          "<span>HOLA! " . $this->session->userdata['logged_in']['realname'] . ". ✎</span>";
+          "<span>HOLA! " . $this->session->userdata['logged_in']['nombre_real'] . ". ✎</span>";
+          
         ?>
       </a>
 

@@ -35,9 +35,10 @@ class User extends CI_Controller{
                 'telefono' =>  $this->input->post('txt_telefono'),
                 'email' =>  $this->input->post('txt_email'),
                 'tipo_usuario' =>  $this->input->post('select_tipo_usuario'),
+                'pais' => $this->input->post('txt_pais'),
             );
             
-            $user_id = $this->User_model->add_user($params);
+            $usuario_id = $this->User_model->add_user($params);
             
             $data['message_display'] = 'Te has registrado exitosamente.';
             $this->load->view('auth/login', $data);
@@ -55,7 +56,7 @@ class User extends CI_Controller{
 
         $data['user'] = $this->User_model->get_user($users_id);
         
-        if(isset($data['user']['users_id']) && $this->session->userdata['logged_in']['users_id'] == $data['user']['users_id'])
+        if(isset($data['user']['usuario_id']) && $this->session->userdata['logged_in']['usuario_id'] == $data['user']['usuario_id'])
         {
             $this->load->library('form_validation');
 
@@ -84,7 +85,7 @@ class User extends CI_Controller{
                 $this->load->view('layouts/main',$data);
             }
         } else {       
-            redirect('twitter/index/');
+            redirect('home/index/');
         }
     } 
 

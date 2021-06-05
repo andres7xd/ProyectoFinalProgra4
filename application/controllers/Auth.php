@@ -48,25 +48,25 @@ Class Auth extends CI_Controller {
 
 			//Si se cumple la validación procedemos a comprobar la autenticación
 			$data = array(
-				'username' => $this->input->post('txt_username'),
-				'password' => $this->input->post('txt_password')
+				'nombre_usuario' => $this->input->post('txt_username'),
+				'contrasena' => $this->input->post('txt_password')
 			);
 
 			$result = $this->Auth_model->login($data); //Función login del Modelo Auth
 
 			if ($result == TRUE) { //Si autenticamos
 
-				$username = $this->input->post('txt_username');
-				$result = $this->Auth_model->get_user_information($username); //Función read_user_information del Modelo Auth
+				$nombre_usuario = $this->input->post('txt_username');
+				$result = $this->Auth_model->get_user_information($nombre_usuario); //Función read_user_information del Modelo Auth
 
 				//leemos los datos del usuario auntenticado y los ingresamos en las Variables de Sesion
 				if ($result != false) {
 					$session_data = array(
 						'logged_in' => TRUE,
-						'users_id' => $result[0]->users_id,
-						'username' => $result[0]->username,
-						'realname' => $result[0]->realname,
-						'photo' => $result[0]->photo,
+						'usuario_id' => $result[0]->usuario_id,
+						'nombre_usuario' => $result[0]->nombre_usuario,
+						'nombre_real' => $result[0]->nombre_real,
+						'foto' => $result[0]->foto,
 					);
 
 					// Agregamos la infomación del usuario en forma de arreglo a la Variable de Sesion con nombre logged_in
@@ -92,7 +92,7 @@ Class Auth extends CI_Controller {
 		// Removemos los datos de la sesion
 		$sess_array = array(
 			'logged_in' => FALSE,
-			'username' => '',
+			'nombre_usuario' => '',
 		);
 		$this->session->unset_userdata('logged_in', $sess_array);
 		$this->session->sess_destroy();
