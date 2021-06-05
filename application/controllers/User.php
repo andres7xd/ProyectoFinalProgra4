@@ -67,9 +67,9 @@ class User extends CI_Controller{
             if($this->form_validation->run())    
             {   
                 $params = array(
-                    'username' => $this->input->post('txt_usuario'),
-                    'password' => password_hash($this->input->post('txt_clave'), PASSWORD_BCRYPT),
-                    'realname' => $this->input->post('txt_nombre'),
+                    'nombre_usuario' => $this->input->post('txt_usuario'),
+                    'contrasena' => password_hash($this->input->post('txt_clave'), PASSWORD_BCRYPT),
+                    'nombre_real' => $this->input->post('txt_nombre'),
                 );
 
                 $this->User_model->update_user($users_id,$params);
@@ -122,7 +122,7 @@ class User extends CI_Controller{
             {
                 $data = array('upload_data' => $this->upload->data());
                 $params = array(
-                    'photo' => $this->upload->data('file_name'),
+                    'foto' => $this->upload->data('file_name'),
                 );
 
                 $this->User_model->update_user($users_id,$params);
