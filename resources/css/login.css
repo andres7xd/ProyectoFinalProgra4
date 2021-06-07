@@ -11,11 +11,19 @@ html, body
 	text-align: center;
 }
 
+#main{
+	text-align: center;
+}
+#icono_login{
+	margin-top: 5px;
+	border-radius: 100px;
+}
+
 #login{
 	position: relative;
 	width: 350px;
 	height: 200px;
-	margin: 150px auto;
+	margin: 25px auto;
 	border: 1px solid #1DA1F2;
 	border-top: 20px solid #1DA1F2;
 	border-radius: 8px;
@@ -44,6 +52,10 @@ html, body
 	margin: 10px 0 0 0;
 	height: 50px;
 	width: 50px;
+}
+
+#icono_login{
+	position: relative;
 }
 
 #btn_login:hover{

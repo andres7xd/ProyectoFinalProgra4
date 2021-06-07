@@ -21,7 +21,7 @@ a, img{
 	position: relative;
 	width: auto;
 	margin: auto;
-	height: 140px;
+	height: 50px;
 	top: 0px;
 	text-align: center;
 	background: #253341;
@@ -29,15 +29,25 @@ a, img{
 
 #panel_app{
 	position: relative;
-	width: 80%;
+	width: 100%;
 	border-radius: 5px;
 	margin: auto;
-	height: 80%;
+	height: 210px;
 	background-color: #15202B;
-	margin-top: 30px;
+	
 }
 
 #main_panel, #edit_panel{
+	position: relative;
+	width: auto;
+	margin: auto;
+	height: 90%;
+	overflow: auto;
+	border: 1px solid #253341;
+	padding: 20px;
+}
+
+#main_panel_2{
 	position: relative;
 	width: auto;
 	margin: auto;
@@ -109,7 +119,7 @@ a, img{
 	border: 0px;
 	background: #1DA1F2;
 	color: #FFF;
-	height: 34px;
+	height: 28px;
 	border-radius: 4px;
 	cursor: pointer;
 }
@@ -152,10 +162,15 @@ a, img{
 	border-radius: 100px;
 }
 
+#icono_marketplace{
+	margin-top: 5px;
+	border-radius: 100px;
+}
+
 #user_box{
 	position: relative;
-	width: auto;
-	height: 80px;
+	width: 100%;
+	height: 210px;
 	margin: auto;
 	color: #AAA;
 	font-size: 20px;
@@ -164,7 +179,6 @@ a, img{
 	border-top-left-radius:5px;
 	border-top-right-radius:5px;
 	background: #253341;
-
 }
 
 #user_box span{
@@ -295,6 +309,78 @@ a, img{
 
 .warning{
 	background: #FF9900;
+}
+
+table{
+    border-collapse: collapse;
+    font-size: 12px;
+    position: relative;
+    cursor: pointer;
+}
+
+table tr:nth-child(1){
+    color: #080808;   
+    background-color: #78ed88;
+}
+
+table tr:nth-child(odd){
+    color: #080808;   
+    background-color: #fcfcfc;
+}
+
+table tr:nth-child(even){
+    color: #080808;   
+    background-color: #fcfcfc;
+}
+
+table th{
+    color: #ffffff;
+    background-color: #1DA1F2;
+    border-bottom: solid 5px #0F362D;
+	border-radius: 5;
+    border: solid 1px black;
+}
+
+table td{
+    border: solid 1px black;
+}
+
+thead{
+    font-weight: bold;
+    background: #DBEAF9;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+td:last-child{
+    color: rgb(228, 17, 17);
+    font-weight: Century Ghotic;
+    text-decoration: underline;
+}
+
+td{
+    border: 1px solid #CCC;
+    padding: 5px;
+}
+
+#txt_nombre{
+	height: 20%;
+	width: 70%;
+}
+
+.btnPerfil{
+	bottom: 2px;
+	border: 1px solid transparent;
+	background: transparent;
+	color: #2187c7;
+	height: 25px;
+	text-decoration: underline;
+	width: 150px;
+	border-radius: 5px;
+	cursor: pointer;
+	font-family: Century Gothic;
+	font-weight: bold;
+	font-size: 15px;
 }
 
 @keyframes fadeout {
