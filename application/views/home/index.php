@@ -1,4 +1,4 @@
-<?php if ($this->session->userdata['logged_in']['logged_in'] == TRUE) { ?>
+
 
   <div id="panel_app">
 
@@ -13,8 +13,19 @@
 
       <img id="icono_marketplace" src="<?php echo site_url("/resources/icons/marketplace.png") ?>" width=200 height=200>
 
+      
+
+      <?php echo form_open('auth/logout'); ?>
+        <button type="submit" name="btn_logout" id="btn_registrarse" class="boton2" title="Auntenticarse"><img src="<?php echo site_url("/resources/icons/Loguear_icon.png")?>"width=22 height=22>Autenticarse</button>
+        <?php echo form_close(); ?>
+
       <div id="logout">
+
+     
+
+
         <?php echo form_open('auth/logout'); ?>
+        <button type="submit"
         <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">🗙</button>
         <?php echo form_close(); ?>
       </div>
@@ -49,7 +60,7 @@
             <th>PERFIL</th>
           </tr>
         </thead>
-        <?php foreach ($usuarios_empresa as $u) { ?>
+        <?php foreach ($nombre_usuario as $u) { ?>
           <tr>
             <td align="center" width="150"><?php echo "<img src='" . site_url('/resources/photos/' . $u['foto'])
                               . "' alt=' Foto' title=' Foto'  width=50 height=50 id='foto_file' />"; ?></td>
@@ -67,16 +78,22 @@
       <table width="50%" border="1px" align="center">
         <thead>
           <tr>
-            <th>ÍCONO</th>
+            <!-- <th>ÍCONO</th> -->
             <th>NOMBRE</th>
+            <th>EMPRESA</th>
+            <th>PRECIO</th>
+            <th>CANTIDAD DE ARTÍCULOS VENDIDOS</th>
             <th>PERFIL</th>
           </tr>
         </thead>
-        <?php foreach ($usuarios_empresa as $u) { ?>
+        <?php foreach ($productos_vendidos as $pv) { ?>
           <tr>
-            <td align="center" width="150"><?php echo "<img src='" . site_url('/resources/photos/' . $u['foto'])
-                              . "' alt=' Foto' title=' Foto'  width=50 height=50 id='foto_file' />"; ?></td>
-            <td align="center" width="150" style="font-family: Century Gothic; font-weight: bold; font-size:15px;"><?php echo $u["nombre_real"] ?></td>
+            <!-- <td align="center" width="150"><?php echo "<img src='" . site_url('/resources/photos/' . $pv['nombre'])
+                              . "' alt=' Foto' title=' Foto'  width=50 height=50 id='foto_file' />"; ?></td> -->
+            <td align="center" width="150" style="font-family: Century Gothic; font-weight: bold; font-size:15px;"><?php echo $pv["nombre"] ?></td>
+            <td align="center" width="150" style="font-family: Century Gothic; font-weight: bold; font-size:15px;"><?php echo $pv["nombre_real"] ?></td>
+            <td align="center" width="150" style="font-family: Century Gothic; font-weight: bold; font-size:15px;"><?php echo $pv["precio"] ?></td>
+            <td align="center" width="150" style="font-family: Century Gothic; font-weight: bold; font-size:15px;"><?php echo $pv["unidades_vendidas"] ?></td>
             <td align="center">
               <input type="button" class="btnPerfil" value="Ver Perfil">
             </td>
@@ -87,8 +104,3 @@
   </div>
   
 
-<?php
-} else {
-  header("location: " . base_url()); //dirección de arranque especificada en config.php y luego en routes.php
-}
-?>

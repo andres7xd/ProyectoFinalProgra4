@@ -393,3 +393,16 @@ td{
     to   { opacity: 1; visibility: visible; }
 }
 
+
+#btn_registrarse{
+	
+	text-align: left;
+	
+	position: relative;
+	left: 660px;
+	bottom: 209px;
+	background-image: url('Loguear_icon.png');
+	border-radius: 5px;
+
+}
+
