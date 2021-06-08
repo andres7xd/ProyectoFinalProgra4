@@ -16,7 +16,8 @@ class Buyer_model extends CI_Model
         ORDER BY usuarios.nombre_real ASC")->result_array();
     }
 
-    function get_productos_vendidos(){// Obtiene la informacion de los productos mas vendidos
+    function get_productos_vendidos()
+    { // Obtiene la informacion de los productos mas vendidos
 
         return $this->db->query("SELECT productos.nombre, productos.unidades, productos.precio, productos.unidades_vendidas, productos.producto_id, usuarios.nombre_real
         FROM productos
@@ -24,6 +25,17 @@ class Buyer_model extends CI_Model
         on productos.usuario_id = usuarios.usuario_id
         WHERE productos.unidades != 0  
         ORDER BY productos.nombre ASC")->result_array();
+    }
 
+
+    function buscar_productos($data)
+    {
+     
+        return $this->db->query("SELECT productos.nombre, productos.unidades, productos.precio, productos.unidades_vendidas, productos.producto_id, usuarios.nombre_real
+        FROM productos
+        join usuarios
+        on productos.usuario_id = usuarios.usuario_id
+        WHERE  productos.nombre LIKE '%" . $data . "%'
+        ORDER BY productos.nombre DESC")->result_array();
     }
 }

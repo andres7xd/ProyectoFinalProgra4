@@ -20,17 +20,47 @@ Class Buyer extends CI_Controller {
         parent::__construct();
         $this->load->model('Home_model');
         $this->load->library('session');
+        $this->load->model('Buyer_model');
     }
 
-    function index()
+    function index($productos_data = array())
     {   
-        
         $data['usuarios'] = $this->Home_model->get_usuario_tienda();
-        $data['productos'] = $this->Home_model->get_productos_vendidos();
-       
-        $data['_view'] = 'buyer/index';
-        $this->load->view('layouts/main', $data);
+        
+        if ($productos_data == null){
+            $data['productos'] = $this->Home_model->get_productos_vendidos();
+                
+                }
+                   
+        
+                else
+                    $data['productos'] = $productos_data;
 
+                $data['_view'] = 'buyer/index';
+                $this->load->view('layouts/main', $data);
+
+        
+        
+      
+       
+        
+
+    }
+
+       function process()
+    {
+        
+
+        if ($this->input->post('btn_search')) {
+            $this->buscar();
+        }
+    }
+
+    
+    function buscar()
+    {
+        $result = $this->Buyer_model->buscar_productos($this->input->post('txt_nombre'));
+        $this->index($result);
     }
 
 }
