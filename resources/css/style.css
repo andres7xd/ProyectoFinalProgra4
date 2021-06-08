@@ -139,6 +139,17 @@ a, img{
 	width: 30px;
 }
 
+#btn_registrarse{
+	position: absolute;
+	right: 5px;
+	top: 0px;
+	height: 30px;
+	width: 30px;
+	background: transparent;
+	border: transparent;
+	cursor: pointer;
+}
+
 #btn_notificaciones{
 	position: absolute;
 	right: 35px;
@@ -254,23 +265,6 @@ a, img{
 #btn_eliminar {
 	color: #DC4E41;
 }
-
-#btn_dislike {
-	position: relative;
-	text-decoration: none;
-	font-size: 23px;
-	margin-left: 93%;
-	top: -62px;
-}
-
-#btn_like {
-	position: relative;
-	text-decoration: none;
-	font-size: 23px;
-	margin-left: 90%;
-	top: -33px;
-}
-
 
 .form-group-photo {
 	position: absolute;
@@ -423,16 +417,4 @@ td{
     to   { opacity: 1; visibility: visible; }
 }
 
-
-#btn_registrarse{
-	
-	text-align: left;
-	
-	position: relative;
-	left: 660px;
-	bottom: 209px;
-	background-image: url('Loguear_icon.png');
-	border-radius: 5px;
-
-}
 
