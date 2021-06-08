@@ -20,8 +20,8 @@ Class Auth extends CI_Controller {
 	function load_data_view($view)
     {
     	//precarga todos los datos con los que la vista debe iniciar
-    	// $this->load->model('Tienda_model');
-       	// $data['usuarios_empresa'] = $this->Tienda_model->get_usuario_tienda();
+    	// $this->load->model('Buyer_model');
+       	// $data['usuarios_compradores'] = $this->Buyer_model->get_usuario_tienda();
         // $data['_view'] = $view;
 		// $this->load->view('layouts/main',$data);
     }
@@ -39,7 +39,7 @@ Class Auth extends CI_Controller {
 			//Esto es para el caso de si la sesión aún está activa
 			if(isset($this->session->userdata['logged_in'])){
 				 //Función propia para cargar la vista indicada con datos precargados
-				$this->load_data_view('home/index');
+				$this->load_data_view('buyer/index');
 			}else{
 				$this->load->view('auth/login');
 			}
@@ -72,8 +72,8 @@ Class Auth extends CI_Controller {
 					// Agregamos la infomación del usuario en forma de arreglo a la Variable de Sesion con nombre logged_in
 					$this->session->set_userdata('logged_in', $session_data);
 					//Función propia para cargar la vista indicada con datos precargados
-					redirect('home/index', 'refresh'); //redireccionamos a la URL raíz para evitar que nos quede auth/login/ en la URL
-					$this->load_data_view('home/index'); //luego cargamos la vista
+					redirect('buyer/index', 'refresh'); //redireccionamos a la URL raíz para evitar que nos quede auth/login/ en la URL
+					$this->load_data_view('buyer/index'); //luego cargamos la vista
 
 				}
 			} else { //Si No autenticamos regreamos a la vista Login con un mensaje de error seteado
