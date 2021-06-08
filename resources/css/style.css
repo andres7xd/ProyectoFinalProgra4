@@ -139,6 +139,36 @@ a, img{
 	width: 30px;
 }
 
+#btn_notificaciones{
+	position: absolute;
+	right: 35px;
+	top: 0px;
+	height: 30px;
+	width: 30px;
+	background: transparent;
+	border: transparent;
+} 
+
+#btn_carrito{
+	position: absolute;
+	right: 70px;
+	top: 0px;
+	height: 30px;
+	width: 30px;
+	background: transparent;
+	border: transparent;
+} 
+
+#btn_deseos{
+	position: absolute;
+	right: 105px;
+	top: 0px;
+	height: 30px;
+	width: 30px;
+	background: transparent;
+	border: transparent;
+}
+
 #btn_return {
 	background: #3B5998;
 }

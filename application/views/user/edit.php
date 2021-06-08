@@ -8,7 +8,7 @@
 	<div id="panel_app">
 	    <div class="box-header">
 	      	<h2 class="box-title">Editando Usuario</h2>
-	      	<?php echo form_open('home/index');?>
+	      	<?php echo form_open('buyer/index');?>
 		    	<button type="submit" name="btn_return" id="btn_return" class="boton" title="Regresar">←</button>
 		    <?php echo form_close();?>
 	    </div>
