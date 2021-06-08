@@ -25,10 +25,10 @@ Class Buyer extends CI_Controller {
 
     function index($productos_data = array())
     {   
-        $data['usuarios'] = $this->Home_model->get_usuario_tienda();
+        $data['usuarios'] = $this->Buyer_model->get_usuario_tienda();
         
         if ($productos_data == null){
-            $data['productos'] = $this->Home_model->get_productos_vendidos();
+            $data['productos'] = $this->Buyer_model->get_productos_vendidos();
                 
                 }
                    
@@ -38,12 +38,6 @@ Class Buyer extends CI_Controller {
 
                 $data['_view'] = 'buyer/index';
                 $this->load->view('layouts/main', $data);
-
-        
-        
-      
-       
-        
 
     }
 

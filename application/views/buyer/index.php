@@ -99,7 +99,11 @@
           <td align="center" width="150" style="font-family: Century Gothic; font-weight: bold; font-size:15px;"><?php echo $p["precio"] ?></td>
           <td align="center" width="150" style="font-family: Century Gothic; font-weight: bold; font-size:15px;"><?php echo $p["unidades"] ?></td>
           <td align="center">
-            <input type="button" class="btnPerfil" value="Ver Producto">
+          
+          <?php echo form_open('product/index/'.$p['producto_id']); ?>
+          
+            <input type="submit" class="btnPerfil" value="Ver Producto">
+            <?php echo form_close(); ?>
           </td>
         </tr>
       <?php } ?>
