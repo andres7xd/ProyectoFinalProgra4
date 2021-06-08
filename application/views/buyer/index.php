@@ -24,7 +24,7 @@
  
 
 
-    <?php echo form_open('auth/logout'); ?>
+    <?php echo form_open('home/index'); ?>
     <button type="submit"
     <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">🗙</button>
     <?php echo form_close(); ?>
