@@ -14,7 +14,7 @@
 <div>
 
   <div id="main_panel">
-  <button type="button" id="suscribirse" class="btn btn-info">Suscribirse a la tienda</button>
+
     <br><br>
 
     <div id="carrucel_producto" class="carousel slide" data-bs-ride="carousel">
@@ -96,11 +96,23 @@
         </div>
 
         <div id="actions_productos">
-          <button type="button" id="prod_comprar" class="btn btn-primary">Comprar</button>
-          <?php echo form_open('product/index/'.$p['producto_id'])?>
+
+          <?php echo form_open('product/index/' . $p['producto_id']) ?>
+          <button type="submit" id="prod_comprar" name="prod_comprar" class="btn btn-primary">Comprar</button>
+          <?php echo form_close(); ?>
+
+          <?php echo form_open('product/index/' . $p['producto_id']) ?>
           <button type="submit" id="prod_carrito" name="prod_carrito" class="btn btn-success">Añadir al carrito</button>
           <?php echo form_close(); ?>
-          <button type="button" id="prod_deseos" class="btn btn-warning">Añadir a la lista de deseos</button>
+
+          <?php echo form_open('product/index/' . $p['producto_id']) ?>
+          <button type="submit" id="prod_deseos" name="prod_deseos" class="btn btn-warning">Añadir a la lista de deseos</button>
+          <?php echo form_close(); ?>
+
+          <?php echo form_open('product/index/' . $p['producto_id']) ?>
+          <button type="submit" id="suscribirse" name="suscribirse" class="btn btn-info">Suscribirse a la tienda</button>
+          <?php echo form_close(); ?>
+
         </div>
 
       <?php } ?>

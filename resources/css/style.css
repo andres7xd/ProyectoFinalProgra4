@@ -593,15 +593,17 @@ td{
 	border-radius: 20px;
 }
 
-#suscribirse{
-    position: relative;
-	left: 65%;
-}
-
 #prod_comprar, #prod_deseos, #prod_carrito{
 	position: relative;
 	left: 11%;
 	margin: 3px;
+	float: left;
+}
+
+#suscribirse {
+	position: relative;
+	top: -100px;
+	left: 30%;
 }
 
 @keyframes fadeout {

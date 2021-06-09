@@ -38,9 +38,10 @@ class Buyer_model extends CI_Model
         ORDER BY productos.nombre DESC")->result_array();
     }
 
-    function get_fotos_producto($id_producto){// Obtiene la lista de fotos de los productos
-        return $this->db->query("SELECT fotos.foto
+    function get_fotos_producto(){// Obtiene la lista de fotos de los productos
+        return $this->db->query("SELECT *
         FROM fotos
-        WHERE fotos.producto_id = $id_producto")->result_array();
+        JOIN productos
+        ON fotos.producto_id = productos.producto_id")->result_array();
     }
 }

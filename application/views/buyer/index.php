@@ -59,43 +59,39 @@
     <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE PRODUCTOS</h1>
     <?php foreach ($productos as $p) { ?>
       <div class="div_productos">
-        <input id='id_h' name='id_h' type='hidden' value='<?php echo $p['producto_id'];?>'>
+        <input id='id_h' name='id_h' type='hidden' value='<?php echo $p['producto_id']; ?>'>
         <div id="carousel_buyer" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-indicators">
             <?php $cont1 = 0 ?>
             <?php foreach ($fotos_producto as $f) { ?>
-              <?php if ($cont1 == 0) { ?>
-                <button type="button" data-bs-target="#carrucel_producto" data-bs-slide-to="0" class="active" aria-current="true" aria-label=""></button>
-                <?php $cont1 = $cont1 + 1 ?>
-              <?php } else { ?>
-                <button type="button" data-bs-target="#carrucel_producto" data-bs-slide-to="<?php echo $cont1; ?>" aria-label=""></button>
-                <?php $cont1 = $cont1 + 1 ?>
+              <?php if ($f["producto_id"] == $p["producto_id"]) { ?>
+                <?php if ($cont1 == 0) { ?>
+                  <button type="button" data-bs-target="#carrucel_producto" data-bs-slide-to="0" class="active" aria-current="true" aria-label=""></button>
+                  <?php $cont1 = $cont1 + 1 ?>
+                <?php } else { ?>
+                  <button type="button" data-bs-target="#carrucel_producto" data-bs-slide-to="<?php echo $cont1; ?>" aria-label=""></button>
+                  <?php $cont1 = $cont1 + 1 ?>
+                <?php } ?>
               <?php } ?>
             <?php } ?>
           </div>
           <div class="carousel-inner">
             <?php $cont = 0 ?>
             <?php foreach ($fotos_producto as $f) { ?>
-              <?php if ($cont == 0) { ?>
-                <div class="carousel-item active">
-                  <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..."  height="150px">
-                </div>
-                <?php $cont = 1 ?>
-              <?php } else { ?>
-                <div class="carousel-item">
-                  <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="150px">
-                </div>
+              <?php if ($f["producto_id"] == $p["producto_id"]) { ?>
+                <?php if ($cont == 0) { ?>
+                  <div class="carousel-item active">
+                    <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="150px">
+                  </div>
+                  <?php $cont = 1 ?>
+                <?php } else { ?>
+                  <div class="carousel-item">
+                    <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="150px">
+                  </div>
+                <?php } ?>
               <?php } ?>
             <?php } ?>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carrucel_producto" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carrucel_producto" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
         </div>
 
         <br>

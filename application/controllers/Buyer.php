@@ -28,7 +28,7 @@ class Buyer extends CI_Controller
     {
         $id_producto = $this->input->post('id_h');
         $data['usuarios'] = $this->Buyer_model->get_usuario_tienda();
-        $data['fotos_producto'] = $this->Buyer_model->get_fotos_producto(1);
+        $data['fotos_producto'] = $this->Buyer_model->get_fotos_producto();
         if ($productos_data == null) {
             $data['productos'] = $this->Buyer_model->get_productos_vendidos();
         } else
