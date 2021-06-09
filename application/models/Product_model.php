@@ -42,4 +42,10 @@ class Product_model extends CI_Model
         return $this->db->insert_id();
     }
 
+
+    function add_deseo($params){
+        $this->db->insert('deseos', $params);
+        return $this->db->insert_id();
+    }
+
 }

@@ -101,24 +101,24 @@
             <span class="pre_prod">Categoria:</< /span> <span class="resp_prod"><?php echo ($this->input->post('txt_categoria') ? $this->input->post('txt_categoria') : $p['categoria']); ?></span>
           </div>
         </div>
-
-        <input type="number" id="txt_cantidad_prod" placeholder="Cantidad" title="Cantidad a comprar o añadir al carrito">
-
+        <?php echo form_open('product/index/' . $p['producto_id']) ?>
+        <input type="number" name="txt_cantidad_prod" id="txt_cantidad_prod" value="<?php echo $this->input->post('txt_cantidad_prod'); ?>" placeholder="Cantidad" title="Cantidad a comprar o añadir al carrito">
+ 
         <div id="actions_productos">
 
-          <?php echo form_open('product/index/' . $p['producto_id']) ?>
+          
           <button type="submit" id="prod_comprar" name="prod_comprar" class="btn btn-primary">Comprar</button>
-          <?php echo form_close(); ?>
+          
 
-          <?php echo form_open('product/index/' . $p['producto_id']) ?>
+       
           <button type="submit" id="prod_carrito" name="prod_carrito" class="btn btn-success">Añadir al carrito</button>
-          <?php echo form_close(); ?>
+          
 
-          <?php echo form_open('product/index/' . $p['producto_id']) ?>
+          
           <button type="submit" id="prod_deseos" name="prod_deseos" class="btn btn-warning">Añadir a la lista de deseos</button>
-          <?php echo form_close(); ?>
+         
         </div>
-
+        <?php echo form_close(); ?> 
       <?php } ?>
     </div>
   </div>

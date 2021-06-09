@@ -20,7 +20,9 @@ Class Product extends CI_Controller {
     }
 
     function index($id)
-    {     
+    {    
+
+
         $data['producto'] = $this->Product_model->get_producto($id);
         $data['fotos_productos'] = $this->Product_model->get_fotos_producto($id);
         $data['_view'] = 'product/index';
@@ -28,18 +30,40 @@ Class Product extends CI_Controller {
         if( isset($_POST['prod_carrito']) == true){
             $this->add_carrito($id);
         }
+
+        if( isset($_POST['prod_deseos']) == true){
+            $this->add_deseo($id);
+        }
+      
     }
+
+
 
     function add_carrito($id){
         $params = array(
             'usuario_id' =>  $this->session->userdata['logged_in']['usuario_id'],
             'producto_id' =>  $id,
-            'cantidad_productos' =>  4
+            'cantidad_productos' =>  $this->input->post('txt_cantidad_prod'),
         );
+
+     
         $this->Product_model->add_carrito($params);
         $params = array();
 
       
+
+    }
+
+
+    function add_deseo($id){
+        $params_deseos =array(
+            'usuario_id' =>  $this->session->userdata['logged_in']['usuario_id'],
+            'producto_id' =>  $id,
+        );
+
+
+        $this->Product_model->add_deseo($params_deseos);
+        $params_deseos = array();
 
     }
 
