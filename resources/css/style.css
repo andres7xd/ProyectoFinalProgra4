@@ -34,7 +34,6 @@ a, img{
 	margin: auto;
 	height: 210px;
 	background-color: #15202B;
-	
 }
 
 #main_panel, #edit_panel{
@@ -223,6 +222,29 @@ a, img{
 	background: #253341;
 }
 
+#user_box_prod{
+	position: relative;
+	width: 100%;
+	height: 30px;
+	margin: auto;
+	color: #AAA;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	background: #253341;
+}
+
+#panel_app_prod{
+	position: relative;
+	width: 100%;
+	border-radius: 5px;
+	margin: auto;
+	height: 30px;
+	background-color: #15202B;
+}
+
 #user_box span{
 	float: left;
 	clear: both;
@@ -390,7 +412,6 @@ td{
 
 #txt_nombre{
 	height: 20%;
-	width: 70%;
 }
 
 .btnPerfil{
@@ -439,6 +460,14 @@ td{
 	font-size: 20px;
 }
 
+#foto_file{
+	border-radius: 15px;
+}
+
+#txt_prod{
+	width: 50%;
+}
+
 .unidades_vendidas{
 	margin: 5px;
 	font-family: Century Gothic;
@@ -473,20 +502,21 @@ td{
 	background-color: #435363;
 }
 
-#foto_file{
-	border-radius: 15px;
-}
-
 #carrucel_producto{
-	top: 10%;
-	width: 40%;
-	left: 5%;
+	position: relative;
+	margin: 16px;
+	float: left;
+	cursor: pointer;
+	background-position: top center;
+	width: 600px;
 }
 
-#info_productos{
-	position: absolute;
-	top:  10%;
-	left: 110%;
+#carousel_buyer{
+	width: 200px;
+	position: relative;
+	left: 10%;
+	margin-top: 5px;
+	border-radius: 20px;
 }
 
 .actions_products{
@@ -504,6 +534,75 @@ td{
 	font-size: 20px;	
 }
 
+.pre_prod{
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 15px;
+}
+
+.resp_prod{
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 20px;
+	padding: 5px;
+	color: #1c7dcc;
+}
+
+#info_productos{
+	position: relative;
+	margin: 16px;
+	float: left;
+	cursor: pointer;
+	background-position: top center;
+	background-color: #3f4a55;
+	padding: 1%;
+	height: 450px;
+	width: 640px;
+	border-color: #4f657a;
+	border-style: ridge;
+	border-radius: 20px;
+}
+
+#div_info1, #actions_productos{
+	position: relative;
+	width: auto;
+	margin: auto;
+}
+
+#div_info1{
+	height: 90%;
+}
+
+#actions_productos{
+	background-color: #253341;
+	height: 12%;
+	border-color: #4f657a;
+	border-style: ridge;
+	border-radius: 20px;
+}
+
+.div_info{
+	padding: 5px;
+	position: relative;
+	margin: 10px;
+	float: left;
+	cursor: pointer;
+	background-position: top center;
+	background-color: #253341;
+	text-align: center;
+	border-color: #4f657a;
+	border-style: ridge;
+	border-radius: 20px;
+}
+
+#suscribirse{
+    position: relative;
+	left: 65%;
+}
+
+#prod_comprar, #prod_deseos, #prod_carrito{
+	position: relative;
+	left: 11%;
+	margin: 3px;
+}
 
 @keyframes fadeout {
     from { opacity: 1; visibility: visible; }

@@ -30,12 +30,17 @@ class Buyer_model extends CI_Model
 
     function buscar_productos($data)
     {
-     
         return $this->db->query("SELECT productos.nombre, productos.unidades, productos.precio, productos.unidades_vendidas, productos.producto_id, usuarios.nombre_real
         FROM productos
         join usuarios
         on productos.usuario_id = usuarios.usuario_id
         WHERE  productos.nombre LIKE '%" . $data . "%'
         ORDER BY productos.nombre DESC")->result_array();
+    }
+
+    function get_fotos_producto($id_producto){// Obtiene la lista de fotos de los productos
+        return $this->db->query("SELECT fotos.foto
+        FROM fotos
+        WHERE fotos.producto_id = $id_producto")->result_array();
     }
 }

@@ -12,9 +12,6 @@ Class Product extends CI_Controller {
 // 		$this->load->view('layouts/main',$data);
 //     }
 
-
-
-
     function __construct()
     {
         parent::__construct();
@@ -23,14 +20,11 @@ Class Product extends CI_Controller {
     }
 
     function index($id)
-    {   
-        
+    {       
         $data['producto'] = $this->Product_model->get_producto($id);
         $data['fotos_productos'] = $this->Product_model->get_fotos_producto($id);
-       
         $data['_view'] = 'product/index';
         $this->load->view('layouts/main', $data);
-
     }
 
 }
