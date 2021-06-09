@@ -82,6 +82,7 @@
     <table width="50%" border="1px" align="center">
       <thead>
         <tr>
+        
           <!-- <th>ÍCONO</th> -->
           <th>NOMBRE</th>
           <th>EMPRESA</th>
