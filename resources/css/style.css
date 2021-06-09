@@ -407,6 +407,62 @@ td{
 	font-size: 15px;
 }
 
+.div_productos{
+	position: relative;
+	margin: 20px;
+	float: left;
+	cursor: pointer;
+	background-position: top center;
+	background-color: #253341;
+	text-align: center;
+	border-color: #567ea5;
+	border-style: solid;
+	border-radius: 20px;
+}
+
+.nombre_producto{
+	font-family: Century Gothic;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.nombre_real{
+	font-family: Century Gothic;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.unidades_vendidas{
+	margin: 5px;
+	font-family: Century Gothic;
+	font-weight: bold;
+	font-size: 20px;	
+}
+
+.precio{
+	font-family: Century Gothic;
+	font-size: 25px;	
+	color: yellow;
+}
+
+.div_tiendas{
+	position: relative;
+	margin: 20px;
+	padding: 5px;
+	float: left;
+	cursor: pointer;
+	background-position: top center;
+	background-color: #253341;
+	text-align: center;
+	border-color: #567ea5;
+	border-style: solid;
+	border-radius: 20px;
+}
+
+#foto_file{
+	border-radius: 15px;
+}
+
 @keyframes fadeout {
     from { opacity: 1; visibility: visible; }
     to   { opacity: 0; visibility: hidden; }

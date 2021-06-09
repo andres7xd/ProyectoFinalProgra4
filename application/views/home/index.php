@@ -16,76 +16,42 @@
       <button type="submit" name="btn_registrarse" id="btn_registrarse" class="boton2" title="Auntenticarse"><img src="<?php echo site_url("/resources/icons/Loguear_icon.png") ?>" width=22 height=22></button>
       <?php echo form_close(); ?>
     </div>
-
   </div>
-
-  <!-- <div id="post_box">
-
-      <?php echo form_open_multipart('twitter/process', 'onsubmit="send()"'); ?>
-      <br>
-
-      <input type="text" class="cajatexto" id="txt_nombre" value="" placeholder="Escribe aquí para buscar!">
-      <button type="submit" name="btn_search" id="btn_search" value="btn_search" class="boton" title="Buscar">🔍</button>
-
-      <span style="color: #f00"><?php echo form_error('txt_post'); ?></span>
-      <?php echo form_close(); ?>
-
-
-    </div> -->
-
   <br>
 </div>
 
 <div>
   <div id="main_panel">
-    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic">LISTA DE TIENDAS</h1>
-    <table width="50%" border="1px" align="center">
-      <thead>
-        <tr>
-          <th>ÍCONO</th>
-          <th>NOMBRE</th>
-          <th>PERFIL</th>
-        </tr>
-      </thead>
-      <?php foreach ($nombre_usuario as $u) { ?>
-        <tr>
-          <td align="center" width="150"><?php echo "<img src='" . site_url('/resources/photos/' . $u['foto'])
-                                            . "' alt=' Foto' title=' Foto'  width=50 height=50 id='foto_file' />"; ?></td>
-          <td align="center" width="150" style="font-family: Century Gothic; font-weight: bold; font-size:15px;"><?php echo $u["nombre_real"] ?></td>
-          <td align="center">
-            <input type="button" class="btnPerfil" value="Ver Perfil">
-          </td>
-        </tr>
-      <?php } ?>
+    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:30px;">LISTA DE TIENDAS</h1>
+    <?php foreach ($nombre_usuario as $u) { ?>
+
+      <div class="div_tiendas">
+        <span class="imagen_tienda"><?php echo "<img src='" . site_url('/resources/photos/' . $u['foto'])
+                                          . "' alt=' Foto' title=' Foto' width=50 height=50 id='foto_file'/>"; ?></span>
+        <br>
+        <span class="nombre_real"><?php echo $u["nombre_real"] ?></span>
+        <br>
+        <input type="button" class="btnPerfil" value="Ver perfil">
+      </div>
+    <?php } ?>
     </table>
   </div>
 
   <div id="main_panel">
-    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic">PRODUCTOS MÁS VENDIDOS</h1>
-    <table width="50%" border="1px" align="center">
-      <thead>
-        <tr>
-          <!-- <th>ÍCONO</th> -->
-          <th>NOMBRE</th>
-          <th>EMPRESA</th>
-          <th>PRECIO</th>
-          <th>CANTIDAD DE ARTÍCULOS VENDIDOS</th>
-          <th>PERFIL</th>
-        </tr>
-      </thead>
-      <?php foreach ($productos_vendidos as $pv) { ?>
-        <tr>
-          <!-- <td align="center" width="150"><?php echo "<img src='" . site_url('/resources/photos/' . $pv['nombre'])
-                                                . "' alt=' Foto' title=' Foto'  width=50 height=50 id='foto_file' />"; ?></td> -->
-          <td align="center" width="150" style="font-family: Century Gothic; font-weight: bold; font-size:15px;"><?php echo $pv["nombre"] ?></td>
-          <td align="center" width="150" style="font-family: Century Gothic; font-weight: bold; font-size:15px;"><?php echo $pv["nombre_real"] ?></td>
-          <td align="center" width="150" style="font-family: Century Gothic; font-weight: bold; font-size:15px;"><?php echo $pv["precio"] ?></td>
-          <td align="center" width="150" style="font-family: Century Gothic; font-weight: bold; font-size:15px;"><?php echo $pv["unidades_vendidas"] ?></td>
-          <td align="center">
-            <input type="button" class="btnPerfil" value="Ver Perfil">
-          </td>
-        </tr>
-      <?php } ?>
+    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:30px;">PRODUCTOS MÁS VENDIDOS</h1>
+    <?php foreach ($productos_vendidos as $pv) { ?>
+      <div class="div_productos">
+        <span class="nombre_producto"><?php echo $pv["nombre"] ?></span>
+        <br>
+        <span class="nombre_real">Tienda: <?php echo $pv["nombre_real"] ?></span>
+        <br>
+        <span class="unidades_vendidas">Unidades vendidas: <?php echo $pv["unidades_vendidas"] ?></span>
+        <br>
+        <span class="precio">₡<?php echo $pv["precio"] ?></span>
+        <br>
+        <input type="button" class="btnPerfil" value="Ver producto">
+      </div>
+    <?php } ?>
     </table>
   </div>
 </div>
