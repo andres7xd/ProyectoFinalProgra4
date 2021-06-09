@@ -18,7 +18,7 @@ class Product_model extends CI_Model
 
     function get_producto($id_producto){// Obtiene la informacion de los productos mas vendidos
 
-        return $this->db->query("SELECT productos.nombre, productos.descripcion, productos.fecha_publicacion, productos.unidades, productos.ubicacion_actual, productos.precio, productos.tiempo_envio, productos.costo_envio, categorias.categoria, productos.unidades_vendidas, usuarios.nombre_real
+        return $this->db->query("SELECT productos.producto_id, productos.nombre, productos.descripcion, productos.fecha_publicacion, productos.unidades, productos.ubicacion_actual, productos.precio, productos.tiempo_envio, productos.costo_envio, categorias.categoria, productos.unidades_vendidas, usuarios.nombre_real
         FROM productos
         join usuarios
         on productos.usuario_id = usuarios.usuario_id
@@ -34,4 +34,12 @@ class Product_model extends CI_Model
         WHERE fotos.producto_id = $id_producto")->result_array();
 
     }
+
+
+    function add_carrito($params)
+    {
+        $this->db->insert('carritos', $params);
+        return $this->db->insert_id();
+    }
+
 }

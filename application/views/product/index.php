@@ -97,7 +97,9 @@
 
         <div id="actions_productos">
           <button type="button" id="prod_comprar" class="btn btn-primary">Comprar</button>
-          <button type="button" id="prod_carrito" class="btn btn-success">Añadir al carrito</button>
+          <?php echo form_open('product/index/'.$p['producto_id'])?>
+          <button type="submit" id="prod_carrito" name="prod_carrito" class="btn btn-success">Añadir al carrito</button>
+          <?php echo form_close(); ?>
           <button type="button" id="prod_deseos" class="btn btn-warning">Añadir a la lista de deseos</button>
         </div>
 
