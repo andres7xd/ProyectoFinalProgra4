@@ -1,19 +1,11 @@
 <div id="panel_app">
 
   <div id="user_box">
-    <!-- <a href="<?php echo site_url('user/edit/' . $this->session->userdata['logged_in']['usuario_id']); ?>" title="Editar Perfil">
-        <?php
-        echo "<img src='" . site_url('/resources/photos/' . $this->session->userdata['logged_in']['foto'])
-          . "' alt='photo_profile' width=50 height=50 id='photo_profile' />" .
-          "<span>HOLA! " . $this->session->userdata['logged_in']['nombre_real'] . ". ✎</span>";
-        ?>
-      </a> -->
-
     <img id="icono_marketplace" src="<?php echo site_url("/resources/icons/marketplace.png") ?>" width=200 height=200>
 
     <div id="logout">
       <?php echo form_open('auth/logout'); ?>
-      <button type="submit" name="btn_registrarse" id="btn_registrarse" class="boton2" title="Auntenticarse"><img src="<?php echo site_url("/resources/icons/Loguear_icon.png") ?>" width=22 height=22></button>
+      <button type="submit" name="btn_registrarse" id="btn_registrarse" class="boton2" title="Auntenticarse"><img src="<?php echo site_url("/resources/icons/Loguear_icon.png") ?>" width=35 height=35></button>
       <?php echo form_close(); ?>
     </div>
   </div>
