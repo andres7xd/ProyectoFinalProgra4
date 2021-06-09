@@ -464,6 +464,19 @@ td{
 	border-radius: 15px;
 }
 
+#carrucel_producto{
+	top: 10%;
+	width: 40%;
+	left: 5%;
+}
+
+#info_productos{
+	position: absolute;
+	top:  10%;
+	left: 110%;
+	
+}
+
 @keyframes fadeout {
     from { opacity: 1; visibility: visible; }
     to   { opacity: 0; visibility: hidden; }
