@@ -27,4 +27,11 @@ class Product_model extends CI_Model
         WHERE productos.producto_id = $id_producto")->result_array();
 
     }
+
+    function get_fotos_producto($id_producto){// Obtiene la lista de fotos de los productos
+        return $this->db->query("SELECT fotos.foto
+        FROM fotos
+        WHERE fotos.producto_id = $id_producto")->result_array();
+
+    }
 }

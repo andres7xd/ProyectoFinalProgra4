@@ -26,7 +26,7 @@ Class Product extends CI_Controller {
     {   
         
         $data['producto'] = $this->Product_model->get_producto($id);
-        print_r($data['producto']);
+        $data['fotos_productos'] = $this->Product_model->get_fotos_producto($id);
        
         $data['_view'] = 'product/index';
         $this->load->view('layouts/main', $data);
