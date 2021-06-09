@@ -191,6 +191,7 @@ a, img{
 #btn_search {
 	position: relative;
 	margin-top: 10px;
+	font-size: 15px;
 }
 
 .imgpost{
@@ -415,13 +416,18 @@ td{
 	background-position: top center;
 	background-color: #253341;
 	text-align: center;
-	border-color: #567ea5;
-	border-style: solid;
+	border-color: #4f657a;
+	border-style: ridge;
 	border-radius: 20px;
 }
 
+.div_productos:hover{
+	background-color: #435363;
+	-webkit-transform:scale(1.1);
+}
+
 .nombre_producto{
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	font-weight: bold;
 	font-size: 25px;
 	color: rgb(23, 221, 188);
@@ -429,7 +435,7 @@ td{
 
 .nombre_real{
 	font-family: Century Gothic;
-	font-weight: bold;
+	font-weight: 600;
 	font-size: 20px;
 }
 
@@ -444,6 +450,9 @@ td{
 	font-family: Century Gothic;
 	font-size: 25px;	
 	color: yellow;
+	background: #4d6a88;
+	border-radius: 20px;
+	padding: 3px;
 }
 
 .div_tiendas{
@@ -460,6 +469,10 @@ td{
 	border-radius: 20px;
 }
 
+.div_tiendas:hover{
+	background-color: #435363;
+}
+
 #foto_file{
 	border-radius: 15px;
 }
@@ -474,8 +487,23 @@ td{
 	position: absolute;
 	top:  10%;
 	left: 110%;
-	
 }
+
+.actions_products{
+	position: relative;
+	left: 25%;
+	text-align: center;
+	height: 30px;
+	width: 115px;
+}
+
+.btn_ver, .btn_deseos_prod, .btn_carrito_prod{
+	float: left;
+	border: transparent;
+	background: transparent;
+	font-size: 20px;	
+}
+
 
 @keyframes fadeout {
     from { opacity: 1; visibility: visible; }

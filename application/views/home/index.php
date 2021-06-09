@@ -14,7 +14,7 @@
 
 <div>
   <div id="main_panel">
-    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:30px;">LISTA DE TIENDAS</h1>
+    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE TIENDAS</h1>
     <?php foreach ($nombre_usuario as $u) { ?>
 
       <div class="div_tiendas">
@@ -30,7 +30,7 @@
   </div>
 
   <div id="main_panel">
-    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:30px;">PRODUCTOS MÁS VENDIDOS</h1>
+    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">PRODUCTOS MÁS VENDIDOS</h1>
     <?php foreach ($productos_vendidos as $pv) { ?>
       <div class="div_productos">
         <span class="nombre_producto"><?php echo $pv["nombre"] ?></span>
