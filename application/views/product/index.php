@@ -54,9 +54,16 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-
+  
     <div id="info_productos">
       <?php foreach ($producto as $p) { ?>
+
+        <div id="div_suscribirse">
+        <?php echo form_open('product/index/' . $p['producto_id']) ?>
+          <button type="submit" id="suscribirse" name="suscribirse" class="btn btn-info">Suscribirse a la tienda</button>
+          <?php echo form_close(); ?>
+          </div>
+
         <div id="div_info1">
           <div class="div_info">
             <span class="pre_prod">Nombre Producto: </span> <span class="resp_prod"><?php echo ($this->input->post('txt_nombre') ? $this->input->post('txt_nombre') : $p['nombre']); ?></span>
@@ -95,6 +102,8 @@
           </div>
         </div>
 
+        <input type="number" id="txt_cantidad_prod" placeholder="Cantidad" title="Cantidad a comprar o añadir al carrito">
+
         <div id="actions_productos">
 
           <?php echo form_open('product/index/' . $p['producto_id']) ?>
@@ -108,11 +117,6 @@
           <?php echo form_open('product/index/' . $p['producto_id']) ?>
           <button type="submit" id="prod_deseos" name="prod_deseos" class="btn btn-warning">Añadir a la lista de deseos</button>
           <?php echo form_close(); ?>
-
-          <?php echo form_open('product/index/' . $p['producto_id']) ?>
-          <button type="submit" id="suscribirse" name="suscribirse" class="btn btn-info">Suscribirse a la tienda</button>
-          <?php echo form_close(); ?>
-
         </div>
 
       <?php } ?>

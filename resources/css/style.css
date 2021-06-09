@@ -568,11 +568,11 @@ td{
 }
 
 #div_info1{
-	height: 90%;
+	height: 68%;
 }
 
 #actions_productos{
-	background-color: #253341;
+	background-color: #161d24;
 	height: 12%;
 	border-color: #4f657a;
 	border-style: ridge;
@@ -601,10 +601,30 @@ td{
 }
 
 #suscribirse {
+	margin: 2px;
 	position: relative;
-	top: -100px;
 	left: 30%;
 }
+
+#txt_cantidad_prod{
+	width: 100px;
+	height: 30px;
+	position: relative;
+	left: 35%;
+	margin: 5px;
+	border-radius: 5px;
+	border-style: ridge;
+	font-size: 15px;
+}
+
+#div_suscribirse{
+	background-color: #161d24;
+	height: 12%;
+	border-color: #4f657a;
+	border-style: ridge;
+	border-radius: 20px;
+}
+
 
 @keyframes fadeout {
     from { opacity: 1; visibility: visible; }
