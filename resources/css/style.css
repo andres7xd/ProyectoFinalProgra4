@@ -624,6 +624,13 @@ td{
 	border-radius: 20px;
 }
 
+#btn_eliminar_deseo{
+	position: relative;
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 20px;
+}
+
 
 @keyframes fadeout {
     from { opacity: 1; visibility: visible; }
