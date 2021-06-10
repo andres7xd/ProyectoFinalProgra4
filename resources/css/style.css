@@ -744,6 +744,47 @@ td{
 	text-shadow: 1px 1px 0px #666;
 }
 
+#info_compra{
+	position: relative;
+	margin-top: 45px;
+	padding: 5px;
+	float: left;
+	cursor: pointer;
+	background-position: top center;
+	background-color: #253341;
+	text-align: center;
+	border-color: #4f657a;
+	border-style: dashed;
+}
+
+#prod_comprar{
+	position: relative;
+	left: 0%;
+}
+
+.info_compra2{
+	font-family: Century Gothic;
+	font-weight: 600;
+	font-size: 20px;
+}
+
+.info_compra3{
+	font-family: Century Gothic;
+	font-weight: 600;
+	color: yellow;
+	font-size: 28px;
+}
+
+#main_panel_carrito{
+	position: relative;
+	width: 81%;
+	margin: auto;
+	float: left;
+	height: 100%;
+	overflow: auto;
+	padding: 20px;
+}
+
 @keyframes fadeout {
     from { opacity: 1; visibility: visible; }
     to   { opacity: 0; visibility: hidden; }
