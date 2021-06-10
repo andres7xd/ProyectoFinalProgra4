@@ -27,11 +27,11 @@
       <button type="submit" name="btn_notificaciones" id="btn_notificaciones" title="Notificaciones"><img src="<?php echo site_url("/resources/icons/notificacion.png") ?>" width=22 height=22></button>
       <?php echo form_close(); ?>
 
-      <?php echo form_open('carrito/index'); ?>
+      <?php echo form_open('auth/logout'); ?>
       <button type="submit" name="btn_carrito" id="btn_carrito" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width=22 height=22></button>
       <?php echo form_close(); ?>
 
-      <?php echo form_open('deseos/index'); ?>
+      <?php echo form_open('auth/logout'); ?>
       <button type="submit" name="btn_deseos" id="btn_deseos" title="Lista de deseos"><img src="<?php echo site_url("/resources/icons/deseos.png") ?>" width=22 height=22></button>
       <?php echo form_close(); ?>
 
@@ -110,11 +110,11 @@
           <input type="submit" class="btn_ver" title="Ver producto" value="👁️">
           <?php echo form_close(); ?>
 
-          <?php echo form_open('product/index'); ?>
+          <?php echo form_open('carritos/index'); ?>
           <button type="submit" name="btn_carrito" title="Añadir al carrito" class="btn_carrito_prod" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width=22 height=22></button>
           <?php echo form_close(); ?>
 
-          <?php echo form_open('product/index'); ?>
+          <?php echo form_open('deseos/index'); ?>
           <button type="submit" name="btn_deseos" title="Añadir a la lista de deseos" class="btn_deseos_prod" title="Lista de deseos"><img src="<?php echo site_url("/resources/icons/deseos.png") ?>" width=22 height=22></button>
           <?php echo form_close(); ?>
         </div>
