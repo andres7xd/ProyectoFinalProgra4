@@ -40,6 +40,7 @@ Class Auth extends CI_Controller {
 			if(isset($this->session->userdata['logged_in'])){
 				 //Función propia para cargar la vista indicada con datos precargados
 				$this->load_data_view('buyer/index');
+				$this->load_data_view('store/index');
 			}else{
 				$this->load->view('auth/login');
 			}
@@ -67,12 +68,20 @@ Class Auth extends CI_Controller {
 						'nombre_usuario' => $result[0]->nombre_usuario,
 						'nombre_real' => $result[0]->nombre_real,
 						'foto' => $result[0]->foto,
+						'tipo_usuario'  => $result[0]->tipo_usuario,
 					);
 
 					// Agregamos la infomación del usuario en forma de arreglo a la Variable de Sesion con nombre logged_in
 					$this->session->set_userdata('logged_in', $session_data);
 					//Función propia para cargar la vista indicada con datos precargados
-					redirect('buyer/index', 'refresh'); //redireccionamos a la URL raíz para evitar que nos quede auth/login/ en la URL
+					if($session_data['tipo_usuario']== 'Comprador'){
+						redirect('buyer/index', 'refresh'); //redireccionamos a la URL raíz para evitar que nos quede auth/login/ en la URL
+					}
+
+					else{
+						redirect('store/index', 'refresh');
+					}
+					
 					$this->load_data_view('buyer/index'); //luego cargamos la vista
 
 				}
