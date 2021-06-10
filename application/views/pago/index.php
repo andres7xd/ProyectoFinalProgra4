@@ -1,35 +1,54 @@
-<div class="card mt-50 mb-50">
-    <div class="card-title mx-auto"> Metodo de Pago </div>
-    <div class="nav">
-        <ul class="mx-auto">
-            <li><a href="#">Cuenta</a></li>
-            <li class="active"><a href="#">Pago</a></li>
-        </ul>
-    </div>
-    <form> <span id="card-header">Saved cards:</span>
-        <div class="row row-1">
-            <div class="col-2"><img class="img-fluid" src="https://img.icons8.com/color/48/000000/mastercard-logo.png" /></div>
-            <div class="col-7"> <input type="text" placeholder="**** **** **** 3193"> </div>
-            <div class="col-3 d-flex justify-content-center"> <a href="#">Remove card</a> </div>
-        </div>
-        <div class="row row-1">
-            <div class="col-2"><img class="img-fluid" src="https://img.icons8.com/color/48/000000/visa.png" /></div>
-            <div class="col-7"> <input type="text" placeholder="**** **** **** 4296"> </div>
-            <div class="col-3 d-flex justify-content-center"> <a href="#">Remove card</a> </div>
-        </div> <span id="card-header">Agregar nueva Tarjeta:</span>
-        <div class="row-1">
-            <div class="row row-2"> <span id="card-inner">Nombre en la Tarjeta</span> </div>
-            <div class="row row-2"> <input type="text" placeholder=""> </div>
-        </div>
-        <div class="row three">
-            <div class="col-7">
-                <div class="row-1">
-                    <div class="row row-2"> <span id="card-inner">Numero en la Tarjeta</span> </div>
-                    <div class="row row-2"> <input type="text" placeholder="####-####-#"> </div>
-                </div>
-            </div>
-            <div class="col-2"> <input type="text" placeholder="DD-MM-YY"> Fecha de Vencimiento </div>
-            <div class="col-2"> <input type="text" placeholder="CVV"> </div>
-        </div> <button class="btn d-flex mx-auto"><b>GUARDAR</b></button>
-    </form>
-</div>
+<?php if (!empty($this->session)) { 
+		if($this->session->flashdata('error')){ echo "<div class='msg_box_user error' >" .  $this->session->flashdata('error') . "</div>"; } 
+		if($this->session->flashdata('success')){ echo "<div class='msg_box_user success' >" .  $this->session->flashdata('success') . "</div>"; } 
+} ?>
+
+<?php if($this->session->userdata['logged_in']['usuario_id']==$user['usuario_id'] && $this->session->userdata['logged_in']['logged_in']==TRUE ){ ?>
+
+	<div id="panel_app">
+	    <div class="box-header">
+	      	<h2 class="box-title">Metodo de Pago</h2>
+	      	<?php echo form_open('pago/index');?>
+		    	<button type="submit" name="btn_return" id="btn_return" class="boton" title="Regresar">←</button>
+		    <?php echo form_close();?>
+	    </div>
+	    <?php echo form_open('pago/add/'.$user['usuario_id']); ?>
+	  	<div id="edit_panel">
+			<label for="txt_nombre" class="control-label"><span class="text-danger">*</span>Nombre en la tarjeta:</label>
+			<div class="form-group">
+				<input type="text" name="txt_nombre" value="<?php echo ($this->input->post('txt_nombre') ? $this->input->post('txt_nombre') : $user['nombre_tarjeta']); ?>" class="cajatexto" id="txt_nombre" />
+				<span class="text-danger"><?php echo form_error('txt_nombre');?></span>
+			</div>
+			<label for="txt_numero" class="control-label"><span class="text-danger" placeholder="####-####-#">* </span>Número de Tarjeta:</label>
+			<div class="form-group">
+				<input type="text" name="txt_numero"  class="cajatexto" id="txt_numero" />
+				<span class="text-danger"><?php echo form_error('txt_numero');?></span>
+			</div>
+			<label for="txt_vencimiento class="control-label"><span class="text-danger" placeholder="MM/AA">*</span>Fecha de Vencimiento</label>
+			<div class="form-group">
+				<input type="text" name="txt_vencimiento" value="<?php echo ($this->input->post('txt_vencimiento') ? $this->input->post('txt_vencimiento') : $user['fecha_vencimiento']); ?>" class="cajatexto" id="txt_vencimiento" />
+				<span class="text-danger"><?php echo form_error('txt_vencimiento');?></span>
+			</div>
+			<label for="txt_codigo" class="control-label"><span class="text-danger" placeholder="CVV">*</span>Código de Seguridad:</label>
+			<div class="form-group">
+				<input type="text" name="txt_codigo" value="<?php echo ($this->input->post('txt_codigo') ? $this->input->post('txt_codigo') : $user['codigo_tarjeta']); ?>" class="cajatexto" id="txt_codigo" />
+				<span class="text-danger"><?php echo form_error('txt_codigo');?></span>
+			</div>
+          	<br><br>
+		  	<div class="box-footer">
+		    	<button type="submit" class="boton">GUARDAR</button>
+		  	</div>
+	        <div id="actions">
+              <a href="<?php echo site_url('pago/delete/' . $user['usuario_id']); ?>" id="btn_eliminar" name="btn_eliminar" title="Eliminar" onclick="send()">🗙 Eliminar Tarjeta</a>
+          	</div>
+	    <?php echo form_close(); ?>	
+		</div>
+	</div>
+
+
+<?php 
+    }else {
+        header("location: " . base_url());
+    } 
+?>
+

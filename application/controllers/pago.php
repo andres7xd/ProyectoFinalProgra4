@@ -14,4 +14,25 @@ class Pago extends CI_Controller{
         $this->load->view('layouts/main',$data);
     }
     
+    function add()
+    {   
+     
+    }  
+
+
+          
+    function edit()
+    {   
+
+    } 
+
+
+    function delete()
+    {   
+    
+    }
+
+    function upload_photo()
+    {
+    }
 }
