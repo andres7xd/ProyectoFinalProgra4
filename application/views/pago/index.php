@@ -1,9 +1,6 @@
-<?php if (!empty($this->session)) { 
-		if($this->session->flashdata('error')){ echo "<div class='msg_box_user error' >" .  $this->session->flashdata('error') . "</div>"; } 
-		if($this->session->flashdata('success')){ echo "<div class='msg_box_user success' >" .  $this->session->flashdata('success') . "</div>"; } 
-} ?>
 
-<?php if($this->session->userdata['logged_in']['usuario_id']==$user['usuario_id'] && $this->session->userdata['logged_in']['logged_in']==TRUE ){ ?>
+
+
 
 	<div id="panel_app">
 	    <div class="box-header">
@@ -46,9 +43,5 @@
 	</div>
 
 
-<?php 
-    }else {
-        header("location: " . base_url());
-    } 
-?>
+
 
