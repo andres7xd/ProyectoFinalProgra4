@@ -92,7 +92,7 @@
     <br>
     <span class="info_compra3">Total: ₡<?php echo $total ?></span>
     <br>
-    <button type="submit" id="prod_comprar" name="prod_comprar" class="btn btn-primary">Continuar con la compra</button>
+    <button type="submit" id="prod_comprar_carrito" name="prod_comprar" class="btn btn-primary">Continuar con la compra</button>
   </div>
 
 </div>

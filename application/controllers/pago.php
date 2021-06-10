@@ -18,9 +18,7 @@ class Pago extends CI_Controller{
     {   
      
     }  
-
-
-          
+  
     function edit()
     {   
 
@@ -34,5 +32,6 @@ class Pago extends CI_Controller{
 
     function upload_photo()
     {
+
     }
 }

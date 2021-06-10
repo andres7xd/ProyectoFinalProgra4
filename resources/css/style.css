@@ -757,7 +757,7 @@ td{
 	border-style: dashed;
 }
 
-#prod_comprar{
+#prod_comprar_carrito{
 	position: relative;
 	left: 0%;
 }
@@ -783,6 +783,18 @@ td{
 	height: 100%;
 	overflow: auto;
 	padding: 20px;
+}
+
+#logout_tienda{
+
+}
+
+#btn_logout_tienda{
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	height: 30px;
+	width: 30px;
 }
 
 @keyframes fadeout {

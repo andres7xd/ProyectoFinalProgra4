@@ -11,7 +11,6 @@
 
     <img id="icono_marketplace" src="<?php echo site_url("/resources/icons/marketplace.png") ?>" width=170 height=170>
 
-
     <!-- 
   <?php echo form_open('auth/logout'); ?>
     <button type="submit" name="btn_logout" id="btn_registrarse" class="boton2" title="Auntenticarse"><img src="<?php echo site_url("/resources/icons/Loguear_icon.png") ?>"width=22 height=22>Autenticarse</button>
@@ -106,15 +105,14 @@
         <br>
 
         <div class="actions_products">
-          <?php echo form_open('product/index/' . $p['producto_id']); ?>
+
+          <?php echo form_open('edit_product/index/' . $p['producto_id']); ?>
           <input type="submit" class="btn_ver" title="Ver producto" value="✏️">
           <?php echo form_close(); ?>
 
-         
-
           <div class="actions_products">
-          <a href="<?php echo site_url('store/delete/' . $p['producto_id']); ?>" id="btn_eliminar_producto_carrito" class="actions_carrito" name="btn_eliminar_producto_carrito" title="Eliminar del carrito de compras">❌</a>
-        </div>
+            <a href="<?php echo site_url('store/delete/' . $p['producto_id']); ?>" id="btn_eliminar_producto_carrito" class="actions_carrito" name="btn_eliminar_producto_carrito" title="Eliminar del carrito de compras">❌</a>
+          </div>
 
         </div>
       </div>

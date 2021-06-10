@@ -3,19 +3,6 @@
 
 class Store extends CI_Controller
 {
-
-    // function load_data_view($view)
-    //     {
-    //     	//precarga todos los datos con los que la vista debe iniciar
-    //     	$this->load->model('Home_model');
-    //        	$data['nombre_usuario'] = $this->Home_model->get_usuario_tienda();
-    //         $data['_view'] = $view;
-    // 		$this->load->view('layouts/main',$data);
-    //     }
-
-
-
-
     function __construct()
     {
         parent::__construct();
@@ -26,7 +13,6 @@ class Store extends CI_Controller
 
     function index($productos_data = array())
     {
-    
         $data['usuarios'] = $this->Store_model->get_usuario_tienda();
         $data['fotos_producto'] = $this->Store_model->get_fotos_producto();
         if ($productos_data == null) {
@@ -40,8 +26,6 @@ class Store extends CI_Controller
 
     function process()
     {
-
-
         if ($this->input->post('btn_search')) {
             $this->buscar();
         }

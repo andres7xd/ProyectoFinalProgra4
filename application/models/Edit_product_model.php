@@ -1,8 +1,7 @@
 <?php
 
-class Product_model extends CI_Model
+class Edit_product_model extends CI_Model
 {
-
     function __construct()
     {
         parent::__construct();
@@ -25,7 +24,6 @@ class Product_model extends CI_Model
         join categorias
         on categorias.categoria_id = productos.categoria_id
         WHERE productos.producto_id = $id_producto")->result_array();
-
     }
 
     function get_fotos_producto($id_producto){// Obtiene la lista de fotos de los productos
@@ -45,5 +43,4 @@ class Product_model extends CI_Model
         $this->db->insert('deseos', $params);
         return $this->db->insert_id();
     }
-
 }
