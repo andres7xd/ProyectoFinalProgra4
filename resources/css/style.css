@@ -519,6 +519,14 @@ td{
 	border-radius: 20px;
 }
 
+#carousel_carrito{
+	width: 200px;
+	position: relative;
+	margin-top: 5px;
+	margin: 8px;
+	border-radius: 20px;
+}
+
 .actions_products{
 	position: relative;
 	left: 25%;
@@ -631,6 +639,110 @@ td{
 	font-size: 20px;
 }
 
+.actions_carrito{
+	position: relative;
+	margin: 3px;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+#btn_disminuir_producto_carrito{
+	margin: 5px;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+#btn_aumentar_producto_carrito{
+	margin: 5px;
+	text-decoration: none;
+	font-size: 20px;
+}
+
+.cantidad_productos{
+	margin: 5px;
+	font-family: Century Gothic;
+	font-weight: bold;
+    background-color: #45978c;
+	padding: 2px;
+	color: rgb(36, 33, 33);
+	font-size: 20px;	
+	border-color: #4f657a;
+	border-style: ridge;
+	border-radius: 20px;
+}
+
+.precio_2{
+	font-family: Century Gothic;
+	font-size: 25px;	
+	color: yellow;
+	padding: 3px;
+}
+
+#panel_app_carrito{
+	position: relative;
+	width: 100%;
+	border-radius: 5px;
+	margin: auto;
+	height: 49px;
+	background-color: #15202B;
+}
+
+#user_box_carrito{
+	position: relative;
+	width: 100%;
+	height: 65px;
+	margin: auto;
+	color: #AAA;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	background: #253341;
+}
+
+#user_box_carrito span{
+	float: left;
+	clear: both;
+	position: absolute;
+	top: 22px;
+	left: 75px;
+	color: #FFF;
+	text-shadow: 1px 1px 0px #666;
+}
+
+#panel_app_deseos{
+	position: relative;
+	width: 100%;
+	border-radius: 5px;
+	margin: auto;
+	height: 65px;
+	background-color: #15202B;
+}
+
+#user_box_deseos{
+	position: relative;
+	width: 100%;
+	height: 65px;
+	margin: auto;
+	color: #AAA;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	background: #253341;
+}
+
+#user_box_deseos span{
+	float: left;
+	clear: both;
+	position: absolute;
+	top: 22px;
+	left: 75px;
+	color: #FFF;
+	text-shadow: 1px 1px 0px #666;
+}
 
 @keyframes fadeout {
     from { opacity: 1; visibility: visible; }

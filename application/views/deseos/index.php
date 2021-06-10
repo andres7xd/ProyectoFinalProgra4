@@ -1,25 +1,17 @@
-<div id="panel_app">
+<div id="panel_app_deseos">
 
-    <div id="user_box">
+    <div id="user_box_deseos">
         <a href="<?php echo site_url('user/edit/' . $this->session->userdata['logged_in']['usuario_id']); ?>" title="Editar Perfil">
             <?php
             echo "<img src='" . site_url('/resources/photos/' . $this->session->userdata['logged_in']['foto'])
                 . "' alt='photo_profile' width=50 height=50 id='photo_profile' />" .
-                "<span>HOLA! " . $this->session->userdata['logged_in']['nombre_real'] . ". ✎</span>";
+                "<span>Lista de deseos de " . $this->session->userdata['logged_in']['nombre_real'] . ".</span>";
             ?>
         </a>
 
-        <img id="icono_marketplace" src="<?php echo site_url("/resources/icons/marketplace.png") ?>" width=170 height=170>
-
-
-        <!-- 
-  <?php echo form_open('auth/logout'); ?>
-    <button type="submit" name="btn_logout" id="btn_registrarse" class="boton2" title="Auntenticarse"><img src="<?php echo site_url("/resources/icons/Loguear_icon.png") ?>"width=22 height=22>Autenticarse</button>
-    <?php echo form_close(); ?> -->
-
         <div id="logout">
 
-            <?php echo form_open('home/index'); ?>
+            <?php echo form_open('buyer/index'); ?>
             <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">🗙</button>
             <?php echo form_close(); ?>
         </div>
@@ -33,7 +25,6 @@
         <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE DESEOS</h1>
         <?php foreach ($deseos as $d) { ?>
             <div class="div_productos">
-                <input id='id_h' name='id_h' type='hidden' value='<?php echo $p['producto_id']; ?>'>
                 <div id="carousel_buyer" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <?php $cont1 = 0 ?>
@@ -69,7 +60,6 @@
                 </div>
 
                 <br>
-
                 <span class="nombre_producto"><?php echo $d["nombre"] ?></span>
                 <br>
                 <span class="nombre_real">Tienda: <?php echo $d["nombre_real"] ?></span>
@@ -89,7 +79,6 @@
                     <?php echo form_close(); ?>
 
                     <a href="<?php echo site_url('deseos/delete/' . $d['deseo_id']); ?>" id="btn_eliminar_deseo" name="btn_eliminar_deseo" title="Eliminar de la lista de deseos">❌</a>
-
                 </div>
             </div>
 
