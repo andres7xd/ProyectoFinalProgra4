@@ -21,11 +21,12 @@
 </div>
 
 <div>
-
+<?php $suma_precios =0?>
+<?php $costo_envio =0?>
+<?php $descuento =0?>
   <div id="main_panel">
-    <div>
-      <button type="submit" style="position:relative; left:45%;" id="prod_comprar" name="prod_comprar" class="btn btn-primary">Comprar Productos</button>
-    </div>
+ 
+  
     <?php foreach ($productos as $p) { ?>
       <div class="div_productos">
         <div id="carousel_carrito" class="carousel slide" data-bs-ride="carousel">
@@ -78,7 +79,27 @@
           <a href="<?php echo site_url('carrito/eliminar_producto/' . $p['carrito_id']); ?>" id="btn_eliminar_producto_carrito" class="actions_carrito" name="btn_eliminar_producto_carrito" title="Eliminar del carrito de compras">❌</a>
         </div>
       </div>
-
+      <?php $suma_precios = ($p["precio"] * $p["cantidad_productos"]) + $suma_precios ?>
+      <?php $costo_envio = ($p["costo_envio"] * $p["cantidad_productos"]) + $costo_envio ?>
     <?php } ?>
+  </div>
+
+
+  <div id="compra">
+  <?php $total = ($suma_precios + $costo_envio)-$descuento?>
+
+  <span class="nombre_real">Subtotal: ₡<?php echo $suma_precios?></span>
+  <br>
+  <span class="nombre_real">Descuento: ₡<?php echo $descuento?></span>
+  <br>
+  <span class="nombre_real">Costo envío: ₡<?php echo $costo_envio?></span>
+  <br>
+  <span class="nombre_real">Total: ₡<?php echo $total?></span>
+
+  <div>
+      <button type="submit" style="position:relative; left:45%;" id="prod_comprar" name="prod_comprar" class="btn btn-primary">Comprar Productos</button>
+    </div>
+  
+  
   </div>
 </div>
