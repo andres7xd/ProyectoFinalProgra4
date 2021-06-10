@@ -23,17 +23,7 @@
       <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">🗙</button>
       <?php echo form_close(); ?>
 
-      <?php echo form_open('auth/logout'); ?>
-      <button type="submit" name="btn_notificaciones" id="btn_notificaciones" title="Notificaciones"><img src="<?php echo site_url("/resources/icons/notificacion.png") ?>" width=22 height=22></button>
-      <?php echo form_close(); ?>
-
-      <?php echo form_open('auth/logout'); ?>
-      <button type="submit" name="btn_carrito" id="btn_carrito" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width=22 height=22></button>
-      <?php echo form_close(); ?>
-
-      <?php echo form_open('auth/logout'); ?>
-      <button type="submit" name="btn_deseos" id="btn_deseos" title="Lista de deseos"><img src="<?php echo site_url("/resources/icons/deseos.png") ?>" width=22 height=22></button>
-      <?php echo form_close(); ?>
+      
 
     </div>
 
@@ -56,7 +46,7 @@
 <div>
 
   <div id="main_panel">
-    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE PRODUCTOS</h1>
+    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">CARRITO DE COMPRAS</h1>
     <?php foreach ($productos as $p) { ?>
       <div class="div_productos">
         <input id='id_h' name='id_h' type='hidden' value='<?php echo $p['producto_id']; ?>'>
@@ -100,7 +90,7 @@
         <br>
         <span class="nombre_real">Tienda: <?php echo $p["nombre_real"] ?></span>
         <br>
-        <span class="unidades_vendidas">Unidades disponibles: <?php echo $p["unidades"] ?></span>
+        <span class="unidades_vendidas">Cantidad Productos: <?php echo $p["cantidad_productos"] ?></span>
         <br>
         <span class="precio">₡<?php echo $p["precio"] ?></span>
         <br>
@@ -110,13 +100,13 @@
           <input type="submit" class="btn_ver" title="Ver producto" value="👁️">
           <?php echo form_close(); ?>
 
-          <?php echo form_open('carritos/index'); ?>
-          <button type="submit" name="btn_carrito" title="Añadir al carrito" class="btn_carrito_prod" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width=22 height=22></button>
-          <?php echo form_close(); ?>
+        
+          <a href="<?php echo site_url('carrito/aumentar_producto/' . $p['carrito_id'] . '/' . $p['cantidad_productos']. '/' . $p['unidades']); ?>" id="btn_aumentar_producto_carrito" name="btn_aumentar_producto_carrito" title="Aumentar la cantidad del producto">➕</a>
+          <a href="<?php echo site_url('carrito/disminuir_producto/' . $p['carrito_id'] . '/' . $p['cantidad_productos']); ?>" id="btn_disminuir_producto_carrito" name="btn_disminuir_producto_carrito" title="Disminuir la cantidad del producto">➖</a>
 
-          <?php echo form_open('deseos/index'); ?>
-          <button type="submit" name="btn_deseos" title="Añadir a la lista de deseos" class="btn_deseos_prod" title="Lista de deseos"><img src="<?php echo site_url("/resources/icons/deseos.png") ?>" width=22 height=22></button>
-          <?php echo form_close(); ?>
+          <a href="<?php echo site_url('carrito/eliminar_producto/' . $p['carrito_id']); ?>" id="btn_eliminar_producto_carrito" name="btn_eliminar_producto_carrito" title="Eliminar de la lista de carritos">❌</a>
+          
+                  
         </div>
       </div>
 
