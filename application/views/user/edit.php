@@ -37,7 +37,9 @@
               <a href="<?php echo site_url('user/delete/' . $user['usuario_id']); ?>" id="btn_eliminar" name="btn_eliminar" title="Eliminar" onclick="send()">🗙 Eliminar mi cuenta</a>
           	</div>
 	    <?php echo form_close(); ?>
-
+		<?php echo form_open('pago/index');?>
+		    	<button type="submit" name="btn_pago" id="btn_pago" class="boton" title="MetodoPago">Metodo Pago</button>
+		<?php echo form_close();?>
 		    <div class="box-body">
 		    	<div class="form-group-photo">
 				  	<?php echo "<img src='" . site_url('/resources/photos/' . $this->session->userdata['logged_in']['foto']) 
@@ -53,8 +55,10 @@
 		</div>
 	</div>
 
+
 <?php 
     }else {
         header("location: " . base_url());
     } 
 ?>
+
