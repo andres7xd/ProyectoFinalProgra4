@@ -110,11 +110,11 @@
           <input type="submit" class="btn_ver" title="Ver producto" value="👁️">
           <?php echo form_close(); ?>
 
-          <?php echo form_open('product/index'); ?>
+          <?php echo form_open('buyer/add_carrito/' . $p['producto_id']); ?>
           <button type="submit" name="btn_carrito" title="Añadir al carrito" class="btn_carrito_prod" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width=22 height=22></button>
           <?php echo form_close(); ?>
 
-          <?php echo form_open('product/index'); ?>
+          <?php echo form_open('buyer/add_deseo/' . $p['producto_id']) ?>
           <button type="submit" name="btn_deseos" title="Añadir a la lista de deseos" class="btn_deseos_prod" title="Lista de deseos"><img src="<?php echo site_url("/resources/icons/deseos.png") ?>" width=22 height=22></button>
           <?php echo form_close(); ?>
         </div>

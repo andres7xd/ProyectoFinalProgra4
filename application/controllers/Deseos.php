@@ -7,6 +7,7 @@ class Deseos extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Deseos_model');
+        $this->load->model('Product_model');
         $this->load->library('session');
     }
 
@@ -22,5 +23,21 @@ class Deseos extends CI_Controller
     {
         $this->Deseos_model->delete_deseo($id);
         $this->index();
+    }
+
+    function add_carrito($id){
+        $params = array(
+            'usuario_id' =>  $this->session->userdata['logged_in']['usuario_id'],
+            'producto_id' =>  $id,
+            'cantidad_productos' =>  1,
+        );
+
+     
+        $this->Product_model->add_carrito($params);
+        $params = array();
+        $this->index('');
+
+
+
     }
 }
