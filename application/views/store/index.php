@@ -11,27 +11,18 @@
 
     <img id="icono_marketplace" src="<?php echo site_url("/resources/icons/marketplace.png") ?>" width=170 height=170>
 
-    <!-- 
-  <?php echo form_open('auth/logout'); ?>
-    <button type="submit" name="btn_logout" id="btn_registrarse" class="boton2" title="Auntenticarse"><img src="<?php echo site_url("/resources/icons/Loguear_icon.png") ?>"width=22 height=22>Autenticarse</button>
-    <?php echo form_close(); ?> -->
-
     <div id="logout">
 
       <?php echo form_open('home/index'); ?>
       <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">🗙</button>
       <?php echo form_close(); ?>
 
-      <?php echo form_open('auth/logout'); ?>
-      <button type="submit" name="btn_notificaciones" id="btn_notificaciones" title="Notificaciones"><img src="<?php echo site_url("/resources/icons/notificacion.png") ?>" width=22 height=22></button>
-      <?php echo form_close(); ?>
-
       <?php echo form_open('suscripciones_tienda/index'); ?>
-      <button type="submit" name="btn_carrito" id="btn_carrito" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width=22 height=22></button>
+      <button type="submit" name="btn_carrito" id="btn_carrito_store" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width="26px" height="26px"></button>
       <?php echo form_close(); ?>
 
       <?php echo form_open('deseos_tienda/index'); ?>
-      <button type="submit" name="btn_deseos" id="btn_deseos" title="Lista de deseos"><img src="<?php echo site_url("/resources/icons/deseos.png") ?>" width=22 height=22></button>
+      <button type="submit" name="btn_deseos" id="btn_deseos_store" title="Lista de deseos"><img src="<?php echo site_url("/resources/icons/deseos.png") ?>" width="26px" height="26px"></button>
       <?php echo form_close(); ?>
 
     </div>
@@ -80,12 +71,12 @@
               <?php if ($f["producto_id"] == $p["producto_id"]) { ?>
                 <?php if ($cont == 0) { ?>
                   <div class="carousel-item active">
-                    <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="150px">
+                    <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="180px">
                   </div>
                   <?php $cont = 1 ?>
                 <?php } else { ?>
                   <div class="carousel-item">
-                    <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="150px">
+                    <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="180px">
                   </div>
                 <?php } ?>
               <?php } ?>
@@ -107,12 +98,10 @@
         <div class="actions_products">
 
           <?php echo form_open('edit_product/index/' . $p['producto_id']); ?>
-          <input type="submit" class="btn_ver" title="Ver producto" value="✏️">
+          <input type="submit" class="actions_store" title="Ver producto" value="✏️">
           <?php echo form_close(); ?>
 
-          <div class="actions_products">
-            <a href="<?php echo site_url('store/delete/' . $p['producto_id']); ?>" id="btn_eliminar_producto_carrito" class="actions_carrito" name="btn_eliminar_producto_carrito" title="Eliminar del carrito de compras">❌</a>
-          </div>
+          <a href="<?php echo site_url('store/delete/' . $p['producto_id']); ?>" id="btn_eliminar_producto_carrito" class="actions_store" name="btn_eliminar_producto_carrito" title="Eliminar del carrito de compras">❌</a>
 
         </div>
       </div>

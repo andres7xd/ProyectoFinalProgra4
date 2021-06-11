@@ -24,15 +24,15 @@
       <?php echo form_close(); ?>
 
       <?php echo form_open('auth/logout'); ?>
-      <button type="submit" name="btn_notificaciones" id="btn_notificaciones" title="Notificaciones"><img src="<?php echo site_url("/resources/icons/notificacion.png") ?>" width=22 height=22></button>
+      <button type="submit" name="btn_notificaciones" id="btn_notificaciones" title="Notificaciones"><img src="<?php echo site_url("/resources/icons/notificacion.png") ?>" width="26" height="26"></button>
       <?php echo form_close(); ?>
 
       <?php echo form_open('carrito/index'); ?>
-      <button type="submit" name="btn_carrito" id="btn_carrito" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width=22 height=22></button>
+      <button type="submit" name="btn_carrito" id="btn_carrito" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width="26" height="26"></button>
       <?php echo form_close(); ?>
 
       <?php echo form_open('deseos/index'); ?>
-      <button type="submit" name="btn_deseos" id="btn_deseos" title="Lista de deseos"><img src="<?php echo site_url("/resources/icons/deseos.png") ?>" width=22 height=22></button>
+      <button type="submit" name="btn_deseos" id="btn_deseos" title="Lista de deseos"><img src="<?php echo site_url("/resources/icons/deseos.png") ?>" width="26" height="26"></button>
       <?php echo form_close(); ?>
 
     </div>
@@ -81,12 +81,12 @@
               <?php if ($f["producto_id"] == $p["producto_id"]) { ?>
                 <?php if ($cont == 0) { ?>
                   <div class="carousel-item active">
-                    <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="150px">
+                    <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="180px">
                   </div>
                   <?php $cont = 1 ?>
                 <?php } else { ?>
                   <div class="carousel-item">
-                    <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="150px">
+                    <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="180px">
                   </div>
                 <?php } ?>
               <?php } ?>

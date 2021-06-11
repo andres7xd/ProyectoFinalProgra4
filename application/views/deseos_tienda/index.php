@@ -1,17 +1,18 @@
 <div id="panel_app_deseos">
 
-    <div id="user_box_deseos">
-        <a href="<?php echo site_url('user/edit/' . $this->session->userdata['logged_in']['usuario_id']); ?>" title="Editar Perfil">
+    <div id="user_box_deseos_tienda">
+
+        <span>
             <?php
             echo "<img src='" . site_url('/resources/photos/' . $this->session->userdata['logged_in']['foto'])
-                . "' alt='photo_profile' width=50 height=50 id='photo_profile' />" .
-                "<span>Lista de deseos de " . $this->session->userdata['logged_in']['nombre_real'] . ".</span>";
+                . "' alt='photo_profile' width=50 height=50 id='photo_profile_deseos_tienda' />" .
+                "Productos de " . $this->session->userdata['logged_in']['nombre_real'] . " en listas de deseos";
             ?>
-        </a>
+        </span>
 
         <div id="logout">
 
-            <?php echo form_open('buyer/index'); ?>
+            <?php echo form_open('store/index'); ?>
             <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">🗙</button>
             <?php echo form_close(); ?>
         </div>
@@ -21,11 +22,10 @@
 
 <div>
 
-    <div id="main_panel">
-        <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE DESEOS</h1>
+    <div id="main_panel_deseos_carrito">
         <?php foreach ($deseos as $d) { ?>
             <div class="div_productos">
-                <div id="carousel_buyer" class="carousel slide" data-bs-ride="carousel">
+                <div id="carousel_buyer_deseos_tienda" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
                         <?php $cont1 = 0 ?>
                         <?php foreach ($fotos_producto as $f) { ?>
@@ -46,12 +46,12 @@
                             <?php if ($f["producto_id"] == $d["producto_id"]) { ?>
                                 <?php if ($cont == 0) { ?>
                                     <div class="carousel-item active">
-                                        <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="180px">
+                                        <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="170px">
                                     </div>
                                     <?php $cont = 1 ?>
                                 <?php } else { ?>
                                     <div class="carousel-item">
-                                        <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="180px">
+                                        <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="170px">
                                     </div>
                                 <?php } ?>
                             <?php } ?>
@@ -62,24 +62,7 @@
                 <br>
                 <span class="nombre_producto"><?php echo $d["nombre"] ?></span>
                 <br>
-                <span class="nombre_real">Tienda: <?php echo $d["nombre_real"] ?></span>
-                <br>
-                <span class="unidades_vendidas">Unidades disponibles: <?php echo $d["unidades"] ?></span>
-                <br>
-                <span class="precio">₡<?php echo $d["precio"] ?></span>
-                <br>
-
-                <div class="actions_products">
-                    <?php echo form_open('product/index/' . $d['producto_id']); ?>
-                    <input type="submit" class="btn_ver" title="Ver producto" value="👁️">
-                    <?php echo form_close(); ?>
-
-                    <?php echo form_open('carritos/index'); ?>
-                    <button type="submit" name="btn_carrito" title="Añadir al carrito" class="btn_carrito_prod" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width=22 height=22></button>
-                    <?php echo form_close(); ?>
-
-                    <a href="<?php echo site_url('deseos/delete/' . $d['deseo_id']); ?>" id="btn_eliminar_deseo" name="btn_eliminar_deseo" title="Eliminar de la lista de deseos">❌</a>
-                </div>
+                <span class="cant_per_prod">Cantidad Personas: <?php echo $d["COUNT(productos.nombre)"] ?></span>
             </div>
 
         <?php } ?>

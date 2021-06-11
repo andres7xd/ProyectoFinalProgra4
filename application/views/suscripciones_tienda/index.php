@@ -1,17 +1,18 @@
 <div id="panel_app_deseos">
 
-    <div id="user_box_deseos">
-        <a href="<?php echo site_url('user/edit/' . $this->session->userdata['logged_in']['usuario_id']); ?>" title="Editar Perfil">
+    <div id="user_box_deseos_tienda">
+
+        <span>
             <?php
             echo "<img src='" . site_url('/resources/photos/' . $this->session->userdata['logged_in']['foto'])
-                . "' alt='photo_profile' width=50 height=50 id='photo_profile' />" .
-                "<span>Lista de deseos de " . $this->session->userdata['logged_in']['nombre_real'] . ".</span>";
+                . "' alt='photo_profile' width=50 height=50 id='photo_profile_deseos_tienda' />" .
+                "Compradores suscritos a " . $this->session->userdata['logged_in']['nombre_real'] . ".";
             ?>
-        </a>
+        </span>
 
         <div id="logout">
 
-            <?php echo form_open('buyer/index'); ?>
+            <?php echo form_open('store/index'); ?>
             <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">🗙</button>
             <?php echo form_close(); ?>
         </div>
@@ -19,7 +20,7 @@
     <br>
 </div>
 
-<div id="main_panel">
+<div id="main_panel_deseos_carrito">
     <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE COMPRADORES SUSCRITOS</h1>
     <?php foreach ($suscripciones as $u) { ?>
 
