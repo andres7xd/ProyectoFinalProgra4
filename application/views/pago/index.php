@@ -38,6 +38,35 @@
 			<button type="submit" class="boton">GUARDAR</button>
 		</div>
 	<?php echo form_close(); ?>	
+	<?php echo form_open('pago/get/'. $this->session->userdata['logged_in']['usuario_id']);?>
+	<h3>Mis Tarjetas</h3>
+	<table>
+    <thead>
+        <tr>
+            <th>Numero de Tarjeta</th>
+            <th>Fecha Vencimiento</th>
+			<th>Saldo</th>
+			<th>Delete</th>
+			
+       </tr>
+    </thead>
+    <tbody>
+       <?php 	  
+		if(!empty($data)) {
+				foreach( $data as $C )
+						{
+							
+							echo "<tr><td>".$C['numero_tarjeta']."</td>
+									<td>".$C['fecha_vencimiento']."</td>
+									<td>".$C['saldo']."</td> 
+									<td>".$C['saldo']."</td>
+								</tr>";
+				}
+		}
+       ?>
+    </tbody>        
+		</table>
+	<?php echo form_close(); ?>		
 	</div>
 </div>
 
