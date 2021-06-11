@@ -23,7 +23,6 @@ class Edit_product extends CI_Controller
         $config['upload_path']          = './resources/img_productos/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['max_size']             = 2000; //2MB
-        //$config['file_name']           = $producto_id;
         $config['overwrite']            = true;
 
         $this->load->library('upload', $config);
@@ -46,7 +45,6 @@ class Edit_product extends CI_Controller
 
     function edit_producto($id_producto)
     {
-        //$nombre_categoria = $this->Edit_product_model->get_categoria_edit($this->input->post('select_categoria'));
         $params = array(
             'nombre' => $this->input->post('txt_prod_nombre'),
             'unidades' =>  $this->input->post('txt_prod_unidades'),
