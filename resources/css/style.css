@@ -484,8 +484,15 @@ td{
 	border-radius: 15px;
 }
 
-#txt_prod{
-	width: 50%;
+#txt_prod_descripcion{
+	width: 450px;
+	background: transparent;
+	border: transparent;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	padding: 5px;
+	color: #1c7dcc;
+	font-size: 15px;
+    text-decoration: underline;
 }
 
 .unidades_vendidas{
@@ -834,7 +841,7 @@ td{
 }
 
 .txt_prod{
-	width: 150px;
+	width: 135px;
 	background: transparent;
 	border: transparent;
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -868,6 +875,16 @@ td{
 	top: 30px;
 }
 
+#prod_edit_1{
+	position: relative;
+	text-align: center;
+	width: 638px;
+	left: -3%;
+	margin: 3px;
+	top: 20px;
+	border-radius: 10px;
+}
+
 #photo_prod{
 	position: relative;
 	margin: 16px;
@@ -895,7 +912,7 @@ td{
 }
 
 #select_categoria{
-	width: 130px;
+	width: 135px;
 	font-size: 13px;
 }
 
@@ -947,6 +964,31 @@ td{
 	overflow: auto;
 	padding: 20px;
 }
+
+#btn_create_producto, #btn_create_categoria{
+    margin: 5px;
+	float: right;
+}
+
+#icono_marketplace_create_product{
+	position: relative;
+	left: 15%;
+	top: 70px;
+	border-radius: 100px;
+}
+
+#span_icon{
+	position: relative;
+	top: 210px;
+	color: #1e9aa3;
+	left: -3%;
+	font-size: 30px;
+	font-weight: bold;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-style: italic;
+	text-decoration: blink;
+}
+
 
 @keyframes fadeout {
     from { opacity: 1; visibility: visible; }

@@ -70,7 +70,7 @@
                         </div>
 
                         <div class="div_info">
-                            <span class="pre_prod_2">Unidades Disponibles:</span> <input type=text class="txt_prod" id="txt_prod_unidades" name="txt_prod_unidades" value="<?php echo ($this->input->post('txt_disponibles') ? $this->input->post('txt_disponibles') : $p['unidades']); ?>">
+                            <span class="pre_prod_2">Unidades Disponibles:</span> <input type=number class="txt_prod" id="txt_prod_unidades" name="txt_prod_unidades" value="<?php echo ($this->input->post('txt_disponibles') ? $this->input->post('txt_disponibles') : $p['unidades']); ?>">
                         </div>
 
                         <div class="div_info">
@@ -82,15 +82,19 @@
                         </div>
 
                         <div class="div_info">
-                            <span class="pre_prod_2">Precio: </span> <input type=text class="txt_prod" id="txt_prod_precio" name="txt_prod_precio" value="<?php echo ($this->input->post('txt_precio') ? $this->input->post('txt_precio') : $p['precio']); ?>">
+                            <span class="pre_prod_2">Precio (₡): </span> <input type=number class="txt_prod" id="txt_prod_precio" name="txt_prod_precio" value="<?php echo ($this->input->post('txt_precio') ? $this->input->post('txt_precio') : $p['precio']); ?>">
                         </div>
 
                         <div class="div_info">
-                            <span class="pre_prod_2">Tiempo Envío: </span> <input type=text class="txt_prod" id="txt_prod_tenvio" name="txt_prod_tenvio" value="<?php echo ($this->input->post('txt_t_envio') ? $this->input->post('txt_t_envio') : $p['tiempo_envio']); ?>">
+                            <span class="pre_prod_2">Tiempo Envío (Días): </span> <input type=number class="txt_prod" id="txt_prod_tenvio" name="txt_prod_tenvio" value="<?php echo ($this->input->post('txt_t_envio') ? $this->input->post('txt_t_envio') : $p['tiempo_envio']); ?>">
                         </div>
 
                         <div class="div_info">
-                            <span class="pre_prod_2">Costo Envío: </span> <input type=text class="txt_prod" id="txt_prod_cenvio" name="txt_prod_cenvio" value="<?php echo ($this->input->post('txt_c_envio') ? $this->input->post('txt_c_envio') : $p['costo_envio']); ?>">
+                            <span class="pre_prod_2">Costo Envío (₡): </span> <input type=number class="txt_prod" id="txt_prod_cenvio" name="txt_prod_cenvio" value="<?php echo ($this->input->post('txt_c_envio') ? $this->input->post('txt_c_envio') : $p['costo_envio']); ?>">
+                        </div>
+
+                        <div class="div_info">
+                            <span class="pre_prod_2">Descripción: </span> <input type=text id="txt_prod_descripcion" name="txt_prod_descripcion" value="<?php echo $p["descripcion"] ?>">
                         </div>
 
                         <div class="div_info">
@@ -106,7 +110,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" id="prod_edit" name="prod_edit" class="btn btn-primary">Editar</button>
+                    <button type="submit" id="prod_edit_1" name="prod_edit" class="btn btn-primary">Editar</button>
                     <?php echo form_close(); ?>
                 </div>
         </div>

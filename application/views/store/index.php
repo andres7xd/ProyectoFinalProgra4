@@ -46,7 +46,21 @@
 <div>
 
   <div id="main_panel">
-    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE PRODUCTOS</h1>
+
+    <div id="actions_creates_store">
+
+      <?php echo form_open('create_product/index'); ?>
+      <input type="submit" class="btn btn-primary" id="btn_create_categoria" title="Ver producto" value="Crear categoría">
+      <?php echo form_close(); ?>
+
+      <?php echo form_open('create_product/index'); ?>
+      <input type="submit" class="btn btn-primary" id="btn_create_producto" title="Ver producto" value="Crear producto">
+      <?php echo form_close(); ?>
+
+    </div>
+    <br><br><br><br>
+    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE MIS PRODUCTOS</h1>
+
     <?php foreach ($productos as $p) { ?>
       <div class="div_productos">
         <input id='id_h' name='id_h' type='hidden' value='<?php echo $p['producto_id']; ?>'>

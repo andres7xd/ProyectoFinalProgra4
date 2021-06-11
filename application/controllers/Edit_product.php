@@ -47,6 +47,7 @@ class Edit_product extends CI_Controller
     {
         $params = array(
             'nombre' => $this->input->post('txt_prod_nombre'),
+            'descripcion' =>  $this->input->post('txt_prod_descripcion'),
             'unidades' =>  $this->input->post('txt_prod_unidades'),
             'ubicacion_actual' =>  $this->input->post('txt_prod_ubicacion'),
             'precio' =>  $this->input->post('txt_prod_precio'),
