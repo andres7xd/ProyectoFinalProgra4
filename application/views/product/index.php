@@ -59,7 +59,7 @@
       <?php foreach ($producto as $p) { ?>
 
         <div id="div_suscribirse">
-        <?php echo form_open('product/index/' . $p['producto_id']) ?>
+        <?php echo form_open('product/add_suscripciones/' . $p['usuario_id'] . '/' . $p['producto_id']) ?>
           <button type="submit" id="suscribirse" name="suscribirse" class="btn btn-info">Suscribirse a la tienda</button>
           <?php echo form_close(); ?>
           </div>

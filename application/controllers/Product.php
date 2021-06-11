@@ -33,6 +33,8 @@ Class Product extends CI_Controller {
         if( isset($_POST['prod_deseos']) == true){
             $this->add_deseo($id);
         }
+
+        
       
     }
 
@@ -64,6 +66,17 @@ Class Product extends CI_Controller {
         $this->Product_model->add_deseo($params_deseos);
         $params_deseos = array();
 
+    }
+
+    function add_suscripciones($id,$id_producto){
+        $params_suscripciones = array(
+            'comprador_id' => $this->session->userdata['logged_in']['usuario_id'],
+            'tienda_id' =>  $id,
+        );
+
+        $this->Product_model->add_suscripcion($params_suscripciones);
+        $params_suscripciones = array();
+        $this->index($id_producto);
     }
 
 }
