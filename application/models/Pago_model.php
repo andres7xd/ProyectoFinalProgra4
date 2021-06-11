@@ -6,22 +6,24 @@ class Pago_model extends CI_Model
         parent::__construct();
     }
 
-    function get_pay()
+    function get_card()
     {
        
     }
 
-    function add_pay()
+    function add_card($params)
+    {
+        $this->db->insert('tarjetas', $params);
+        return $this->db->insert_id();
+
+    }
+
+    function update_card()
     {
 
     }
 
-    function update_pay()
-    {
-
-    }
-
-    function delete_pay()
+    function delete_card()
     {
       
     }

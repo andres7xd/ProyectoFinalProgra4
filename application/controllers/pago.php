@@ -19,9 +19,10 @@ class Pago extends CI_Controller{
         $this->load->library('form_validation');
 
 		$this->form_validation->set_rules('txt_nombre','Nombre_Tarjeta','required|max_length[50]');
-        $this->form_validation->set_rules('txt_numero','Numero_Tarjeta','required|max_length[19]');
+        $this->form_validation->set_rules('txt_numero','Numero_Tarjeta','required|max_length[19]', 'required|min_length[16]');
 		$this->form_validation->set_rules('txt_vencimiento','Fecha_Vencimiento','required|max_length[5]');
         $this->form_validation->set_rules('txt_codigo','CVV','required|max_length[4]');
+        $this->form_validation->set_rules('txt_saldo','Saldo','required|max_length[7]');
 		
 		if($this->form_validation->run())     
         {   
@@ -33,14 +34,14 @@ class Pago extends CI_Controller{
                 'saldo' => $this->input->post('txt_saldo'),
             );
             
-            $usuario_id = $this->User_model->add_user($params);
+            $usuario_id = $this->Pago_model->add_card($params);
             
-            $data['message_display'] = 'Se ha registrado la Tarjeta Exitosamente.';
-            $this->load->view('pago/edit', $data);
+            $data['message_display'] = 'Tarjeta Registrada Exitosamente.';
+            redirect('user/edit/' . $this->session->userdata['logged_in']['usuario_id']);
         }
         else
         {
-            $data['_view'] = 'pago/add';
+            $data['_view'] = 'pago/index';
             $this->load->view('layouts/main',$data);
         }
     }  
