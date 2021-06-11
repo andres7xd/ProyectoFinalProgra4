@@ -6,7 +6,7 @@
 			<button type="submit" name="btn_return" id="btn_return" class="boton" title="Regresar">←</button>
 		<?php echo form_close();?>
 	</div>
-	<?php echo form_open('pago/index');?>
+	<?php echo form_open('pago/add'); ?>
 	<div id="edit_panel">
 		<label for="txt_nombre" class="control-label"><span class="text-danger">*</span>Nombre en la tarjeta:</label>
 		<div class="form-group">
@@ -27,6 +27,10 @@
 		<div class="form-group">
 			<input type="text" name="txt_codigo" value="" class="cajatexto" id="txt_codigo" />
 			<span class="text-danger"><?php echo form_error('txt_codigo');?></span>
+		</div>
+		<div class="form-group">
+			<input type="text" name="txt_saldo" value="" class="cajatexto" id="txt_saldo" />
+			<span class="text-danger"><?php echo form_error('txt_saldo');?></span>
 		</div>
 		<br><br>
 		<div class="box-footer">
