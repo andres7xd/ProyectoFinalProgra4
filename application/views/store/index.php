@@ -26,11 +26,11 @@
       <button type="submit" name="btn_notificaciones" id="btn_notificaciones" title="Notificaciones"><img src="<?php echo site_url("/resources/icons/notificacion.png") ?>" width=22 height=22></button>
       <?php echo form_close(); ?>
 
-      <?php echo form_open('carrito/index'); ?>
+      <?php echo form_open('suscripciones_tienda/index'); ?>
       <button type="submit" name="btn_carrito" id="btn_carrito" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width=22 height=22></button>
       <?php echo form_close(); ?>
 
-      <?php echo form_open('deseos/index'); ?>
+      <?php echo form_open('deseos_tienda/index'); ?>
       <button type="submit" name="btn_deseos" id="btn_deseos" title="Lista de deseos"><img src="<?php echo site_url("/resources/icons/deseos.png") ?>" width=22 height=22></button>
       <?php echo form_close(); ?>
 
