@@ -53,7 +53,6 @@ class User extends CI_Controller{
 
     function edit($users_id)
     {   
-
         $data['user'] = $this->User_model->get_user($users_id);
         
         if(isset($data['user']['usuario_id']) && $this->session->userdata['logged_in']['usuario_id'] == $data['user']['usuario_id'])

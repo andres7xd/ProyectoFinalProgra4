@@ -17,7 +17,7 @@ class Edit_product_model extends CI_Model
 
     function get_producto($id_producto){// Obtiene la informacion de los productos mas vendidos
 
-        return $this->db->query("SELECT productos.producto_id, productos.nombre, productos.descripcion, productos.fecha_publicacion, productos.unidades, productos.ubicacion_actual, productos.precio, productos.tiempo_envio, productos.costo_envio, categorias.categoria, productos.unidades_vendidas, usuarios.nombre_real
+        return $this->db->query("SELECT productos.producto_id, productos.nombre, productos.descripcion, productos.fecha_publicacion, productos.unidades, productos.ubicacion_actual, productos.precio, productos.tiempo_envio, productos.costo_envio, productos.categoria_id, categorias.categoria, productos.unidades_vendidas, usuarios.nombre_real
         FROM productos
         join usuarios
         on productos.usuario_id = usuarios.usuario_id
@@ -33,14 +33,28 @@ class Edit_product_model extends CI_Model
 
     }
 
-    function add_carrito($params)
+    function add_photo($params)
     {
-        $this->db->insert('carritos', $params);
+        $this->db->insert('fotos', $params);
         return $this->db->insert_id();
     }
 
-    function add_deseo($params){
-        $this->db->insert('deseos', $params);
-        return $this->db->insert_id();
+    function get_categorias()
+    {
+        return $this->db->query("SELECT categorias.categoria_id, categorias.categoria
+        FROM categorias")->result_array();
+    }
+
+    function update_producto($id_producto, $params){
+        $this->db->where('producto_id', $id_producto);
+        $this->db->update('productos', $params);
+    }
+
+    function get_categoria_edit($nombre)
+    {
+        $nomb = $this->db->query("SELECT categorias.categoria_id, categorias.categoria
+        FROM categorias
+        WHERE categorias.categoria = $nombre");
+        return $nomb;
     }
 }

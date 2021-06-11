@@ -785,16 +785,78 @@ td{
 	padding: 20px;
 }
 
-#logout_tienda{
-
-}
-
 #btn_logout_tienda{
 	position: absolute;
 	right: 0px;
 	top: 0px;
 	height: 30px;
 	width: 30px;
+}
+
+.txt_prod{
+	width: 150px;
+	background: transparent;
+	border: transparent;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	padding: 5px;
+	color: #1c7dcc;
+	font-size: 15px;
+    text-decoration: underline;
+}
+
+#action_editar_prod{
+	position: relative;
+	top: 40px;
+	height: 50px;
+}
+
+#div_info_edit_prod{
+	height: 90%;
+}
+
+.pre_prod_2{
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 15px;
+}
+
+#prod_edit{
+	position: relative;
+	text-align: center;
+	width: 95%;
+	left: 1.5%;
+	margin: 3px;
+	top: 30px;
+}
+
+#photo_prod{
+	position: relative;
+	margin: 16px;
+	float: left;
+	cursor: pointer;
+	background-position: top center;
+	background-color: #3f4a55;
+	padding: 1%;
+	height: 450px;
+	width: 640px;
+	border-color: #4f657a;
+	border-style: ridge;
+	border-radius: 20px;
+}
+
+#photo_product{
+	float: left;
+	clear: both;
+	position: relative;
+	top: 10px;
+	left: 10px;
+	margin-right: 15px;
+	border-radius: 5px;
+	border: 3px solid #FFF;
+}
+
+#select_categoria{
+	width: 130px;
+	font-size: 13px;
 }
 
 @keyframes fadeout {
@@ -806,4 +868,5 @@ td{
     from { opacity: 0; visibility: hidden; }
     to   { opacity: 1; visibility: visible; }
 }
+
 

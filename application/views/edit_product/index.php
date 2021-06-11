@@ -57,68 +57,68 @@
         <div id="info_productos">
             <?php foreach ($producto as $p) { ?>
 
-                <div id="div_suscribirse">
-                    <?php echo form_open('product/index/' . $p['producto_id']) ?>
-                    <button type="submit" id="suscribirse" name="suscribirse" class="btn btn-info">Suscribirse a la tienda</button>
+                <div>
+                    <div id="div_info_edit_prod">
+
+                        <?php echo form_open('edit_product/edit_producto/' . $p["producto_id"]); ?>
+                        <div class="div_info">
+                            <span class="pre_prod_2">Nombre Producto: </span> <input type=text class="txt_prod" id="txt_prod_nombre" name="txt_prod_nombre" value="<?php echo ($this->input->post('txt_nombre') ? $this->input->post('txt_nombre') : $p['nombre']); ?>">
+                        </div>
+
+                        <div class="div_info">
+                            <span class="pre_prod_2">Nombre Empresa: </span> <span class="resp_prod"><?php echo ($this->input->post('txt_empresa') ? $this->input->post('txt_empresa') : $p['nombre_real']); ?></span>
+                        </div>
+
+                        <div class="div_info">
+                            <span class="pre_prod_2">Unidades Disponibles:</span> <input type=text class="txt_prod" id="txt_prod_unidades" name="txt_prod_unidades" value="<?php echo ($this->input->post('txt_disponibles') ? $this->input->post('txt_disponibles') : $p['unidades']); ?>">
+                        </div>
+
+                        <div class="div_info">
+                            <span class="pre_prod_2">Fecha Publicacion:</< /span> <span class="resp_prod"><?php echo ($this->input->post('txt_fecha') ? $this->input->post('txt_fecha') : $p['fecha_publicacion']); ?></span>
+                        </div>
+
+                        <div class="div_info">
+                            <span class="pre_prod_2">Ubicacion Actual: </span> <input type=text class="txt_prod" id="txt_prod_ubicacion" name="txt_prod_ubicacion" value="<?php echo ($this->input->post('txt_ubicacion') ? $this->input->post('txt_ubicacion') : $p['ubicacion_actual']); ?>">
+                        </div>
+
+                        <div class="div_info">
+                            <span class="pre_prod_2">Precio: </span> <input type=text class="txt_prod" id="txt_prod_precio" name="txt_prod_precio" value="<?php echo ($this->input->post('txt_precio') ? $this->input->post('txt_precio') : $p['precio']); ?>">
+                        </div>
+
+                        <div class="div_info">
+                            <span class="pre_prod_2">Tiempo Envío: </span> <input type=text class="txt_prod" id="txt_prod_tenvio" name="txt_prod_tenvio" value="<?php echo ($this->input->post('txt_t_envio') ? $this->input->post('txt_t_envio') : $p['tiempo_envio']); ?>">
+                        </div>
+
+                        <div class="div_info">
+                            <span class="pre_prod_2">Costo Envío: </span> <input type=text class="txt_prod" id="txt_prod_cenvio" name="txt_prod_cenvio" value="<?php echo ($this->input->post('txt_c_envio') ? $this->input->post('txt_c_envio') : $p['costo_envio']); ?>">
+                        </div>
+
+                        <div class="div_info">
+                            <span class="pre_prod_2">Categoria: </span>
+                            <select id="select_categoria" name="select_categoria" value="" class="cajatexto">
+                                <option value="<?php echo $p["categoria_id"]; ?>" selected><?php echo $p["categoria"]; ?></option>
+                                <?php foreach ($categorias as $c) { ?>
+                                    <?php if ($p["categoria"] != $c["categoria"]) { ?>
+                                        <option value="<?php echo $c["categoria_id"]; ?>"><?php echo $c["categoria"]; ?></option>
+                                    <?php } ?>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="prod_edit" name="prod_edit" class="btn btn-primary">Editar</button>
                     <?php echo form_close(); ?>
                 </div>
-
-                <div id="div_info1">
-                    <div class="div_info">
-                        <span class="pre_prod">Nombre Producto: </span> <span class="resp_prod"><?php echo ($this->input->post('txt_nombre') ? $this->input->post('txt_nombre') : $p['nombre']); ?></span>
-                    </div>
-
-                    <div class="div_info">
-                        <span class="pre_prod">Nombre Empresa: </span> <span class="resp_prod"><?php echo ($this->input->post('txt_empresa') ? $this->input->post('txt_empresa') : $p['nombre_real']); ?></span>
-                    </div>
-
-                    <div class="div_info">
-                        <span class="pre_prod">Unidades Disponibles:</span> <span class="resp_prod"><?php echo ($this->input->post('txt_disponibles') ? $this->input->post('txt_disponibles') : $p['unidades']); ?></span>
-                    </div>
-
-                    <div class="div_info">
-                        <span class="pre_prod">Fecha Publicacion:</< /span> <span class="resp_prod"><?php echo ($this->input->post('txt_fecha') ? $this->input->post('txt_fecha') : $p['fecha_publicacion']); ?></span>
-                    </div>
-
-                    <div class="div_info">
-                        <span class="pre_prod">Ubicacion Actual:</< /span> <span class="resp_prod"><?php echo ($this->input->post('txt_ubicacion') ? $this->input->post('txt_ubicacion') : $p['ubicacion_actual']); ?></span>
-                    </div>
-
-                    <div class="div_info">
-                        <span class="pre_prod">Precio:</< /span> <span class="resp_prod">₡<?php echo ($this->input->post('txt_precio') ? $this->input->post('txt_precio') : $p['precio']); ?></span>
-                    </div>
-
-                    <div class="div_info">
-                        <span class="pre_prod">Tiempo Envío:</< /span> <span class="resp_prod"><?php echo ($this->input->post('txt_t_envio') ? $this->input->post('txt_t_envio') : $p['tiempo_envio']); ?> días</span>
-                    </div>
-
-                    <div class="div_info">
-                        <span class="pre_prod">Costo Envío:</< /span> <span class="resp_prod">₡<?php echo ($this->input->post('txt_c_envio') ? $this->input->post('txt_c_envio') : $p['costo_envio']); ?></span>
-                    </div>
-
-                    <div class="div_info">
-                        <span class="pre_prod">Categoria:</< /span> <span class="resp_prod"><?php echo ($this->input->post('txt_categoria') ? $this->input->post('txt_categoria') : $p['categoria']); ?></span>
-                    </div>
-                </div>
-                <?php echo form_open('product/index/' . $p['producto_id']) ?>
-                <input type="number" name="txt_cantidad_prod" id="txt_cantidad_prod" value="<?php echo $this->input->post('txt_cantidad_prod'); ?>" placeholder="Cantidad" title="Cantidad a comprar o añadir al carrito">
-
-                <div id="actions_productos">
-
-
-                    <button type="submit" id="prod_comprar" name="prod_comprar" class="btn btn-primary">Comprar</button>
-
-
-
-                    <button type="submit" id="prod_carrito" name="prod_carrito" class="btn btn-success">Añadir al carrito</button>
-
-
-
-                    <button type="submit" id="prod_deseos" name="prod_deseos" class="btn btn-warning">Añadir a la lista de deseos</button>
-
-                </div>
-                <?php echo form_close(); ?>
-            <?php } ?>
         </div>
+
+        <div class="photo_prod">
+            <?php echo form_open_multipart('edit_product/upload_photo/' . $p['producto_id']); ?>
+            <input type="file" name="txt_file" size="20" class="btn btn-primary" accept="image/jpeg,image/gif,image/png" />
+            <br><br>
+            <button type="submit" class="btn btn-primary">Cargar Foto</button>
+            <?php echo form_close(); ?>
+        </div>
+
+    <?php } ?>
     </div>
 </div>
