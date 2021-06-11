@@ -73,7 +73,7 @@ Class Product extends CI_Controller {
             'comprador_id' => $this->session->userdata['logged_in']['usuario_id'],
             'tienda_id' =>  $id,
         );
-
+        
         $this->Product_model->add_suscripcion($params_suscripciones);
         $params_suscripciones = array();
         $this->index($id_producto);
