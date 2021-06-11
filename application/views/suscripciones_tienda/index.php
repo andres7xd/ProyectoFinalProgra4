@@ -30,7 +30,9 @@
         <br>
         <span class="nombre_real"><?php echo $u["nombre_real"] ?></span>
         <br>
-        <input type="button" class="btnPerfil" value="Ver perfil">
+        <?php echo form_open('profile/index/' .  $u['comprador_id'] . '/' . 'Suscripciones_tienda/index'); ?>
+        <input type="submit" class="btnPerfil" value="Ver perfil">
+        <?php echo form_close(); ?>
       </div>
     <?php } ?>
     </table>
