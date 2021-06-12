@@ -44,4 +44,17 @@ class Buyer_model extends CI_Model
         JOIN productos
         ON fotos.producto_id = productos.producto_id")->result_array();
     }
+
+    function get_deseos($id_producto, $id_usuario){
+        return $this->db->query("SELECT *
+        FROM deseos
+        where deseos.producto_id = $id_producto and deseos.usuario_id = $id_usuario")->result_array();
+
+    }
+
+    function get_carritos($id_producto,$id_usuario){
+        return $this->db->query("SELECT *
+        FROM carritos
+        where carritos.producto_id = $id_producto and carritos.usuario_id = $id_usuario")->result_array();
+    }
 }
