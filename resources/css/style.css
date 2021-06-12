@@ -650,13 +650,15 @@ td{
 }
 
 #txt_cantidad_prod{
+	background-color: #cadaeb;;
+	border-color: #4f657a;
+	border-style: ridge;
+	border-radius: 10px;
 	width: 100px;
 	height: 30px;
 	position: relative;
 	left: 35%;
 	margin: 5px;
-	border-radius: 5px;
-	border-style: ridge;
 	font-size: 15px;
 }
 
@@ -989,6 +991,36 @@ td{
 	text-decoration: blink;
 }
 
+#div_calificacion{
+	position: relative;
+	margin: 16px;
+	float: right;
+	right: 16%;
+	cursor: pointer;
+	background-position: top center;
+	background-color: #3f4a55;
+	padding: 1%;
+	height: 120px;
+	width: 230px;
+	border-color: #4f657a;
+	border-style: ridge;
+	border-radius: 20px;
+}
+
+#select_calificacion{
+	width: 200px;
+	height: 35px;
+	font-size: 25px;
+	border-radius: 20px;
+	background-color: #253341;;
+	border-color: #4f657a;
+	border-style: ridge;
+}
+
+#btn_calificar{
+	position: relative;
+	left: 12.5%
+}
 
 @keyframes fadeout {
     from { opacity: 1; visibility: visible; }

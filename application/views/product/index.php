@@ -135,28 +135,28 @@ if (validation_errors() !== "") {
           <button type="submit" id="prod_deseos" name="prod_deseos" class="btn btn-warning">Añadir a la lista de deseos</button>
         </div>
 
-
         <?php echo form_close(); ?>
 
-
-        <div id="calificacion">
-          <?php echo form_open('product/add_calificacion/' . $p['producto_id'] . '/' . $p['usuario_id']) ?>
-          <label for="select_calificacion" class="control-label"><span class="text-danger">* </span>calificar Producto:</label>
-          <div class="form-group">
-            <select id="select_calificacion" name="select_calificacion" value="" class="cajatexto">
-              <option value="1">⭐</option>
-              <option value="2">⭐⭐</option>
-              <option value="3">⭐⭐⭐</option>
-              <option value="4">⭐⭐⭐⭐</option>
-              <option value="5">⭐⭐⭐⭐⭐</option>
-            </select>
-          </div>
-
-          <button type="submit" id="btn_calificar" name="btn_calificar" class="btn btn-success">Calificar Producto</button>
-          <?php echo form_close(); ?>
-        </div>
-
-      <?php } ?>
     </div>
+
+    <div id="div_calificacion">
+
+      <?php echo form_open('product/add_calificacion/' . $p['producto_id'] . '/' . $p['usuario_id']) ?>
+      <!-- <label for="select_calificacion" class="control-label"><span class="text-danger">* </span>calificar Producto:</label> -->
+      <div class="form-group">
+        <select id="select_calificacion" name="select_calificacion" value="">
+          <option value="1">⭐</option>
+          <option value="2">⭐⭐</option>
+          <option value="3">⭐⭐⭐</option>
+          <option value="4">⭐⭐⭐⭐</option>
+          <option value="5">⭐⭐⭐⭐⭐</option>
+        </select>
+      </div>
+      <br>
+      <button type="submit" id="btn_calificar" name="btn_calificar" class="btn btn-primary">Calificar Producto</button>
+      <?php echo form_close(); ?>
+    </div>
+  <?php } ?>
+
   </div>
 </div>
