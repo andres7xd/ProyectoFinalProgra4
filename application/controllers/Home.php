@@ -26,8 +26,7 @@ Class Home extends CI_Controller {
     {   
         
         $data['nombre_usuario'] = $this->Home_model->get_usuario_tienda();
-        $data['productos_vendidos'] = $this->Home_model->get_productos_vendidos();
-       
+        $data['productos_vendidos'] = $this->Home_model->get_productos_vendidos();   
         $data['_view'] = 'home/index';
         $this->load->view('layouts/main', $data);
 

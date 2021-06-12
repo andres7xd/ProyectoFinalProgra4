@@ -1,3 +1,25 @@
+<?php
+if ($message_display != null) {
+  if (isset($message_display)) {
+    echo "<div class='alert alert-primary alert-dismissible fade show' role='alert' style='font-size: 15px';>" . $message_display . "
+    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>";
+  }
+}
+
+if (isset($error_message)) {
+  echo "<div class='alert alert-danger alert-dismissible fade show' role='alert' style='font-size: 15px';>" . $error_message . "
+  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+  </div>";
+}
+
+if (validation_errors() !== "") {
+  echo "<<div class='alert alert-warning alert-dismissible fade show' role='alert' style='font-size: 15px';>>" . validation_errors() . "
+  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+  </div>";
+}
+?>
+
 <div id="panel_app_prod">
 
   <div id="user_box_prod">
@@ -106,18 +128,11 @@
         <input type="number" name="txt_cantidad_prod" id="txt_cantidad_prod" value="<?php echo $this->input->post('txt_cantidad_prod'); ?>" placeholder="Cantidad" title="Cantidad a comprar o añadir al carrito">
 
         <div id="actions_productos">
-
-
           <button type="submit" id="prod_comprar" name="prod_comprar" class="btn btn-primary">Comprar</button>
-
-
 
           <button type="submit" id="prod_carrito" name="prod_carrito" class="btn btn-success">Añadir al carrito</button>
 
-
-
           <button type="submit" id="prod_deseos" name="prod_deseos" class="btn btn-warning">Añadir a la lista de deseos</button>
-
         </div>
 
 
@@ -125,7 +140,7 @@
 
 
         <div id="calificacion">
-        <?php echo form_open('product/add_calificacion/' . $p['producto_id'] . '/' . $p['usuario_id']) ?>
+          <?php echo form_open('product/add_calificacion/' . $p['producto_id'] . '/' . $p['usuario_id']) ?>
           <label for="select_calificacion" class="control-label"><span class="text-danger">* </span>calificar Producto:</label>
           <div class="form-group">
             <select id="select_calificacion" name="select_calificacion" value="" class="cajatexto">
@@ -136,7 +151,7 @@
               <option value="5">⭐⭐⭐⭐⭐</option>
             </select>
           </div>
-         
+
           <button type="submit" id="btn_calificar" name="btn_calificar" class="btn btn-success">Calificar Producto</button>
           <?php echo form_close(); ?>
         </div>
