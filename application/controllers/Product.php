@@ -82,22 +82,30 @@ Class Product extends CI_Controller {
 
     function add_calificacion($id_producto,$id_usuario){
         $existe =  $this->Product_model->existe_calificacion($id_producto,$id_usuario);
-
-        // if($existe == null){
+      
+         if(empty($existe)){
             $calificaciones = array(
                 'usuario_id' => $id_usuario,
                 'producto_id' =>  $id_producto,
                 'calificacion' => $this->input->post('select_calificacion'),
             );
-    
+            
             $this->Product_model->add_calificacion_producto($calificaciones);
             $calificaciones = array();
           
-        // }
+        }
 
-        // else{
+        else{
+            foreach($existe as $e){
+                $calificaciones = array(
             
-        // }
+                    'calificacion' => $this->input->post('select_calificacion'),
+                );
+                $this->Product_model->update_user($e['calificacion_producto_id'],$calificaciones);
+                $calificaciones = array();
+            }
+           
+         }
         $this->index($id_producto);
         
         
