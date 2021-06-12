@@ -6,18 +6,6 @@ class Buyer extends CI_Controller
     public $mensaje = null;
     public $mensaje_error = null;
 
-    // function load_data_view($view)
-    //     {
-    //     	//precarga todos los datos con los que la vista debe iniciar
-    //     	$this->load->model('Home_model');
-    //        	$data['nombre_usuario'] = $this->Home_model->get_usuario_tienda();
-    //         $data['_view'] = $view;
-    // 		$this->load->view('layouts/main',$data);
-    //     }
-
-
-
-
     function __construct()
     {
         parent::__construct();
@@ -29,9 +17,9 @@ class Buyer extends CI_Controller
 
     function index($productos_data = array())
     {
-        $id_producto = $this->input->post('id_h');
         $data['usuarios'] = $this->Buyer_model->get_usuario_tienda();
         $data['fotos_producto'] = $this->Buyer_model->get_fotos_producto();
+        $data['calificacion_producto'] = $this->Buyer_model->get_calificacion();
         $data['message_display'] = $this->mensaje;
         $data['error_message'] = $this->mensaje_error;
         if ($productos_data == null) {
@@ -44,13 +32,10 @@ class Buyer extends CI_Controller
 
     function process()
     {
-
-
         if ($this->input->post('btn_search')) {
             $this->buscar();
         }
     }
-
 
     function buscar()
     {
@@ -67,42 +52,31 @@ class Buyer extends CI_Controller
                 'producto_id' =>  $id,
                 'cantidad_productos' =>  1,
             );
-
-
             $this->Product_model->add_carrito($params);
             $params = array();
-
             $this->mensaje = "Se ha añadido el producto al carrito";
         }
-
         else{
             $this->mensaje_error = "El producto ya existe en carrito";
         }
-
         $this->index('');
     }
 
 
     function add_deseo($id)
     {
-
         $existe = $this->Buyer_model->get_deseos($id, $this->session->userdata['logged_in']['usuario_id']);
-
         if (empty($existe)) {
             $params_deseos = array(
                 'usuario_id' =>  $this->session->userdata['logged_in']['usuario_id'],
                 'producto_id' =>  $id,
             );
-
-
             $this->Product_model->add_deseo($params_deseos);
             $params_deseos = array();
-
             $this->mensaje = "Se ha añadido el producto a la lista de deseos";
         } else {
             $this->mensaje_error = "El producto ya existe en la lista de deseos";
         }
-
         $this->index('');
     }
 }

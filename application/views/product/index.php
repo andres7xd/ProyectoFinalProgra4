@@ -101,27 +101,27 @@ if (validation_errors() !== "") {
           </div>
 
           <div class="div_info">
-            <span class="pre_prod">Fecha Publicacion:</< /span> <span class="resp_prod"><?php echo ($this->input->post('txt_fecha') ? $this->input->post('txt_fecha') : $p['fecha_publicacion']); ?></span>
+            <span class="pre_prod">Fecha Publicacion: </span> <span class="resp_prod"><?php echo ($this->input->post('txt_fecha') ? $this->input->post('txt_fecha') : $p['fecha_publicacion']); ?></span>
           </div>
 
           <div class="div_info">
-            <span class="pre_prod">Ubicacion Actual:</< /span> <span class="resp_prod"><?php echo ($this->input->post('txt_ubicacion') ? $this->input->post('txt_ubicacion') : $p['ubicacion_actual']); ?></span>
+            <span class="pre_prod">Ubicacion Actual: </span> <span class="resp_prod"><?php echo ($this->input->post('txt_ubicacion') ? $this->input->post('txt_ubicacion') : $p['ubicacion_actual']); ?></span>
           </div>
 
           <div class="div_info">
-            <span class="pre_prod">Precio:</< /span> <span class="resp_prod">₡<?php echo ($this->input->post('txt_precio') ? $this->input->post('txt_precio') : $p['precio']); ?></span>
+            <span class="pre_prod">Precio: </span> <span class="resp_prod">₡<?php echo ($this->input->post('txt_precio') ? $this->input->post('txt_precio') : $p['precio']); ?></span>
           </div>
 
           <div class="div_info">
-            <span class="pre_prod">Tiempo Envío:</< /span> <span class="resp_prod"><?php echo ($this->input->post('txt_t_envio') ? $this->input->post('txt_t_envio') : $p['tiempo_envio']); ?> días</span>
+            <span class="pre_prod">Tiempo Envío: </span> <span class="resp_prod"><?php echo ($this->input->post('txt_t_envio') ? $this->input->post('txt_t_envio') : $p['tiempo_envio']); ?> días</span>
           </div>
 
           <div class="div_info">
-            <span class="pre_prod">Costo Envío:</< /span> <span class="resp_prod">₡<?php echo ($this->input->post('txt_c_envio') ? $this->input->post('txt_c_envio') : $p['costo_envio']); ?></span>
+            <span class="pre_prod">Costo Envío: </span> <span class="resp_prod">₡<?php echo ($this->input->post('txt_c_envio') ? $this->input->post('txt_c_envio') : $p['costo_envio']); ?></span>
           </div>
 
           <div class="div_info">
-            <span class="pre_prod">Categoria:</< /span> <span class="resp_prod"><?php echo ($this->input->post('txt_categoria') ? $this->input->post('txt_categoria') : $p['categoria']); ?></span>
+            <span class="pre_prod">Categoria: </span> <span class="resp_prod"><?php echo ($this->input->post('txt_categoria') ? $this->input->post('txt_categoria') : $p['categoria']); ?></span>
           </div>
         </div>
         <?php echo form_open('product/index/' . $p['producto_id']) ?>
@@ -142,15 +142,70 @@ if (validation_errors() !== "") {
     <div id="div_calificacion">
 
       <?php echo form_open('product/add_calificacion/' . $p['producto_id'] . '/' . $this->session->userdata['logged_in']['usuario_id']) ?>
-      <!-- <label for="select_calificacion" class="control-label"><span class="text-danger">* </span>calificar Producto:</label> -->
       <div class="form-group">
         <select id="select_calificacion" name="select_calificacion" value="">
-          <option value="1">⭐</option>
-          <option value="2">⭐⭐</option>
-          <option value="3">⭐⭐⭐</option>
-          <option value="4">⭐⭐⭐⭐</option>
-          <option value="5">⭐⭐⭐⭐⭐</option>
+
+          <?php $aux = 0; ?>
+          <?php foreach ($calificacion as $c) { ?>
+
+            <?php if ($c["usuario_id"] == $this->session->userdata['logged_in']['usuario_id']) { ?>
+
+              <?php if ($c["calificacion"] == 1) { ?>
+                <option value="1" selected>⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+              <?php } ?>
+
+              <?php if ($c["calificacion"] == 2) { ?>
+                <option value="1">⭐</option>
+                <option value="2" selected>⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+              <?php } ?>
+
+              <?php if ($c["calificacion"] == 3) { ?>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3" selected>⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+              <?php } ?>
+
+              <?php if ($c["calificacion"] == 4) { ?>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="1" selected>⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+              <?php } ?>
+
+              <?php if ($c["calificacion"] == 5) { ?>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5" selected>⭐⭐⭐⭐⭐</option>
+              <?php } ?>
+
+            <?php } else { ?>
+
+              <?php if ($aux == 0) { ?>
+                <option value="1">⭐</option>
+                <option value="2">⭐⭐</option>
+                <option value="3">⭐⭐⭐</option>
+                <option value="4">⭐⭐⭐⭐</option>
+                <option value="5">⭐⭐⭐⭐⭐</option>
+                <?php $aux=1; ?>
+
+              <?php } ?>
+            <?php } ?>
+          <?php } ?>
+
         </select>
+
       </div>
       <br>
       <button type="submit" id="btn_calificar" name="btn_calificar" class="btn btn-primary">Calificar Producto</button>

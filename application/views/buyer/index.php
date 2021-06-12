@@ -8,11 +8,11 @@ if ($message_display != null) {
 }
 
 if ($error_message != null) {
-if (isset($error_message)) {
-  echo "<div class='alert alert-danger alert-dismissible fade show' role='alert' style='font-size: 15px';>" . $error_message . "
+  if (isset($error_message)) {
+    echo "<div class='alert alert-danger alert-dismissible fade show' role='alert' style='font-size: 15px';>" . $error_message . "
   <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
   </div>";
-}
+  }
 }
 
 if (validation_errors() !== "") {
@@ -67,7 +67,7 @@ if (validation_errors() !== "") {
 
     <?php echo form_open('buyer/process'); ?>
     <br>
-    <input type="text" class="cajatexto" id="txt_prod" name="txt_nombre" placeholder="Escribe aquí para buscar!">
+    <input type="text" class="cajatexto_search" id="txt_prod_search" name="txt_nombre" placeholder="Escribe aquí para buscar!">
     <button type="submit" name="btn_search" id="btn_search" value="btn_search" class="boton" title="Buscar">🔍</button>
     <span style="color: #f00"><?php echo form_error('txt_post'); ?></span>
     <?php echo form_close(); ?>
@@ -125,6 +125,57 @@ if (validation_errors() !== "") {
         <span class="nombre_real">Tienda: <?php echo $p["nombre_real"] ?></span>
         <br>
         <span class="unidades_vendidas">Unidades disponibles: <?php echo $p["unidades"] ?></span>
+        <br>
+
+        <?php
+        $una_estrella = 0;
+        $dos_estrellas = 0;
+        $tres_estrellas = 0;
+        $cuatro_estrellas = 0;
+        $cinco_estrellas = 0;
+        $promedio = 0;
+        $cant_estrellas = "";
+
+        foreach ($calificacion_producto as $c) {
+          if ($c["producto_id"] == $p["producto_id"]) {
+            if ($c["calificacion"] == 1) {
+              $una_estrella =  $una_estrella + 1;
+            }
+            if ($c["calificacion"] == 2) {
+              $dos_estrellas =  $dos_estrellas + 1;
+            }
+            if ($c["calificacion"] == 3) {
+              $tres_estrellas =  $tres_estrellas + 1;
+            }
+            if ($c["calificacion"] == 4) {
+              $cuatro_estrellas =  $cuatro_estrellas + 1;
+            }
+            if ($c["calificacion"] == 5) {
+              $cinco_estrellas =  $cinco_estrellas + 1;
+            }
+            $promedio = (((1 * $una_estrella) + (2 * $dos_estrellas) + (3 * $tres_estrellas) + (4 * $cuatro_estrellas) +
+              (5 * $cinco_estrellas)) / (($una_estrella + $dos_estrellas + $tres_estrellas + $cuatro_estrellas + $cinco_estrellas)));
+
+            if (round($promedio) == 1) {
+              $cant_estrellas = "⭐";
+            }
+            if (round($promedio) == 2) {
+              $cant_estrellas = "⭐⭐";
+            }
+            if (round($promedio) == 3) {
+              $cant_estrellas = "⭐⭐⭐";
+            }
+            if (round($promedio) == 4) {
+              $cant_estrellas = "⭐⭐⭐⭐";
+            }
+            if (round($promedio) == 5) {
+              $cant_estrellas = "⭐⭐⭐⭐⭐";
+            }
+          }
+        }
+        ?>
+
+        <span class="estrellas"><?php echo $cant_estrellas ?></span>
         <br>
         <span class="precio">₡<?php echo $p["precio"] ?></span>
         <br>

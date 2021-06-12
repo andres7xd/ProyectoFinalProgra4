@@ -33,7 +33,7 @@
 
     <?php echo form_open('store/process'); ?>
     <br>
-    <input type="text" class="cajatexto" id="txt_prod" name="txt_nombre" placeholder="Escribe aquí para buscar!">
+    <input type="text" class="cajatexto_search" id="txt_prod_search" name="txt_nombre" placeholder="Escribe aquí para buscar!">
     <button type="submit" name="btn_search" id="btn_search" value="btn_search" class="boton" title="Buscar">🔍</button>
     <span style="color: #f00"><?php echo form_error('txt_post'); ?></span>
     <?php echo form_close(); ?>

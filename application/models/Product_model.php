@@ -64,7 +64,14 @@ class Product_model extends CI_Model
     {
         return $this->db->query("SELECT*
         FROM calificaciones_productos
-        WHERE calificaciones_productos.usuario_id = $id_usuario and calificaciones_productos.producto_id =$id_producto")->result_array();
+        WHERE calificaciones_productos.usuario_id = $id_usuario AND calificaciones_productos.producto_id =$id_producto")->result_array();
+    }
+
+    function get_calificacion($id_producto)
+    {
+        return $this->db->query("SELECT *
+        FROM calificaciones_productos
+        WHERE calificaciones_productos.producto_id = $id_producto")->result_array();
     }
 
 
@@ -74,31 +81,33 @@ class Product_model extends CI_Model
         return $this->db->update('calificaciones_productos', $params);
     }
 
-    
-    function get_id($usuario_id,$producto_id)
+
+    function get_id($usuario_id, $producto_id)
     {
         $this->db->query("SELECT calificaciones_productos.calificacion_producto_id
         FROM calificaciones_productos
         where calificaciones_productos.usuario_id = $usuario_id and calificaciones_productos.producto_id =$producto_id")->result_array();
     }
 
-    function get_suscripciones($id_comprador, $id_tienda){
+    function get_suscripciones($id_comprador, $id_tienda)
+    {
         return $this->db->query("SELECT*
         FROM suscripciones
         WHERE suscripciones.tienda_id = $id_tienda and suscripciones.comprador_id =$id_comprador")->result_array();
     }
 
-    function get_deseos($id_producto, $id_usuario){
+    function get_deseos($id_producto, $id_usuario)
+    {
         return $this->db->query("SELECT *
         FROM deseos
         where deseos.producto_id = $id_producto and deseos.usuario_id = $id_usuario")->result_array();
-
     }
 
-    function get_carritos($id_producto,$id_usuario){
+    function get_carritos($id_producto, $id_usuario)
+    {
         return $this->db->query("SELECT *
         FROM carritos
         where carritos.producto_id = $id_producto and carritos.usuario_id = $id_usuario")->result_array();
     }
 
-    }
+}

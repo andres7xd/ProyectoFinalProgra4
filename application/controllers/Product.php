@@ -16,6 +16,7 @@ class Product extends CI_Controller
     {
         $data['producto'] = $this->Product_model->get_producto($id);
         $data['fotos_productos'] = $this->Product_model->get_fotos_producto($id);
+        $data['calificacion'] = $this->Product_model->get_calificacion($id);
         $data['message_display'] = $this->mensaje;
         $data['error_message'] = $this->mensaje_error;
         $data['_view'] = 'product/index';

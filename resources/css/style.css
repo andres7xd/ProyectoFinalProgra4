@@ -75,7 +75,17 @@ a, img{
 	margin: 10px;
 	border-radius: 5px;
 	border: 1px solid #1DA1F2;
-	width: 300px;
+	width: 200px;
+	color: #FFF;
+	background: #15202B;
+}
+
+.cajatexto_search{
+	padding: 5px;
+	margin: 10px;
+	border-radius: 5px;
+	border: 1px solid #1DA1F2;
+	width: 620px;
 	color: #FFF;
 	background: #15202B;
 }
@@ -480,6 +490,12 @@ td{
 	font-size: 20px;
 }
 
+.estrellas{
+	font-family: Century Gothic;
+	font-weight: 600;
+	font-size: 20px;
+}
+
 #foto_file{
 	border-radius: 15px;
 }
@@ -844,6 +860,17 @@ td{
 
 .txt_prod{
 	width: 135px;
+	background: transparent;
+	border: transparent;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	padding: 5px;
+	color: #1c7dcc;
+	font-size: 15px;
+    text-decoration: underline;
+}
+
+.txt_prod_search{
+	width: 300px;
 	background: transparent;
 	border: transparent;
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
