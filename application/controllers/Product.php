@@ -3,6 +3,7 @@
 class Product extends CI_Controller
 {
     public $mensaje = null;
+    public $mensaje_error = null;
 
     function __construct()
     {
@@ -16,6 +17,7 @@ class Product extends CI_Controller
         $data['producto'] = $this->Product_model->get_producto($id);
         $data['fotos_productos'] = $this->Product_model->get_fotos_producto($id);
         $data['message_display'] = $this->mensaje;
+        $data['error_message'] = $this->mensaje_error;
         $data['_view'] = 'product/index';
         $this->load->view('layouts/main', $data);
         if (isset($_POST['prod_carrito']) == true) {
@@ -28,34 +30,48 @@ class Product extends CI_Controller
 
     function add_carrito($id)
     {
-        $params = array(
-            'usuario_id' =>  $this->session->userdata['logged_in']['usuario_id'],
-            'producto_id' =>  $id,
-            'cantidad_productos' =>  $this->input->post('txt_cantidad_prod'),
-        );
-        $this->Product_model->add_carrito($params);
-        $params = array();
+        $existe = $this->Product_model->get_carritos($id, $this->session->userdata['logged_in']['usuario_id']);
+        if (empty($existe)) {
+            $params = array(
+                'usuario_id' =>  $this->session->userdata['logged_in']['usuario_id'],
+                'producto_id' =>  $id,
+                'cantidad_productos' =>  $this->input->post('txt_cantidad_prod'),
+            );
+            $this->Product_model->add_carrito($params);
+            $params = array();
+        }
     }
 
     function add_deseo($id)
     {
-        $params_deseos = array(
-            'usuario_id' =>  $this->session->userdata['logged_in']['usuario_id'],
-            'producto_id' =>  $id,
-        );
-        $this->Product_model->add_deseo($params_deseos);
-        $params_deseos = array();
+        $existe = $this->Product_model->get_deseos($id, $this->session->userdata['logged_in']['usuario_id']);
+        if (empty($existe)) {
+            $params_deseos = array(
+                'usuario_id' =>  $this->session->userdata['logged_in']['usuario_id'],
+                'producto_id' =>  $id,
+            );
+            $this->Product_model->add_deseo($params_deseos);
+            $params_deseos = array();
+        }
     }
 
     function add_suscripciones($id, $id_producto)
     {
-        $params_suscripciones = array(
-            'comprador_id' => $this->session->userdata['logged_in']['usuario_id'],
-            'tienda_id' =>  $id,
-        );
-        $this->Product_model->add_suscripcion($params_suscripciones);
-        $params_suscripciones = array();
-        $this->mensaje = "Se ha suscrito a la tienda con exito";
+        $existe =  $this->Product_model->get_suscripciones($this->session->userdata['logged_in']['usuario_id'], $id);
+        if (empty($existe)) {
+            $params_suscripciones = array(
+                'comprador_id' => $this->session->userdata['logged_in']['usuario_id'],
+                'tienda_id' =>  $id,
+            );
+            $this->Product_model->add_suscripcion($params_suscripciones);
+            $params_suscripciones = array();
+            $this->mensaje = "Se ha suscrito a la tienda con exito";
+        } else {
+            $this->mensaje_error = "La suscripcion ya existe";
+        }
+
+
+
         $this->index($id_producto);
     }
 

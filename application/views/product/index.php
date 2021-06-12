@@ -141,7 +141,7 @@ if (validation_errors() !== "") {
 
     <div id="div_calificacion">
 
-      <?php echo form_open('product/add_calificacion/' . $p['producto_id'] . '/' . $p['usuario_id']) ?>
+      <?php echo form_open('product/add_calificacion/' . $p['producto_id'] . '/' . $this->session->userdata['logged_in']['usuario_id']) ?>
       <!-- <label for="select_calificacion" class="control-label"><span class="text-danger">* </span>calificar Producto:</label> -->
       <div class="form-group">
         <select id="select_calificacion" name="select_calificacion" value="">
