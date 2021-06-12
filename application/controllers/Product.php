@@ -16,7 +16,8 @@ class Product extends CI_Controller
     {
         $data['producto'] = $this->Product_model->get_producto($id);
         $data['fotos_productos'] = $this->Product_model->get_fotos_producto($id);
-        $data['calificacion'] = $this->Product_model->get_calificacion($id);
+        $data['calificacion'] = $this->Product_model->existe_calificacion($id, $this->session->userdata['logged_in']['usuario_id']);
+        $data['no_calificacion'] = $this->Product_model->no_existe_calificacion($this->session->userdata['logged_in']['usuario_id']);
         $data['message_display'] = $this->mensaje;
         $data['error_message'] = $this->mensaje_error;
         $data['_view'] = 'product/index';

@@ -139,79 +139,78 @@ if (validation_errors() !== "") {
 
     </div>
 
-    <div id="div_calificacion">
 
-      <?php echo form_open('product/add_calificacion/' . $p['producto_id'] . '/' . $this->session->userdata['logged_in']['usuario_id']) ?>
-      <div class="form-group">
-        <select id="select_calificacion" name="select_calificacion" value="">
+  <?php } ?>
 
-          <?php $aux = 0; ?>
+  <div id="div_calificacion">
+
+    <?php echo form_open('product/add_calificacion/' . $p['producto_id'] . '/' . $this->session->userdata['logged_in']['usuario_id']) ?>
+    <div class="form-group">
+      <select id="select_calificacion" name="select_calificacion" value="">
+
+        <?php $aux = 0; ?>
+        
+        <?php if (!empty($calificacion)) { ?>
+
           <?php foreach ($calificacion as $c) { ?>
 
-            <?php if ($c["usuario_id"] == $this->session->userdata['logged_in']['usuario_id']) { ?>
+            <?php if ($c["calificacion"] == 1) { ?>
+              <option value="1" selected>⭐</option>
+              <option value="2">⭐⭐</option>
+              <option value="3">⭐⭐⭐</option>
+              <option value="4">⭐⭐⭐⭐</option>
+              <option value="5">⭐⭐⭐⭐⭐</option>
+            <?php } ?>
 
-              <?php if ($c["calificacion"] == 1) { ?>
-                <option value="1" selected>⭐</option>
-                <option value="2">⭐⭐</option>
-                <option value="3">⭐⭐⭐</option>
-                <option value="4">⭐⭐⭐⭐</option>
-                <option value="5">⭐⭐⭐⭐⭐</option>
-              <?php } ?>
+            <?php if ($c["calificacion"] == 2) { ?>
+              <option value="1">⭐</option>
+              <option value="2" selected>⭐⭐</option>
+              <option value="3">⭐⭐⭐</option>
+              <option value="4">⭐⭐⭐⭐</option>
+              <option value="5">⭐⭐⭐⭐⭐</option>
+            <?php } ?>
 
-              <?php if ($c["calificacion"] == 2) { ?>
-                <option value="1">⭐</option>
-                <option value="2" selected>⭐⭐</option>
-                <option value="3">⭐⭐⭐</option>
-                <option value="4">⭐⭐⭐⭐</option>
-                <option value="5">⭐⭐⭐⭐⭐</option>
-              <?php } ?>
+            <?php if ($c["calificacion"] == 3) { ?>
+              <option value="1">⭐</option>
+              <option value="2">⭐⭐</option>
+              <option value="3" selected>⭐⭐⭐</option>
+              <option value="4">⭐⭐⭐⭐</option>
+              <option value="5">⭐⭐⭐⭐⭐</option>
+            <?php } ?>
 
-              <?php if ($c["calificacion"] == 3) { ?>
-                <option value="1">⭐</option>
-                <option value="2">⭐⭐</option>
-                <option value="3" selected>⭐⭐⭐</option>
-                <option value="4">⭐⭐⭐⭐</option>
-                <option value="5">⭐⭐⭐⭐⭐</option>
-              <?php } ?>
+            <?php if ($c["calificacion"] == 4) { ?>
+              <option value="1">⭐</option>
+              <option value="2">⭐⭐</option>
+              <option value="3">⭐⭐⭐</option>
+              <option value="1" selected>⭐⭐⭐⭐</option>
+              <option value="5">⭐⭐⭐⭐⭐</option>
+            <?php } ?>
 
-              <?php if ($c["calificacion"] == 4) { ?>
-                <option value="1">⭐</option>
-                <option value="2">⭐⭐</option>
-                <option value="3">⭐⭐⭐</option>
-                <option value="1" selected>⭐⭐⭐⭐</option>
-                <option value="5">⭐⭐⭐⭐⭐</option>
-              <?php } ?>
-
-              <?php if ($c["calificacion"] == 5) { ?>
-                <option value="1">⭐</option>
-                <option value="2">⭐⭐</option>
-                <option value="3">⭐⭐⭐</option>
-                <option value="4">⭐⭐⭐⭐</option>
-                <option value="5" selected>⭐⭐⭐⭐⭐</option>
-              <?php } ?>
-
-            <?php } else { ?>
-
-              <?php if ($aux == 0) { ?>
-                <option value="1">⭐</option>
-                <option value="2">⭐⭐</option>
-                <option value="3">⭐⭐⭐</option>
-                <option value="4">⭐⭐⭐⭐</option>
-                <option value="5">⭐⭐⭐⭐⭐</option>
-                <?php $aux=1; ?>
-
-              <?php } ?>
+            <?php if ($c["calificacion"] == 5) { ?>
+              <option value="1">⭐</option>
+              <option value="2">⭐⭐</option>
+              <option value="3">⭐⭐⭐</option>
+              <option value="4">⭐⭐⭐⭐</option>
+              <option value="5" selected>⭐⭐⭐⭐⭐</option>
             <?php } ?>
           <?php } ?>
+      
+        <?php } else { ?>
 
-        </select>
+          <option value="1">⭐</option>
+          <option value="2">⭐⭐</option>
+          <option value="3">⭐⭐⭐</option>
+          <option value="4">⭐⭐⭐⭐</option>
+          <option value="5">⭐⭐⭐⭐⭐</option>
 
-      </div>
-      <br>
-      <button type="submit" id="btn_calificar" name="btn_calificar" class="btn btn-primary">Calificar Producto</button>
-      <?php echo form_close(); ?>
+        <?php } ?>
+      </select>
+
     </div>
-  <?php } ?>
+    <br>
+    <button type="submit" id="btn_calificar" name="btn_calificar" class="btn btn-primary">Calificar Producto</button>
+    <?php echo form_close(); ?>
+  </div>
 
   </div>
 </div>

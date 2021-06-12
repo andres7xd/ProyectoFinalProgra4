@@ -67,13 +67,19 @@ class Product_model extends CI_Model
         WHERE calificaciones_productos.usuario_id = $id_usuario AND calificaciones_productos.producto_id =$id_producto")->result_array();
     }
 
-    function get_calificacion($id_producto)
+    function get_calificacion($usuario_id)
     {
         return $this->db->query("SELECT *
         FROM calificaciones_productos
-        WHERE calificaciones_productos.producto_id = $id_producto")->result_array();
+        WHERE calificaciones_productos.usuario_id = $usuario_id")->result_array();
     }
 
+    function no_existe_calificacion($id_usuario)
+    {
+        return $this->db->query("SELECT*
+        FROM calificaciones_productos
+        WHERE calificaciones_productos.usuario_id != $id_usuario")->result_array();
+    }
 
     function update_user($id_calificacion, $params)
     {
