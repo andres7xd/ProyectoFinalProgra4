@@ -31,4 +31,12 @@ class Deseos_model extends CI_Model
     {
         $this->db->delete('deseos', array('deseo_id' => $id));
     }
+
+    function get_carritos($id_producto,$id_usuario){
+        return $this->db->query("SELECT *
+        FROM carritos
+        where carritos.producto_id = $id_producto and carritos.usuario_id = $id_usuario")->result_array();
+    }
+
+ 
 }
