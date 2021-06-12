@@ -54,16 +54,16 @@
         <span class="visually-hidden">Next</span>
       </button>
     </div>
-  
+
     <div id="info_productos">
       <?php foreach ($producto as $p) { ?>
 
         <div id="div_suscribirse">
-        
-        <?php echo form_open('product/add_suscripciones/' . $p['usuario_id'] . '/' . $p['producto_id']) ?>
+
+          <?php echo form_open('product/add_suscripciones/' . $p['usuario_id'] . '/' . $p['producto_id']) ?>
           <button type="submit" id="suscribirse" name="suscribirse" class="btn btn-info">Suscribirse a la tienda</button>
           <?php echo form_close(); ?>
-          </div>
+        </div>
 
         <div id="div_info1">
           <div class="div_info">
@@ -104,22 +104,43 @@
         </div>
         <?php echo form_open('product/index/' . $p['producto_id']) ?>
         <input type="number" name="txt_cantidad_prod" id="txt_cantidad_prod" value="<?php echo $this->input->post('txt_cantidad_prod'); ?>" placeholder="Cantidad" title="Cantidad a comprar o añadir al carrito">
- 
+
         <div id="actions_productos">
 
-          
+
           <button type="submit" id="prod_comprar" name="prod_comprar" class="btn btn-primary">Comprar</button>
-          
 
-       
+
+
           <button type="submit" id="prod_carrito" name="prod_carrito" class="btn btn-success">Añadir al carrito</button>
-          
 
-          
+
+
           <button type="submit" id="prod_deseos" name="prod_deseos" class="btn btn-warning">Añadir a la lista de deseos</button>
-         
+
         </div>
-        <?php echo form_close(); ?> 
+
+
+        <?php echo form_close(); ?>
+
+
+        <div id="calificacion">
+        <?php echo form_open('product/add_calificacion/' . $p['producto_id'] . '/' . $p['usuario_id']) ?>
+          <label for="select_calificacion" class="control-label"><span class="text-danger">* </span>calificar Producto:</label>
+          <div class="form-group">
+            <select id="select_calificacion" name="select_calificacion" value="" class="cajatexto">
+              <option value="1">⭐</option>
+              <option value="2">⭐⭐</option>
+              <option value="3">⭐⭐⭐</option>
+              <option value="4">⭐⭐⭐⭐</option>
+              <option value="5">⭐⭐⭐⭐⭐</option>
+            </select>
+          </div>
+         
+          <button type="submit" id="btn_calificar" name="btn_calificar" class="btn btn-success">Calificar Producto</button>
+          <?php echo form_close(); ?>
+        </div>
+
       <?php } ?>
     </div>
   </div>
