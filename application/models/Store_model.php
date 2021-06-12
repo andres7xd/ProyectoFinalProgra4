@@ -38,7 +38,8 @@ class Store_model extends CI_Model
         ORDER BY productos.nombre ASC")->result_array();
     }
 
-    function get_fotos_producto(){// Obtiene la lista de fotos de los productos
+    function get_fotos_producto()
+    { // Obtiene la lista de fotos de los productos
         return $this->db->query("SELECT *
         FROM fotos
         JOIN productos
@@ -48,6 +49,11 @@ class Store_model extends CI_Model
     function delete($id_prodcuto)
     {
         $this->db->delete('productos', array('producto_id' => $id_prodcuto));
+    }
 
+    function create_categoria($params)
+    {
+        $this->db->insert('categorias', $params);
+        return $this->db->insert_id();
     }
 }

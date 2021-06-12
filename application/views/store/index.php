@@ -1,3 +1,19 @@
+<?php
+if ($message_display != null) {
+  if (isset($message_display)) {
+    echo "<div class='alert alert-primary alert-dismissible fade show' role='alert' style='font-size: 15px';>" . $message_display . "
+    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>";
+  }
+}
+
+if (validation_errors() !== "") {
+  echo "<<div class='alert alert-warning alert-dismissible fade show' role='alert' style='font-size: 15px';>>" . validation_errors() . "
+  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+  </div>";
+}
+?>
+
 <div id="panel_app">
 
   <div id="user_box">
@@ -50,12 +66,37 @@
     <div id="actions_creates_store">
 
       <?php echo form_open('create_product/index'); ?>
-      <input type="submit" class="btn btn-primary" id="btn_create_categoria" title="Ver producto" value="Crear categoría">
-      <?php echo form_close(); ?>
-
-      <?php echo form_open('create_product/index'); ?>
       <input type="submit" class="btn btn-primary" id="btn_create_producto" title="Ver producto" value="Crear producto">
       <?php echo form_close(); ?>
+
+      <!-- <?php echo form_open('create_product/index'); ?>
+      <input type="submit" class="btn btn-primary" id="btn_create_categoria" title="Ver producto" value="Crear categoría">
+      <input type="text" id="txt_create_categoria" name="txt_nombre" placeholder="Nombre de la categoría">
+      <?php echo form_close(); ?> -->
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" id="btn_create_categoria" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Crear categoría
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <?php echo form_open('store/add_categoria'); ?>
+              <input type="text" id="txt_create_categoria" name="txt_create_categoria" placeholder="Nombre de la categoría" value="">
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Crear</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+            <?php echo form_close(); ?>
+          </div>
+        </div>
+      </div>
+
+
 
     </div>
     <br><br><br><br>

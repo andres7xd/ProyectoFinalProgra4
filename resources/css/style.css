@@ -870,7 +870,7 @@ td{
 }
 
 .txt_prod_search{
-	width: 300px;
+	width: 400px;
 	background: transparent;
 	border: transparent;
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -994,9 +994,27 @@ td{
 	padding: 20px;
 }
 
-#btn_create_producto, #btn_create_categoria{
+#btn_create_producto{
     margin: 5px;
 	float: right;
+}
+
+#btn_create_categoria{
+	margin: 5px;
+	float: right;
+}
+
+#txt_create_categoria{
+	padding: 5px;
+	margin: 10px;
+	border-radius: 5px;
+	border: 1px solid #0c0c0c;
+	border-style: ridge;
+	font-size: 15px;
+	width: 440px;
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 12px;
+	float: left;
 }
 
 #icono_marketplace_create_product{
@@ -1048,6 +1066,8 @@ td{
 	position: relative;
 	left: 12.5%
 }
+
+
 
 @keyframes fadeout {
     from { opacity: 1; visibility: visible; }
