@@ -38,7 +38,11 @@
           	</div>
 	    <?php echo form_close(); ?>
 		<?php echo form_open('pago/index');?>
-		    	<button type="submit" name="btn_pago" id="btn_pago" class="boton" title="MetodoPago">Metodo Pago</button>
+		    	<button type="submit" name="btn_pago" id="btn_pago" class="boton" title="MetodoPago">Agregar forma de pago</button>
+		<?php echo form_close();?>
+		<br>
+		<?php echo form_open('direccion/index');?>
+		    	<button type="submit" name="btn_direccion" id="btn_direccion" class="boton" title="DireccionEnvio">Agregar Direccion de Envio</button>
 		<?php echo form_close();?>
 		    <div class="box-body">
 		    	<div class="form-group-photo">

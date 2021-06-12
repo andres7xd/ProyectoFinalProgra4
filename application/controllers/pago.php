@@ -37,7 +37,7 @@ class Pago extends CI_Controller{
                 'saldo' => $this->input->post('txt_saldo'),
             );
             
-            $usuario_id = $this->Pago_model->add_card($params);
+             $this->Pago_model->add_card($params);
             
             $data['message_display'] = 'Tarjeta Registrada Exitosamente.';
             redirect('user/edit/' . $this->session->userdata['logged_in']['usuario_id']);

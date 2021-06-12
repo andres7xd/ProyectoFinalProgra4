@@ -38,7 +38,7 @@
 			<button type="submit" class="boton">GUARDAR</button>
 		</div>
 	<?php echo form_close(); ?>	
-	<h3>Mis Tarjetas</h3>
+	<h3>Mis Direcciones</h3>
 	<table class="table-responsive" width= "400px" height="100px">
     <thead>
         <tr>
@@ -66,7 +66,6 @@
 	<?php } ?>
     </tbody>        
 		</table>
-	</div>
 </div>
 
 
