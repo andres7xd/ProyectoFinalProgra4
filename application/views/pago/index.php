@@ -38,9 +38,8 @@
 			<button type="submit" class="boton">GUARDAR</button>
 		</div>
 	<?php echo form_close(); ?>	
-	<?php echo form_open('pago/get/'. $this->session->userdata['logged_in']['usuario_id']);?>
 	<h3>Mis Tarjetas</h3>
-	<table>
+	<table class="table-responsive" width= "400px" height="100px">
     <thead>
         <tr>
             <th>Numero de Tarjeta</th>
@@ -51,22 +50,21 @@
        </tr>
     </thead>
     <tbody>
-       <?php 	  
-		if(!empty($data)) {
-				foreach( $data as $C )
-						{
-							
-							echo "<tr><td>".$C['numero_tarjeta']."</td>
-									<td>".$C['fecha_vencimiento']."</td>
-									<td>".$C['saldo']."</td> 
-									<td>".$C['saldo']."</td>
-								</tr>";
-				}
-		}
-       ?>
+	<?php foreach ($tarjetas as $t) { ?>
+		<tr>
+			<td><?php echo $t['numero_tarjeta']?></td>
+			<td><?php echo $t['fecha_vencimiento']?></td>
+			<td><?php echo $t['saldo']?></td>
+			<td>
+			<?php echo form_open('pago/delete/' . $t['tarjeta_id']);?>
+			<button type="submit" class="btn btn-danger" style="width: 60px; height: 25px; font-size: 15px; ">Delete</button>
+			<?php echo form_close();?>	
+			</td>
+		</tr>
+
+		<?php } ?>
     </tbody>        
 		</table>
-	<?php echo form_close(); ?>		
 	</div>
 </div>
 

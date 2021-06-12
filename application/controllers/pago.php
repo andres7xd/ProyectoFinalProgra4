@@ -11,7 +11,9 @@ class Pago extends CI_Controller{
     function index()
     {
         $data['_view'] = 'pago/index';
+        $data['tarjetas'] = $this->Pago_model->get_card(); 
         $this->load->view('layouts/main',$data);
+
     }
     
     function add()
@@ -47,22 +49,13 @@ class Pago extends CI_Controller{
     }  
 
 
-          
-    function get($users_id)
-    {  
-        $data['tarjetas'] = $this->Pago_model->get_card($users_id); 
-    
-    } 
+
 
 
     function delete($id_card)
     {  
-        $data['card'] = $this->Pago_model->get_card($id_card); 
-        if($this->session->userdata['logged_in']['users_id'] == $data['card']['users_id'])      
         $this->Pago_model->delete_card($id_card);
-
-        $data['message_display'] = 'Tarjeta Eliminada Exitosamente';
-        $this->load->view('pago/index', $data);
+        $this->index();
     
     }
 

@@ -378,7 +378,7 @@ a, img{
 	background: #FF9900;
 }
 
-table{
+/*table{
     border-collapse: collapse;
     font-size: 12px;
     position: relative;
@@ -428,7 +428,7 @@ td:last-child{
 td{
     border: 1px solid #CCC;
     padding: 5px;
-}
+}*/
 
 #txt_nombre{
 	height: 20%;

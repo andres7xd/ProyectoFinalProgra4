@@ -6,10 +6,10 @@ class Pago_model extends CI_Model
         parent::__construct();
     }
 
-    function get_card($users_id)
+    function get_card()
     {
 
-      $this->db->query("SELECT  tarjetas.numero_tarjeta, tarjetas.fecha_vencimiento, tarjetas.saldo FROM tarjetas WHERE usuarios.usuario_id = " . $users_id)->row_array();
+      return $this->db->query("SELECT * FROM tarjetas")->result_array();
         
     }
 
