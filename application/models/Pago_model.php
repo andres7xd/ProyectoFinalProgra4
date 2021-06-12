@@ -9,7 +9,7 @@ class Pago_model extends CI_Model
     function get_card()
     {
 
-      return $this->db->query("SELECT * FROM tarjetas")->result_array();
+      return $this->db->query("SELECT * FROM tarjetas ")->result_array();
         
     }
 

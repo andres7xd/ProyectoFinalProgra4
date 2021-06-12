@@ -51,6 +51,7 @@
     </thead>
     <tbody>
 	<?php foreach ($tarjetas as $t) { ?>
+		<?php if ($t['usuario_id'] == $this->session->userdata['logged_in']['usuario_id']) { ?>
 		<tr>
 			<td><?php echo $t['numero_tarjeta']?></td>
 			<td><?php echo $t['fecha_vencimiento']?></td>
@@ -61,8 +62,8 @@
 			<?php echo form_close();?>	
 			</td>
 		</tr>
-
 		<?php } ?>
+	<?php } ?>
     </tbody>        
 		</table>
 	</div>

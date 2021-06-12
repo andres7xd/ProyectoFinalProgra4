@@ -29,6 +29,7 @@ class Pago extends CI_Controller{
 		if($this->form_validation->run())     
         {   
             $params = array(
+                'usuario_id' => $this->session->userdata['logged_in']['usuario_id'],
 				'nombre_dueno' => $this->input->post('txt_nombre'),
                 'numero_tarjeta' =>  $this->input->post('txt_numero'),
 				'codigo_cvv' => password_hash($this->input->post('txt_codigo'), PASSWORD_BCRYPT),
