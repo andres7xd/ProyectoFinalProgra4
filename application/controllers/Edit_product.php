@@ -72,6 +72,27 @@ class Edit_product extends CI_Controller
                     $params = array(
                         'descripcion' => 'El precio del producto cambió',
                         'producto_id' =>$id_producto,
+                        'estado' => true,
+                    );
+                   $this->Edit_product_model->add_notificacion($params);
+                 }
+
+                 if($sc['costo_envio'] != $cc['costo_envio']){
+                    print_r('El costo_envio del producto cambió');
+                    $params = array(
+                        'descripcion' => 'El costo_envio del producto cambió',
+                        'producto_id' =>$id_producto,
+                        'estado' => true,
+                    );
+                   $this->Edit_product_model->add_notificacion($params);
+                 }
+
+                 if($sc['descripcion'] != $cc['descripcion']){
+                    print_r('La descripcion del producto cambió');
+                    $params = array(
+                        'descripcion' => 'La descripcion del producto cambió',
+                        'producto_id' =>$id_producto,
+                        'estado' => true,
                     );
                    $this->Edit_product_model->add_notificacion($params);
                  }

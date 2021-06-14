@@ -22,6 +22,18 @@ if (validation_errors() !== "") {
 }
 ?>
 
+<?php if(!empty($notificaciones)){?>
+
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Alerta!</strong> Se encuentran notificaiones disponibles.
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+  <?php } ?>
+
+
+
+
 <div id="panel_app">
 
   <div id="user_box">
@@ -47,9 +59,9 @@ if (validation_errors() !== "") {
       <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">🗙</button>
       <?php echo form_close(); ?>
 
-      <?php echo form_open('auth/logout'); ?>
-      <button type="submit" name="btn_notificaciones" id="btn_notificaciones" title="Notificaciones"><img src="<?php echo site_url("/resources/icons/notificacion.png") ?>" width="26" height="26"></button>
-      <?php echo form_close(); ?>
+      <!-- <?php echo form_open('auth/logout'); ?> -->
+      <button type="submit" name="btn_notificaciones" id="btn_notificaciones" title="Notificaciones" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="<?php echo site_url("/resources/icons/notificacion.png") ?>" width="26" height="26"></button>
+      <!-- <?php echo form_close(); ?> -->
 
       <?php echo form_open('carrito/index'); ?>
       <button type="submit" name="btn_carrito" id="btn_carrito" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width="26" height="26"></button>
@@ -198,20 +210,43 @@ if (validation_errors() !== "") {
     <?php } ?>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-body">
-              <?php echo form_open('store/add_categoria'); ?>
-              <input type="text" id="txt_create_categoria" name="txt_create_categoria" placeholder="Nombre de la categoría" value="">
-            </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Crear</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-            <?php echo form_close(); ?>
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-body">
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre del Producto</th>
+                  <th scope="col">Notificacion</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <?php foreach ($notificaciones as $nt) { ?>
+                  <tr>
+                  <td><?php echo $nt['nombre'] ?></td>
+                  <td><?php echo $nt['descripcion'] ?></td>
+                  </tr>
+                <?php } ?>
+
+              </tbody>
+            </table>
+
+
+
+            <!-- <input type="text" id="txt_create_categoria" name="txt_create_categoria" placeholder="Nombre de la categoría" value=""> -->
+
           </div>
+          <?php echo form_open('store/add_categoria'); ?>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+          <?php echo form_close(); ?>
         </div>
       </div>
+    </div>
 
   </div>
 </div>
+

@@ -62,4 +62,29 @@ class Buyer_model extends CI_Model
         return $this->db->query("SELECT *
                                  FROM calificaciones_productos")->result_array();
     }
+
+    function get_notificaciones($id_usuario){
+        return $this->db->query("SELECT  productos.nombre, notificaciones.descripcion 
+        FROM notificaciones
+        JOIN deseos
+        ON deseos.producto_id = notificaciones.producto_id
+        JOIN usuarios
+        ON usuarios.usuario_id = deseos.usuario_id
+        JOIN productos
+        ON productos.producto_id = notificaciones.producto_id
+        WHERE usuarios.usuario_id = $id_usuario")->result_array();
+    }
+
+    
+    function get_notificaciones_activas($id_usuario){
+        return $this->db->query("SELECT  productos.nombre, notificaciones.descripcion 
+        FROM notificaciones
+        JOIN deseos
+        ON deseos.producto_id = notificaciones.producto_id
+        JOIN usuarios
+        ON usuarios.usuario_id = deseos.usuario_id
+        JOIN productos
+        ON productos.producto_id = notificaciones.producto_id
+        WHERE usuarios.usuario_id = $id_usuario AND notificaciones.Estado = true")->result_array();
+    }
 }

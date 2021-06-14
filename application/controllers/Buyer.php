@@ -20,14 +20,27 @@ class Buyer extends CI_Controller
         $data['usuarios'] = $this->Buyer_model->get_usuario_tienda();
         $data['fotos_producto'] = $this->Buyer_model->get_fotos_producto();
         $data['calificacion_producto'] = $this->Buyer_model->get_calificacion();
+        $data['notificaciones'] = $this->Buyer_model->get_notificaciones($this->session->userdata['logged_in']['usuario_id']);
+        $data['notificaciones_disponibles'] =$this->Buyer_model->get_notificaciones_activas($this->session->userdata['logged_in']['usuario_id']);
         $data['message_display'] = $this->mensaje;
         $data['error_message'] = $this->mensaje_error;
+
+      
+        
         if ($productos_data == null) {
             $data['productos'] = $this->Buyer_model->get_productos_vendidos();
         } else
             $data['productos'] = $productos_data;
+        
+        // $this->mostrar_mensaje();
+       
         $data['_view'] = 'buyer/index';
         $this->load->view('layouts/main', $data);
+
+        $this->mensaje = "Se ha añadido el producto a la lista de deseos";
+       
+       
+       
     }
 
     function process()
@@ -79,4 +92,16 @@ class Buyer extends CI_Controller
         }
         $this->index('');
     }
+
+    // function mostrar_mensaje(){
+    //     $notificaciones = $this->Buyer_model->get_notificaciones_activas($this->session->userdata['logged_in']['usuario_id']);
+
+        
+       
+    //     if(!empty($notificaciones)){
+    //         print_r("Hay notificaciones disponibles");
+    //          $this->mensaje = "Hay notificaciones disponibles";
+    //     }
+       
+    // }
 }
