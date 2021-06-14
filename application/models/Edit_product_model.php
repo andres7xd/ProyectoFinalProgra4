@@ -57,4 +57,12 @@ class Edit_product_model extends CI_Model
         WHERE categorias.categoria = $nombre");
         return $nomb;
     }
+
+    function add_notificacion($notificacion){
+        $this->db->insert('notificaciones', $notificacion);
+        return $this->db->insert_id();
+        
+    }
+    
+
 }

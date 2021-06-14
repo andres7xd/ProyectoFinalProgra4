@@ -45,6 +45,7 @@ class Edit_product extends CI_Controller
 
     function edit_producto($id_producto)
     {
+        $array_sc = $this->Edit_product_model->get_producto($id_producto);
         $params = array(
             'nombre' => $this->input->post('txt_prod_nombre'),
             'descripcion' =>  $this->input->post('txt_prod_descripcion'),
@@ -55,7 +56,30 @@ class Edit_product extends CI_Controller
             'costo_envio' =>  $this->input->post('txt_prod_cenvio'),
             'categoria_id' =>  $this->input->post("select_categoria"),
         );
+        
         $this->Edit_product_model->update_producto($id_producto, $params);
+        $array_cc = $this->Edit_product_model->get_producto($id_producto);
+        $this->add_notificacion($array_sc,$array_cc,$id_producto);
         $this->index($id_producto);
+    }
+
+    function add_notificacion($array_sin_cambio, $array_con_cambio,$id_producto){
+        
+        foreach($array_sin_cambio as $sc){
+            foreach($array_con_cambio as $cc){
+                 if($sc['precio'] != $cc['precio']){
+                    print_r('El precio del producto cambió');
+                    $params = array(
+                        'descripcion' => 'El precio del producto cambió',
+                        'producto_id' =>$id_producto,
+                    );
+                   $this->Edit_product_model->add_notificacion($params);
+                 }
+            }
+
+        }
+        
+        
+
     }
 }

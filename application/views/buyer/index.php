@@ -196,5 +196,22 @@ if (validation_errors() !== "") {
       </div>
 
     <?php } ?>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <?php echo form_open('store/add_categoria'); ?>
+              <input type="text" id="txt_create_categoria" name="txt_create_categoria" placeholder="Nombre de la categoría" value="">
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Crear</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+            <?php echo form_close(); ?>
+          </div>
+        </div>
+      </div>
+
   </div>
 </div>
