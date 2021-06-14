@@ -56,4 +56,11 @@ class Store_model extends CI_Model
         $this->db->insert('categorias', $params);
         return $this->db->insert_id();
     }
+
+    function get_categoria($nombre)
+    {
+        return $this->db->query("SELECT * 
+        FROM categorias 
+        where categorias.categoria = '$nombre'")->result_array();
+    }
 }

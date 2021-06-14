@@ -4,6 +4,7 @@
 class Store extends CI_Controller
 {
     public $mensaje = null;
+    public $mensaje_error = null;
 
     function __construct()
     {
@@ -18,6 +19,7 @@ class Store extends CI_Controller
         $data['usuarios'] = $this->Store_model->get_usuario_tienda();
         $data['fotos_producto'] = $this->Store_model->get_fotos_producto();
         $data['message_display'] = $this->mensaje;
+        $data['error_message'] = $this->mensaje_error;
         if ($productos_data == null) {
             $data['productos'] = $this->Store_model->get_productos_vendidos($this->session->userdata['logged_in']['usuario_id']);
         } else
@@ -50,11 +52,21 @@ class Store extends CI_Controller
 
     function add_categoria()
     {
-        $params = array(
-            'categoria' => $this->input->post('txt_create_categoria'),
-        );
-        $this->Store_model->create_categoria($params);
-        $this->mensaje = "Categría creada con éxito";
+        $existe =  $this->Store_model->get_categoria($this->input->post('txt_create_categoria'));
+
+        if(empty($existe)){
+            $params = array(
+                'categoria' => $this->input->post('txt_create_categoria'),
+            );
+            $this->Store_model->create_categoria($params);
+            $this->mensaje = "Categoría creada con éxito";
+        }
+        else{
+            $this->mensaje_error = "Ya existe una categoría con ese mismo nombre";
+        }
+        
         $this->index('');
     }
+
+    
 }
