@@ -219,6 +219,7 @@ if (validation_errors() !== "") {
                 <tr>
                   <th scope="col">Nombre del Producto</th>
                   <th scope="col">Notificacion</th>
+                  <th scope="col">Acción</th>
                 </tr>
               </thead>
               <tbody>
@@ -227,6 +228,10 @@ if (validation_errors() !== "") {
                   <tr>
                   <td><?php echo $nt['nombre'] ?></td>
                   <td><?php echo $nt['descripcion'] ?></td>
+                  
+                  <?php echo form_open('buyer/delete_notificacion/' . $nt['notificacion_id']) ?>
+                  <td><button type="submit" class="btn btn-danger" style="width: 60px; height: 25px; font-size: 15px; ">Delete</button><td>
+                  <?php echo form_close(); ?>
                   </tr>
                 <?php } ?>
 

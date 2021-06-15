@@ -20,12 +20,12 @@ class Buyer extends CI_Controller
         $data['usuarios'] = $this->Buyer_model->get_usuario_tienda();
         $data['fotos_producto'] = $this->Buyer_model->get_fotos_producto();
         $data['calificacion_producto'] = $this->Buyer_model->get_calificacion();
-        $data['notificaciones'] = $this->Buyer_model->get_notificaciones($this->session->userdata['logged_in']['usuario_id']);
+        $data['notificaciones'] = $this->Buyer_model->get_notificaciones($this->session->userdata['logged_in']['usuario_id'],$this->session->userdata['logged_in']['nombre_usuario']);
         $data['notificaciones_disponibles'] =$this->Buyer_model->get_notificaciones_activas($this->session->userdata['logged_in']['usuario_id']);
         $data['message_display'] = $this->mensaje;
         $data['error_message'] = $this->mensaje_error;
 
-      
+     
         
         if ($productos_data == null) {
             $data['productos'] = $this->Buyer_model->get_productos_vendidos();
@@ -90,6 +90,14 @@ class Buyer extends CI_Controller
         } else {
             $this->mensaje_error = "El producto ya existe en la lista de deseos";
         }
+        $this->index('');
+    }
+
+
+    function delete_notificacion($id_notificacion)
+    {
+        $this->Buyer_model->delete_notificaion($id_notificacion);
+        $this->mensaje = "La notificacion se eliminó correctamente";
         $this->index('');
     }
 

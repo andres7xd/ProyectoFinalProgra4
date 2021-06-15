@@ -63,8 +63,8 @@ class Buyer_model extends CI_Model
                                  FROM calificaciones_productos")->result_array();
     }
 
-    function get_notificaciones($id_usuario){
-        return $this->db->query("SELECT  productos.nombre, notificaciones.descripcion 
+    function get_notificaciones($id_usuario,$nombre_usuario){
+        return $this->db->query("SELECT  productos.nombre, notificaciones.descripcion, notificaciones.notificacion_id
         FROM notificaciones
         JOIN deseos
         ON deseos.producto_id = notificaciones.producto_id
@@ -72,12 +72,12 @@ class Buyer_model extends CI_Model
         ON usuarios.usuario_id = deseos.usuario_id
         JOIN productos
         ON productos.producto_id = notificaciones.producto_id
-        WHERE usuarios.usuario_id = $id_usuario")->result_array();
+        WHERE usuarios.usuario_id = $id_usuario and notificaciones.nombre_usuario = '$nombre_usuario'")->result_array();
     }
 
     
     function get_notificaciones_activas($id_usuario){
-        return $this->db->query("SELECT  productos.nombre, notificaciones.descripcion 
+        return $this->db->query("SELECT  productos.nombre, notificaciones.descripcion, notificaciones.notificacion_id
         FROM notificaciones
         JOIN deseos
         ON deseos.producto_id = notificaciones.producto_id
@@ -87,4 +87,11 @@ class Buyer_model extends CI_Model
         ON productos.producto_id = notificaciones.producto_id
         WHERE usuarios.usuario_id = $id_usuario AND notificaciones.Estado = true")->result_array();
     }
+
+    function delete_notificaion($id_notificacion){
+      
+        $this->db->delete('notificaciones', array('notificacion_id' => $id_notificacion));
+    }
+
+    
 }

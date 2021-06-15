@@ -63,6 +63,14 @@ class Edit_product_model extends CI_Model
         return $this->db->insert_id();
         
     }
+
+    function get_lista_deseadores($id_producto){
+        return $this->db->query("SELECT * 
+        FROM deseos
+        JOIN usuarios
+        ON usuarios.usuario_id = deseos.usuario_id
+        where deseos.producto_id = $id_producto")->result_array();
+    }
     
 
 }
