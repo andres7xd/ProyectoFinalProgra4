@@ -92,7 +92,55 @@
     <br>
     <span class="info_compra3">Total: ₡<?php echo $total ?></span>
     <br>
-    <button type="submit" id="prod_comprar_carrito" name="prod_comprar" class="btn btn-primary">Continuar con la compra</button>
+    <button type="submit" id="prod_comprar_carrito" name="prod_comprar" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Continuar con la compra</button>
   </div>
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+        <?php echo form_open('carrito/comprar'); ?>
+          <div class="modal-body">
+
+          <span class="compra" id="spm_subtotal" name="spm_subtotal" value="<?php echo $suma_precios ?>" style="color: black;">Subtotal: <?php echo $suma_precios ?></span>
+          <br>
+          <span class="compra" id="spm_costo_envio" name="spm_costo_envio" value="<?php echo $costo_envio ?>" style="color: black;">Costo Envío: <?php echo $costo_envio ?></span>
+          <br>
+          <span class="compra" id="spm_descuento" name="spm_descuento" value="<?php echo $descuento ?>" style="color: black;">Descuento: <?php echo $descuento ?></span>
+          <br>
+          <span class="compra" id="spm_total" name="spm_total" value="<?php echo $total ?>" style="color: black;">Total: <?php echo $total ?></span>
+          <br>
+
+          <div class="div_info">
+                            <span class="pre_prod_2">Tarjeta: </span>
+                            <select id="select_categoria" name="select_categoria" value="" class="cajatexto">
+                                <?php foreach ($tarjetas as $t) { ?>
+                                        <option value="<?php echo $t["numero_tarjeta"]; ?>"><?php echo $t["numero_tarjeta"]; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+
+          
+          
+          
+          
+
+          <input type="text" id="txt_cvv" name="txt_cvv" placeholder="CVV" value="">
+
+
+            <!-- <input type="text" id="txt_create_categoria" name="txt_create_categoria" placeholder="Nombre de la categoría" value=""> -->
+
+          </div>
+         
+          <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Comprar</button>
+          <?php echo form_close(); ?>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+         
+          
+        </div>
+      </div>
+    </div>
 
 </div>

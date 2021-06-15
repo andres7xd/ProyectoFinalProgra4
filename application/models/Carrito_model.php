@@ -73,8 +73,30 @@ class Carrito_model extends CI_Model
    
         
     }
-   
 
+    function get_tarjetas($id_usuario){
+        return $this->db->query("SELECT *
+        FROM tarjetas
+     
+        where tarjetas.usuario_id = $id_usuario")->result_array();
+    }
+   
+    function add_compra($params)
+    {
+        $this->db->insert('compras', $params);
+        return $this->db->insert_id();
+    }
+
+    function get_info_tarjeta($id_usuario, $contraseña){
+        return $this->db->query("SELECT *
+        FROM tarjetas
+     
+        where tarjetas.usuario_id = $id_usuario and tarjetas.codigo_cvv = '$contraseña'")->result_array();
+    }
+    function get_claves(){
+        return $this->db->query("SELECT *
+        FROM tarjetas")->result_array();
+    }
 
 
 }

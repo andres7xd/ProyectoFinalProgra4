@@ -23,6 +23,7 @@ Class Carrito extends CI_Controller {
 
 
         $data['productos'] = $this->Carrito_model->get_producto($this->session->userdata['logged_in']['usuario_id']);
+        $data['tarjetas'] = $this->Carrito_model->get_tarjetas($this->session->userdata['logged_in']['usuario_id']);
         $data['fotos_producto'] = $this->Carrito_model->get_fotos_producto();
         $data['_view'] = 'carrito/index';
         $this->load->view('layouts/main', $data);
@@ -43,6 +44,39 @@ Class Carrito extends CI_Controller {
     function disminuir_producto($id_carrito,$cantidad){
         $this->Carrito_model->disminuir_cantidad_producto($id_carrito,$cantidad);
         $this->index();
+    }
+
+    function comprar(){
+
+
+        $cvv_encriptado = $this->input->post('txt_cvv');
+        $exist = $this->Carrito_model->get_claves();
+
+       foreach ($exist as $e){
+
+        if(password_verify($cvv_encriptado, $e['codigo_cvv'])){
+            print_r("asdfasdfasdfasdfasdfadfasdfasdfasdfasdfadsfdfadfafd");
+        }
+        else{
+            print_r("no entraa");
+        }
+
+
+       }
+            
+          
+      
+      
+        if(! empty($exist)){
+            
+            
+        }
+
+
+
+        
+        
+
     }
 
 
