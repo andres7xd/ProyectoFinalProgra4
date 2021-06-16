@@ -98,5 +98,16 @@ class Carrito_model extends CI_Model
         FROM tarjetas")->result_array();
     }
 
+    function update_saldo($tarjeta_id, $params)
+    {
+        $this->db->where('tarjeta_id', $tarjeta_id);
+        return $this->db->update('tarjetas', $params);
+    }
+
+    function update_unidades_producto($id_producto, $params){
+        $this->db->where('producto_id', $id_producto);
+        return $this->db->update('productos', $params);
+    }
+
 
 }

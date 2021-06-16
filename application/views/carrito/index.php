@@ -1,3 +1,28 @@
+<?php
+if ($message_display != null) {
+  if (isset($message_display)) {
+    echo "<div class='alert alert-primary alert-dismissible fade show' role='alert' style='font-size: 15px';>" . $message_display . "
+    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>";
+  }
+}
+
+if (isset($error_message)) {
+  echo "<div class='alert alert-danger alert-dismissible fade show' role='alert' style='font-size: 15px';>" . $error_message . "
+  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+  </div>";
+}
+
+if (validation_errors() !== "") {
+  echo "<<div class='alert alert-warning alert-dismissible fade show' role='alert' style='font-size: 15px';>>" . validation_errors() . "
+  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+  </div>";
+}
+?>
+
+
+
+
 <div id="panel_app_carrito">
 
   <div id="user_box_carrito">
@@ -71,12 +96,14 @@
         <a href="<?php echo site_url('carrito/aumentar_producto/' . $p['carrito_id'] . '/' . $p['cantidad_productos'] . '/' . $p['unidades']); ?>" id="btn_aumentar_producto_carrito" name="btn_aumentar_producto_carrito" title="Aumentar la cantidad del producto">➕</a>
         <br>
         <span class="precio_2">₡<?php echo $p["precio"] * $p["cantidad_productos"] ?></span>
+
         <br>
 
         <div class="actions_products">
           <a href="<?php echo site_url('carrito/eliminar_producto/' . $p['carrito_id']); ?>" id="btn_eliminar_producto_carrito" class="actions_carrito" name="btn_eliminar_producto_carrito" title="Eliminar del carrito de compras">❌</a>
         </div>
       </div>
+
       <?php $suma_precios = ($p["precio"] * $p["cantidad_productos"]) + $suma_precios ?>
       <?php $costo_envio = ($p["costo_envio"] * $p["cantidad_productos"]) + $costo_envio ?>
     <?php } ?>
@@ -84,6 +111,7 @@
 
   <div id="info_compra">
     <?php $total = ($suma_precios + $costo_envio) - $descuento ?>
+
     <span class="info_compra2">Subtotal: ₡<?php echo $suma_precios ?></span>
     <br>
     <span class="info_compra2">Descuento: ₡<?php echo $descuento ?></span>
@@ -99,9 +127,9 @@
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
-        <?php echo form_open('carrito/comprar'); ?>
+        <?php echo form_open('carrito/comprar/'); ?>
           <div class="modal-body">
-
+          <input id='id_suma_precios' name='id_suma_precios' type='hidden' value='<?php echo $suma_precios ?>'>
           <span class="compra" id="spm_subtotal" name="spm_subtotal" value="<?php echo $suma_precios ?>" style="color: black;">Subtotal: <?php echo $suma_precios ?></span>
           <br>
           <span class="compra" id="spm_costo_envio" name="spm_costo_envio" value="<?php echo $costo_envio ?>" style="color: black;">Costo Envío: <?php echo $costo_envio ?></span>
@@ -113,15 +141,16 @@
 
           <div class="div_info">
                             <span class="pre_prod_2">Tarjeta: </span>
-                            <select id="select_categoria" name="select_categoria" value="" class="cajatexto">
+                            <select id="select_categoria" name="select_categoria" id="" value="cmb_numero_tarjeta" name="cmb_numero_tarjeta" class="cajatexto">
                                 <?php foreach ($tarjetas as $t) { ?>
-                                        <option value="<?php echo $t["numero_tarjeta"]; ?>"><?php echo $t["numero_tarjeta"]; ?></option>
+                                        <option id="" name="" value="<?php echo $t["numero_tarjeta"]; ?>"><?php echo $t["numero_tarjeta"]; ?></option>   
                                 <?php } ?>
                             </select>
                         </div>
 
           
-          
+        <input id='id_precio_compra' name='id_precio_compra' type='hidden' value='<?php echo $total ?>'>
+        
           
           
 

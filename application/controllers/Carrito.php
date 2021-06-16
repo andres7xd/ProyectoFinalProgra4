@@ -1,15 +1,9 @@
 <?php
 
 Class Carrito extends CI_Controller {
-
-// function load_data_view($view)
-//     {
-//     	//precarga todos los datos con los que la vista debe iniciar
-//     	$this->load->model('Home_model');
-//        	$data['nombre_usuario'] = $this->Home_model->get_usuario_tienda();
-//         $data['_view'] = $view;
-// 		$this->load->view('layouts/main',$data);
-//     }
+    public $mensaje = null;
+    public $mensaje_error = null;
+    
 
     function __construct()
     {
@@ -25,6 +19,8 @@ Class Carrito extends CI_Controller {
         $data['productos'] = $this->Carrito_model->get_producto($this->session->userdata['logged_in']['usuario_id']);
         $data['tarjetas'] = $this->Carrito_model->get_tarjetas($this->session->userdata['logged_in']['usuario_id']);
         $data['fotos_producto'] = $this->Carrito_model->get_fotos_producto();
+        $data['message_display'] = $this->mensaje;
+        $data['error_message'] = $this->mensaje_error;
         $data['_view'] = 'carrito/index';
         $this->load->view('layouts/main', $data);
        
@@ -48,39 +44,80 @@ Class Carrito extends CI_Controller {
 
     function comprar(){
 
+        $productos = $this->Carrito_model->get_producto($this->session->userdata['logged_in']['usuario_id']);
 
         $cvv_encriptado = $this->input->post('txt_cvv');
         $exist = $this->Carrito_model->get_claves();
-
+        $tarjetas =$this->Carrito_model->get_tarjetas($this->session->userdata['logged_in']['usuario_id']);
        foreach ($exist as $e){
 
         if(password_verify($cvv_encriptado, $e['codigo_cvv'])){
-            print_r("asdfasdfasdfasdfasdfadfasdfasdfasdfasdfadsfdfadfafd");
+            $puede_comprar = true;
+
+            foreach($tarjetas as $t){
+                if($t['numero_tarjeta']== $this->input->post('select_categoria') and $t['saldo'] < $this->input->post('id_precio_compra') ){
+                    $puede_comprar = false;
+                }
+
+            }
+
+            if($puede_comprar == true){
+                foreach ($productos as $p){
+                    $params = array(
+                        'usuario_id'=> $this->session->userdata['logged_in']['usuario_id'],
+                        'precio_compra' => $this->input->post('id_precio_compra'),
+                        'numero_tarjeta' =>$this->input->post('select_categoria'),
+                        'fecha' => date('Y-m-d'),
+                        'producto_id' => $p['producto_id'],
+                        'precio_producto' => $p['cantidad_productos'] * $p['precio'],
+                        
+                        );
+
+                        $params2 = array(
+                            'unidades' =>   $p['unidades'] - $p['cantidad_productos'],
+                        );
+
+                        
+    
+                        $this->Carrito_model->update_unidades_producto($p['producto_id'],$params2);
+                        $this->Carrito_model->add_compra($params);
+                        $this->Carrito_model->delete($p['carrito_id']);
+                   
+                }
+    
+                 foreach($tarjetas as $t){
+                
+    
+                    if($t['numero_tarjeta']== $this->input->post('select_categoria')){
+         
+                        $monto = $t['saldo'] - $this->input->post('id_precio_compra');
+                        $params = array(
+                            'saldo' => $monto,
+                        );
+    
+    
+                        $this->Carrito_model->update_saldo($t['tarjeta_id'], $params);
+    
+                    }
+                 }
+
+                 $this->mensaje = "Compra realizada con éxito!";
+            }
+            else{
+                $this->mensaje_error = "El comprador posee saldo insuficiente para realizar la compra";
+            }
+  
         }
         else{
-            print_r("no entraa");
+            $this->mensaje_error = "CVV Invalido";
         }
 
+        $this->index();
 
        }
             
-          
-      
-      
-        if(! empty($exist)){
-            
-            
-        }
-
-
-
-        
-        
 
     }
-
-
-
 
 
 }
