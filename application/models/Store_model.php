@@ -63,4 +63,33 @@ class Store_model extends CI_Model
         FROM categorias 
         where categorias.categoria = '$nombre'")->result_array();
     }
+
+    function get_notificaciones($nombre_usuario)
+    {
+        return $this->db->query("SELECT  productos.nombre, notificaciones.descripcion, notificaciones.notificacion_id
+        FROM notificaciones
+        JOIN productos
+        ON productos.producto_id = notificaciones.producto_id
+        WHERE notificaciones.nombre_usuario = '$nombre_usuario'")->result_array();
+    }
+
+
+    function get_notificaciones_activas($id_usuario)
+    {
+        return $this->db->query("SELECT  productos.nombre, notificaciones.descripcion, notificaciones.notificacion_id
+        FROM notificaciones
+        JOIN deseos
+        ON deseos.producto_id = notificaciones.producto_id
+        JOIN usuarios
+        ON usuarios.usuario_id = deseos.usuario_id
+        JOIN productos
+        ON productos.producto_id = notificaciones.producto_id
+        WHERE usuarios.usuario_id = $id_usuario AND notificaciones.Estado = true")->result_array();
+    }
+
+    function delete_notificaion($id_notificacion)
+    {
+
+        $this->db->delete('notificaciones', array('notificacion_id' => $id_notificacion));
+    }
 }

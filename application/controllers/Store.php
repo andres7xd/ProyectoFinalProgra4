@@ -18,6 +18,8 @@ class Store extends CI_Controller
     {
         $data['usuarios'] = $this->Store_model->get_usuario_tienda();
         $data['fotos_producto'] = $this->Store_model->get_fotos_producto();
+        $data['notificaciones'] = $this->Store_model->get_notificaciones($this->session->userdata['logged_in']['nombre_real']);
+        $data['notificaciones_disponibles'] =$this->Store_model->get_notificaciones_activas($this->session->userdata['logged_in']['usuario_id']);
         $data['message_display'] = $this->mensaje;
         $data['error_message'] = $this->mensaje_error;
         if ($productos_data == null) {
@@ -68,5 +70,11 @@ class Store extends CI_Controller
         $this->index('');
     }
 
-    
+    function delete_notificacion($id_notificacion)
+    {
+        $this->Store_model->delete_notificaion($id_notificacion);
+        $this->mensaje = "La notificacion se eliminó correctamente";
+        $this->index('');
+    }
+
 }

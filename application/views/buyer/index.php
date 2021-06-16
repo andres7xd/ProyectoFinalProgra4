@@ -25,7 +25,7 @@ if (validation_errors() !== "") {
 <?php if(!empty($notificaciones)){?>
 
   <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>Alerta!</strong> Se encuentran notificaiones disponibles.
+  <strong>Alerta!</strong> Se encuentran notificaciones disponibles.
   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 

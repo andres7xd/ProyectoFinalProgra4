@@ -20,6 +20,15 @@ if (validation_errors() !== "") {
 }
 ?>
 
+<?php if(!empty($notificaciones)){?>
+
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<strong>Alerta!</strong> Se encuentran notificaciones disponibles.
+<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<?php } ?>
+
 <div id="panel_app">
 
   <div id="user_box">
@@ -39,18 +48,18 @@ if (validation_errors() !== "") {
       <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">🗙</button>
       <?php echo form_close(); ?>
 
-      <button type="submit" name="btn_notificaciones" id="btn_notificaciones" title="Notificaciones" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="<?php echo site_url("/resources/icons/notificacion.png") ?>" width="26px" height="26px"></button>
+      <button type="submit" name="btn_notificaciones" id="btn_notificaciones" title="Notificaciones" data-bs-toggle="modal" data-bs-target="#notificacion_modal"><img src="<?php echo site_url("/resources/icons/notificacion.png") ?>" width="26px" height="26px"></button>
 
       <?php echo form_open('suscripciones_tienda/index'); ?>
-      <button type="submit" name="btn_carrito" id="btn_carrito_store" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width="26px" height="26px"></button>
+      <button type="submit" name="btn_carrito" id="btn_carrito" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width="26px" height="26px"></button>
       <?php echo form_close(); ?>
 
       <?php echo form_open('deseos_tienda/index'); ?>
-      <button type="submit" name="btn_deseos" id="btn_deseos_store" title="Lista de deseos"><img src="<?php echo site_url("/resources/icons/deseos.png") ?>" width="26px" height="26px"></button>
+      <button type="submit" name="btn_deseos" id="btn_deseos" title="Lista de deseos"><img src="<?php echo site_url("/resources/icons/deseos.png") ?>" width="26px" height="26px"></button>
       <?php echo form_close(); ?>
 
 
-      
+
 
     </div>
 
@@ -103,6 +112,44 @@ if (validation_errors() !== "") {
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
             <?php echo form_close(); ?>
+          </div>
+        </div>
+      </div>
+
+      <!-- ventana modal notificaiones -->
+      <div class="modal fade" id="notificacion_modal" tabindex="-1" aria-labelledby="notificacion_modalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-body">
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre del Producto</th>
+                    <th scope="col">Notificacion</th>
+                    <th scope="col">Acción</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <?php foreach ($notificaciones as $nt) { ?>
+                    <tr>
+                      <td><?php echo $nt['nombre'] ?></td>
+                      <td><?php echo $nt['descripcion'] ?></td>
+
+                      <?php echo form_open('store/delete_notificacion/' . $nt['notificacion_id']) ?>
+                      <td><button type="submit" class="btn btn-danger">Delete</button>
+                      <td>
+                        <?php echo form_close(); ?>
+                    </tr>
+                  <?php } ?>
+
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
           </div>
         </div>
       </div>
@@ -179,7 +226,7 @@ if (validation_errors() !== "") {
 
 
 
-    
+
 
 
 

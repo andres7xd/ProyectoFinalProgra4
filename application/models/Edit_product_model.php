@@ -60,8 +60,7 @@ class Edit_product_model extends CI_Model
 
     function add_notificacion($notificacion){
         $this->db->insert('notificaciones', $notificacion);
-        return $this->db->insert_id();
-        
+        return $this->db->insert_id();  
     }
 
     function get_lista_deseadores($id_producto){
@@ -72,5 +71,4 @@ class Edit_product_model extends CI_Model
         where deseos.producto_id = $id_producto")->result_array();
     }
     
-
 }
