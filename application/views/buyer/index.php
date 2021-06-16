@@ -59,9 +59,9 @@ if (validation_errors() !== "") {
       <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">🗙</button>
       <?php echo form_close(); ?>
 
-      <!-- <?php echo form_open('auth/logout'); ?> -->
+     
       <button type="submit" name="btn_notificaciones" id="btn_notificaciones" title="Notificaciones" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="<?php echo site_url("/resources/icons/notificacion.png") ?>" width="26" height="26"></button>
-      <!-- <?php echo form_close(); ?> -->
+      
 
       <?php echo form_open('carrito/index'); ?>
       <button type="submit" name="btn_carrito" id="btn_carrito" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width="26" height="26"></button>

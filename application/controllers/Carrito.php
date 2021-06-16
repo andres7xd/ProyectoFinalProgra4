@@ -77,7 +77,14 @@ Class Carrito extends CI_Controller {
                             'unidades' =>   $p['unidades'] - $p['cantidad_productos'],
                         );
 
+                        $params_not = array(
+                            'descripcion' => 'Producto vendido',
+                            'producto_id' => $p['producto_id'],
+                            'estado' => true,
+                            'nombre_usuario' => $p['nombre_real'],
+                        );
                         
+                        $this->Carrito_model->add_notificacion($params_not);
     
                         $this->Carrito_model->update_unidades_producto($p['producto_id'],$params2);
                         $this->Carrito_model->add_compra($params);
@@ -99,7 +106,11 @@ Class Carrito extends CI_Controller {
                         $this->Carrito_model->update_saldo($t['tarjeta_id'], $params);
     
                     }
+
+                   
                  }
+
+               
 
                  $this->mensaje = "Compra realizada con éxito!";
             }

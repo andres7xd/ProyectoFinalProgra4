@@ -39,6 +39,8 @@ if (validation_errors() !== "") {
       <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">🗙</button>
       <?php echo form_close(); ?>
 
+      <button type="submit" name="btn_notificaciones" id="btn_notificaciones" title="Notificaciones" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="<?php echo site_url("/resources/icons/notificacion.png") ?>" width="26px" height="26px"></button>
+
       <?php echo form_open('suscripciones_tienda/index'); ?>
       <button type="submit" name="btn_carrito" id="btn_carrito_store" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width="26px" height="26px"></button>
       <?php echo form_close(); ?>
@@ -46,6 +48,9 @@ if (validation_errors() !== "") {
       <?php echo form_open('deseos_tienda/index'); ?>
       <button type="submit" name="btn_deseos" id="btn_deseos_store" title="Lista de deseos"><img src="<?php echo site_url("/resources/icons/deseos.png") ?>" width="26px" height="26px"></button>
       <?php echo form_close(); ?>
+
+
+      
 
     </div>
 
@@ -168,5 +173,16 @@ if (validation_errors() !== "") {
       </div>
 
     <?php } ?>
+
+
+
+
+
+
+    
+
+
+
+
   </div>
 </div>

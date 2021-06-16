@@ -109,5 +109,11 @@ class Carrito_model extends CI_Model
         return $this->db->update('productos', $params);
     }
 
+    function add_notificacion($notificacion){
+        $this->db->insert('notificaciones', $notificacion);
+        return $this->db->insert_id();
+        
+    }
+
 
 }
