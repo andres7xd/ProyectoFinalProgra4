@@ -31,8 +31,6 @@ class Buyer extends CI_Controller
             $data['productos'] = $this->Buyer_model->get_productos_vendidos();
         } else
             $data['productos'] = $productos_data;
-        
-        // $this->mostrar_mensaje();
        
         $data['_view'] = 'buyer/index';
         $this->load->view('layouts/main', $data);

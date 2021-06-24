@@ -994,13 +994,8 @@ td{
 	padding: 20px;
 }
 
-#btn_create_producto{
+#btn_create_producto, #btn_create_categoria, #btn_reporte_ventas{
     margin: 5px;
-	float: right;
-}
-
-#btn_create_categoria{
-	margin: 5px;
 	float: right;
 }
 
@@ -1067,7 +1062,14 @@ td{
 	left: 12.5%
 }
 
-
+.dates{
+    position: relative;
+    left: 60px;
+    border-radius: 10px;
+	margin: 15px;
+	width: 150px;
+	height: 25px;
+}
 
 @keyframes fadeout {
     from { opacity: 1; visibility: visible; }

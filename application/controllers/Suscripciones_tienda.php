@@ -14,12 +14,8 @@ class Suscripciones_tienda extends CI_Controller
     {
       
         $data['suscripciones'] = $this->Suscripciones_tienda_model->get_usuarios_suscritos($this->session->userdata['logged_in']['usuario_id']);
-        
         $data['_view'] = 'suscripciones_tienda/index';
         $this->load->view('layouts/main', $data);
-        
-
-        
     }
 
     

@@ -31,7 +31,9 @@ if (validation_errors() !== "") {
 
   <?php } ?>
 
-
+<head>
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url('resources/css/style.css'); ?>">
+</head>
 
 
 <div id="panel_app">

@@ -1,3 +1,7 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="<?php echo site_url('resources/css/style.css'); ?>">
+</head>
+
 <div id="panel_app_deseos">
 
     <div id="user_box_deseos_tienda">
