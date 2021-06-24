@@ -96,9 +96,19 @@ if (validation_errors() !== "") {
   <div id="main_panel">
 
     <div>
+
       <button type="button" class="btn btn-primary" id="btn_create_categoria" data-bs-toggle="modal" data-bs-target="#reporteComprasModal">
         Reporte de compras
       </button>
+
+      <?php echo form_open('suscripciones/index'); ?>
+      <input type="submit" class="btn btn-primary" style="float:right; margin:5px;" value="Reporte de suscripciones">
+      <?php echo form_close(); ?>
+      
+      <?php echo form_open('ofertas/index'); ?>
+      <input type="submit" class="btn btn-primary" style="float:right; margin:5px;" value="Reporte de ofertas">
+      <?php echo form_close(); ?>
+      
       <!-- Modal -->
       <div class="modal fade" id="reporteComprasModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
