@@ -41,6 +41,7 @@ $datosid = [];
                         <th>Nombre del producto</th>
                         <th>Precio del producto</th>
                         <th>Costo de envío</th>
+                        <th>Fecha de la compra</th>
                         <th>Nombre del comprador</th>
                         
                     </tr>
@@ -54,6 +55,7 @@ $datosid = [];
                             <td><?php echo $t['nombre'] ?></td>
                             <td><?php echo $t['precio_producto'] ?></td>
                             <td><?php echo $t['costo_envio'] ?></td>
+                            <td><?php echo $t['fecha'] ?></td>
                             <td><?php echo $t['nombre_real'] ?></td>
                             <?php
                             $saldo = $t['precio_producto'] + $t['costo_envio'] + $saldo;

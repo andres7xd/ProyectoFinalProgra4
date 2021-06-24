@@ -22,17 +22,17 @@ if (validation_errors() !== "") {
 }
 ?>
 
-<?php if(!empty($notificaciones)){?>
+<?php if (!empty($notificaciones)) { ?>
 
   <div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>Alerta!</strong> Se encuentran notificaciones disponibles.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+    <strong>Alerta!</strong> Se encuentran notificaciones disponibles.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
 
-  <?php } ?>
+<?php } ?>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="<?php echo site_url('resources/css/style.css'); ?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo site_url('resources/css/style.css'); ?>">
 </head>
 
 
@@ -61,9 +61,9 @@ if (validation_errors() !== "") {
       <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">🗙</button>
       <?php echo form_close(); ?>
 
-     
+
       <button type="submit" name="btn_notificaciones" id="btn_notificaciones" title="Notificaciones" data-bs-toggle="modal" data-bs-target="#exampleModal"><img src="<?php echo site_url("/resources/icons/notificacion.png") ?>" width="26" height="26"></button>
-      
+
 
       <?php echo form_open('carrito/index'); ?>
       <button type="submit" name="btn_carrito" id="btn_carrito" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width="26" height="26"></button>
@@ -94,6 +94,32 @@ if (validation_errors() !== "") {
 <div>
 
   <div id="main_panel">
+
+    <div>
+      <button type="button" class="btn btn-primary" id="btn_create_categoria" data-bs-toggle="modal" data-bs-target="#reporteComprasModal">
+        Reporte de compras
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="reporteComprasModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <?php echo form_open('reporte_compras/index'); ?>
+              <input type="date" class="dates" id="fecha_1" name="fecha_1" title="Primer fecha">
+              <input type="date" class="dates" id="fecha_2" name="fecha_2" title="Segunda fecha">
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Crear</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+            <?php echo form_close(); ?>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <br><br><br><br>
     <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE PRODUCTOS</h1>
     <?php foreach ($productos as $p) { ?>
       <div class="div_productos">
@@ -210,7 +236,7 @@ if (validation_errors() !== "") {
       </div>
 
     <?php } ?>
-    
+
     <!-- ventana modal notificaiones -->
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -230,12 +256,13 @@ if (validation_errors() !== "") {
 
                 <?php foreach ($notificaciones as $nt) { ?>
                   <tr>
-                  <td><?php echo $nt['nombre'] ?></td>
-                  <td><?php echo $nt['descripcion'] ?></td>
-                  
-                  <?php echo form_open('buyer/delete_notificacion/' . $nt['notificacion_id']) ?>
-                  <td><button type="submit" class="btn btn-danger" style="width: 60px; height: 25px; font-size: 15px; ">Delete</button><td>
-                  <?php echo form_close(); ?>
+                    <td><?php echo $nt['nombre'] ?></td>
+                    <td><?php echo $nt['descripcion'] ?></td>
+
+                    <?php echo form_open('buyer/delete_notificacion/' . $nt['notificacion_id']) ?>
+                    <td><button type="submit" class="btn btn-danger" style="width: 60px; height: 25px; font-size: 15px; ">Delete</button>
+                    <td>
+                      <?php echo form_close(); ?>
                   </tr>
                 <?php } ?>
 
@@ -258,4 +285,3 @@ if (validation_errors() !== "") {
 
   </div>
 </div>
-

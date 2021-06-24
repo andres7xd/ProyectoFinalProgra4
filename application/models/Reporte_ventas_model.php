@@ -9,7 +9,7 @@ class Reporte_ventas_model extends CI_Model
 
     function get_ventas($id_usuario, $fecha_ini, $fecha_fin)
     {
-        return $this->db->query("SELECT p.nombre, c.precio_producto, p.costo_envio, u.nombre_real, p.unidades_vendidas,p.producto_id
+        return $this->db->query("SELECT p.nombre, c.precio_producto, p.costo_envio, u.nombre_real, p.unidades_vendidas,p.producto_id, c.fecha
                                  FROM compras c
                                  JOIN productos p
                                  ON p.producto_id = c.producto_id
