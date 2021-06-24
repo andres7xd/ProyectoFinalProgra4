@@ -12,6 +12,13 @@ class Carrito extends CI_Controller
         $this->load->library('session');
     }
 
+
+    function index_factura()
+    {
+        $data['_view'] = 'factura/index';
+        $this->load->view('layouts/main', $data);
+    }
+
     function index()
     {
         $data['productos'] = $this->Carrito_model->get_producto($this->session->userdata['logged_in']['usuario_id']);
@@ -54,70 +61,70 @@ class Carrito extends CI_Controller
         $cvv_encriptado = $this->input->post('txt_cvv');
         $exist = $this->Carrito_model->get_claves();
         $tarjetas = $this->Carrito_model->get_tarjetas($this->session->userdata['logged_in']['usuario_id']);
-        foreach ($exist as $e) {
 
-            if (password_verify($cvv_encriptado, $e['codigo_cvv'])) {
-                $puede_comprar = true;
-                foreach ($tarjetas as $t) {
-                    if ($t['numero_tarjeta'] == $this->input->post('select_categoria') and $t['saldo'] < $this->input->post('id_precio_compra')) {
-                        $puede_comprar = false;
-                    }
-                }
-
-                if ($puede_comprar == true) {
-                    foreach ($productos as $p) {
-
-                       for ($i =0; $i < $p['cantidad_productos']; $i++){
-                        $params = array(
-                            'usuario_id' => $this->session->userdata['logged_in']['usuario_id'],
-                            'precio_compra' => $this->input->post('id_precio_compra'),
-                            'numero_tarjeta' => $this->input->post('select_categoria'),
-                            'fecha' => date('Y-m-d'),
-                            'producto_id' => $p['producto_id'],
-                            'precio_producto' => $p['precio'],
-                            'numero_compra' => $ult_num_compra + 1,
-                        );
-
-                        $params2 = array(
-                            'unidades' =>   $p['unidades'] - $p['cantidad_productos'],
-                        );
-
-                        $params_not = array(
-                            'descripcion' => 'Producto vendido',
-                            'producto_id' => $p['producto_id'],
-                            'estado' => true,
-                            'nombre_usuario' => $p['nombre_real'],
-                        );
-
-                        $this->Carrito_model->add_notificacion($params_not);
-                        $this->Carrito_model->update_unidades_producto($p['producto_id'], $params2);
-                        $this->Carrito_model->add_compra($params);
-                        $this->Carrito_model->delete($p['carrito_id']);
-
-                       } 
-                    
-                       
-                    }
-
+        if (!empty($exist)) {
+            foreach ($exist as $e) {
+                if (password_verify($cvv_encriptado, $e['codigo_cvv'])) {
+                    $puede_comprar = true;
                     foreach ($tarjetas as $t) {
-
-                        if ($t['numero_tarjeta'] == $this->input->post('select_categoria')) {
-
-                            $monto = $t['saldo'] - $this->input->post('id_precio_compra');
-                            $params = array(
-                                'saldo' => $monto,
-                            );
-                            $this->Carrito_model->update_saldo($t['tarjeta_id'], $params);
+                        if ($t['numero_tarjeta'] == $this->input->post('select_categoria') and $t['saldo'] < $this->input->post('id_precio_compra')) {
+                            $puede_comprar = false;
                         }
                     }
-                    $this->mensaje = "Compra realizada con éxito!";
-                } else {
-                    $this->mensaje_error = "El comprador posee saldo insuficiente para realizar la compra";
+
+                    if ($puede_comprar == true) {
+                        foreach ($productos as $p) {
+
+                            for ($i = 0; $i < $p['cantidad_productos']; $i++) {
+                                $params = array(
+                                    'usuario_id' => $this->session->userdata['logged_in']['usuario_id'],
+                                    'precio_compra' => $this->input->post('id_precio_compra'),
+                                    'numero_tarjeta' => $this->input->post('select_categoria'),
+                                    'fecha' => date('Y-m-d'),
+                                    'producto_id' => $p['producto_id'],
+                                    'precio_producto' => $p['precio'],
+                                    'numero_compra' => $ult_num_compra + 1,
+                                );
+
+                                $params2 = array(
+                                    'unidades' =>   $p['unidades'] - $p['cantidad_productos'],
+                                );
+
+                                $params_not = array(
+                                    'descripcion' => 'Producto vendido',
+                                    'producto_id' => $p['producto_id'],
+                                    'estado' => true,
+                                    'nombre_usuario' => $p['nombre_real'],
+                                );
+
+                                $this->Carrito_model->add_notificacion($params_not);
+                                $this->Carrito_model->update_unidades_producto($p['producto_id'], $params2);
+                                $this->Carrito_model->add_compra($params);
+                                $this->Carrito_model->delete($p['carrito_id']);
+                            }
+                        }
+
+                        foreach ($tarjetas as $t) {
+                            if ($t['numero_tarjeta'] == $this->input->post('select_categoria')) {
+
+                                $monto = $t['saldo'] - $this->input->post('id_precio_compra');
+                                $params = array(
+                                    'saldo' => $monto,
+                                );
+                                $this->Carrito_model->update_saldo($t['tarjeta_id'], $params);
+                            }
+                        }
+                        $this->load->view('factura/index');
+                        //$this->index_factura();
+                        // $this->mensaje = "Compra realizada con éxito!";
+                    } else {
+                        $this->mensaje_error = "El comprador posee saldo insuficiente para realizar la compra";
+                    }
                 }
-            } else {
-                $this->mensaje_error = "CVV Invalido";
             }
+        } else {
+            $this->mensaje_error = "CVV Invalido";
+            $this->index();
         }
-        $this->index();
     }
 }

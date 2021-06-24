@@ -71,9 +71,6 @@ class Product extends CI_Controller
         } else {
             $this->mensaje_error = "La suscripcion ya existe";
         }
-
-
-
         $this->index($id_producto);
     }
 
