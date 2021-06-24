@@ -1,3 +1,11 @@
+<?php
+$etiquetas = [];
+$datosCompras = [];
+$datosid = [];
+?>
+
+
+
 <head>
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('resources/css/reportes.css'); ?>">
     <meta charset="UTF-8">
@@ -44,6 +52,11 @@
                             <td><?php echo $c['fecha'] ?></td>
                             <?php
                             $saldo = $c['precio_producto'] + $c['costo_envio'] + $saldo;
+
+
+
+                          
+
                             ?>
                         </tr>
                     <?php } ?>
@@ -52,3 +65,66 @@
         </div>
         <h4 style='float:left; padding-top: 10px; color:black; margin:10px;'>Saldo invertido: ₡<?php echo $saldo ?></h4>
     </div>
+
+
+    <?php foreach ($datos_grafico as $dtg) { ?>
+
+     <?php
+        $monto = 0;
+                                $monto = $dtg['SUM(precio_producto)'] + $dtg['SUM(costo_envio)'];
+                                array_push($etiquetas, $dtg['nombre']);
+                                array_push($datosCompras, $monto);
+                               
+         ?>                   
+
+        <?php } ?>
+
+
+
+
+
+
+
+
+
+
+    <h1>Gráfica creada con PHP</h1>
+
+    <canvas id="grafica"></canvas>
+    <script type="text/javascript">
+        // Obtener una referencia al elemento canvas del DOM
+        const $grafica = document.querySelector("#grafica");
+        // Pasaamos las etiquetas desde PHP
+        const etiquetas = <?php echo json_encode($etiquetas) ?>;
+        // Podemos tener varios conjuntos de datos. Comencemos con uno
+        const datosVentas2020 = {
+            label: "Productos segun el total invertido",
+            // Pasar los datos igualmente desde PHP
+            data: <?php echo json_encode($datosCompras) ?>,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)', // Color de fondo
+            borderColor: 'rgba(54, 162, 235, 1)', // Color del borde
+            borderWidth: 1, // Ancho del borde
+        };
+        new Chart($grafica, {
+            type: 'bar', // Tipo de gráfica
+            data: {
+                labels: etiquetas,
+                datasets: [
+                    datosVentas2020,
+                    // Aquí más datos...
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                },
+            }
+        });
+    </script>
+
+
+</body>
