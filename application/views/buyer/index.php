@@ -104,11 +104,11 @@ if (validation_errors() !== "") {
       <?php echo form_open('reporte_suscripciones/index'); ?>
       <input type="submit" class="btn btn-primary" style="float:right; margin:5px;" value="Reporte de suscripciones">
       <?php echo form_close(); ?>
-      
-      <button type="button" class="btn btn-primary" id="btn_create_categoria" data-bs-toggle="modal" data-bs-target="#reporteComprasModal">
+
+      <button type="button" class="btn btn-primary" id="btn_create_categoria" data-bs-toggle="modal" data-bs-target="#reporteOfertasModal">
         Reporte de ofertas
       </button>
-      
+
       <!-- Modal -->
       <div class="modal fade" id="reporteComprasModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -121,6 +121,40 @@ if (validation_errors() !== "") {
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary">Crear</button>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+            <?php echo form_close(); ?>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- Modal ofertas -->
+      <div class="modal fade" id="reporteOfertasModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <?php echo form_open('reporte_ofertas/index'); ?>
+              <input type="date" class="dates" id="fecha_1" name="fecha_1" title="Primer fecha">
+              <input type="date" class="dates" id="fecha_2" name="fecha_2" title="Segunda fecha">
+              <input type="text" class="text" id="txt_precio_ini" name="txt_precio_ini" title="Precio inicio">
+              <input type="text" class="text" id="txt_precio_fin" name="txt_precio_fin" title="Precio fin">
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Crear</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+             
+             
+                <select id="select_categoria" name="select_categoria" value="<?php echo $this->input->post('select_categoria'); ?>" class="cajatexto">
+                  <?php foreach($categorias as $ca){ ?>
+                    <option><?php echo $ca['categoria'] ?></option>
+                  <?php } ?>
+                  
+                 
+                 
+                </select>
+              
             </div>
             <?php echo form_close(); ?>
           </div>

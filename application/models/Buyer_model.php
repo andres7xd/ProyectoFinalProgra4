@@ -93,5 +93,10 @@ class Buyer_model extends CI_Model
         $this->db->delete('notificaciones', array('notificacion_id' => $id_notificacion));
     }
 
+
+    function get_categorias(){
+        return $this->db->query("SELECT *
+        FROM categorias")->result_array();
+    }
     
 }
