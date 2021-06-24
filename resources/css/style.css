@@ -36,7 +36,26 @@ a, img{
 	background-color: #253341;
 }
 
+#panel_app_add_user{
+	position: relative;
+	width: 100%;
+	border-radius: 5px;
+	margin: auto;
+	height: 40px;
+	background-color: #253341;
+}
+
 #main_panel, #edit_panel{
+	position: relative;
+	width: auto;
+	margin: auto;
+	height: 90%;
+	overflow: auto;
+	border: 1px solid #253341;
+	padding: 20px;
+}
+
+#edit_panel_user_add{
 	position: relative;
 	width: auto;
 	margin: auto;

@@ -63,12 +63,18 @@ class User extends CI_Controller{
             $this->form_validation->set_rules('txt_clave','Contraseña','required|max_length[128]');
             $this->form_validation->set_rules('txt_nombre','Nombre','required|max_length[64]');
             
+            
             if($this->form_validation->run())    
             {   
                 $params = array(
                     'nombre_usuario' => $this->input->post('txt_usuario'),
                     'contrasena' => password_hash($this->input->post('txt_clave'), PASSWORD_BCRYPT),
                     'nombre_real' => $this->input->post('txt_nombre'),
+                    'cedula' => $this->input->post('txt_cedula'),
+                    'pais' => $this->input->post('txt_pais'),
+                    'direccion' => $this->input->post('txt_direccion'),
+                    'email' => $this->input->post('txt_email'),
+                    'telefono' => $this->input->post('txt_telefono'),
                 );
 
                 $this->User_model->update_user($users_id,$params);

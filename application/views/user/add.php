@@ -2,15 +2,17 @@
     <link rel="stylesheet" type="text/css" href="<?php echo site_url('resources/css/style.css'); ?>">
 </head>
 
-<div id="panel_app">
+<div id="panel_app_add_user">
 	<div class="box-header">
 		<h2 class="box-title">Agregando Usuario</h2>
-		<?php echo form_open('twitter/index'); ?>
+		<?php echo form_open('auth/logout'); ?>
 		<button type="submit" name="btn_return" id="btn_return" class="boton" title="Regresar">←</button>
 		<?php echo form_close(); ?>
 	</div>
 	<?php echo form_open('user/add'); ?>
-	<div id="edit_panel">
+</div>
+
+<div id="edit_panel_user_add">
 		<label for="txt_usuario" class="control-label"><span class="text-danger">* </span>Usuario:</label>
 		<div class="form-group">
 			<input type="text" name="txt_usuario" value="<?php echo $this->input->post('txt_usuario'); ?>" class="cajatexto" id="txt_usuario" />
@@ -65,11 +67,12 @@
 				<option>Comprador</option>
 			</select>
 		</div>
-
+		
 		<br>
 		<div class="box-footer">
-			<button type="submit" class="boton">Guardar</button>
+			<button type="submit" class="boton" style="font-size: 15px;">Guardar</button>
 		</div>
 		<?php echo form_close(); ?>
+
 	</div>
-</div>
+	
