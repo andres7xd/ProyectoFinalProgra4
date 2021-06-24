@@ -72,14 +72,30 @@ $datosid = [];
             </table>
         </div>
         <h4 style='float:left; padding-top: 10px; color:black; margin:10px;'>Saldo completo:  ₡<?php echo $saldo ?></h4>
+        <br>
+        <br>
+        <h4 style='float:left; padding-top: 10px; color:black; margin:100px;'>Gráfico según cantidad de productos vendidos</h4>
     </div>
+    
+    
+   
+   <?php 
+    $bgcolor=[];
+    foreach($etiquetas as $e){
 
+        $r = mt_rand( 128, 255 );
+        $g = mt_rand( 128, 255 );
+        $b = mt_rand( 128, 255 );
+        $a = '0.4';
 
+        array_push($bgcolor,'rgba('.$r.','.$g.','.$b.','.$a.')');
+    }
+   echo print_r($bgcolor);
 
+   ?>
 
-
-
-
+    
+    
 
 
 
@@ -96,7 +112,7 @@ $datosid = [];
             label: "Ventas por mes",
             // Pasar los datos igualmente desde PHP
             data: <?php echo json_encode($datosVentas) ?>,
-            backgroundColor: 'rgba(54, 162, 235, 0.2)', // Color de fondo
+            backgroundColor:  <?php echo json_encode($bgcolor) ?>, // Color de fondo
             borderColor: 'rgba(54, 162, 235, 1)', // Color del borde
             borderWidth: 1, // Ancho del borde
         };
