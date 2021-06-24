@@ -6,7 +6,7 @@
 <body id="body_reportes">
 
     <div>
-        <?php echo form_open('buyer/index'); ?>
+        <?php echo form_open('carrito/index'); ?>
         <input type="submit" class="btn_cerrar_reporte" title="Cerrar reporte" value="✖️" style="float: right; margin:2px; border:transparent; background:transparent; font-size:20px;">
         <?php echo form_close(); ?>
     </div>
@@ -29,7 +29,8 @@
                 </thead>
                 <tbody>
                     <?php
-                    $saldo = 0;
+                    $subtotal = 0;
+                    $total = 0;
                     ?>
                     <?php foreach ($compra as $c) { ?>
                         <tr>
@@ -38,12 +39,14 @@
                             <td><?php echo $c['costo_envio'] ?></td>
                             <td><?php echo $c['fecha'] ?></td>
                             <?php
-                            $saldo = $c['precio_producto'] + $c['costo_envio'] + $saldo;
+                            $subtotal = $c['precio_producto'] + $subtotal;
+                            $total = $c['precio_producto'] + $c['costo_envio'] + $total;
                             ?>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
         </div>
-        <h4 style='float:left; padding-top: 10px; color:black; margin:10px;'>Saldo invertido: ₡<?php echo $saldo ?></h4>
+        <h4 style='float:left; padding-top: 10px; color:black; margin:10px; margin-right:100px;'>Subtotal: ₡<?php echo $subtotal ?></h4>
+        <h4 style='float:left; padding-top: 10px; color:black; margin:10px;'>Total: ₡<?php echo $total ?></h4>
     </div>

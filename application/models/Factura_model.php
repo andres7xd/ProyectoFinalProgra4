@@ -7,12 +7,13 @@ class Factura_model extends CI_Model
         parent::__construct();
     }
 
-    function ultimo_numero_compra()
+    function ultimo_numero_compra($usuario_id)
     {
         return $this->db->query("SELECT compras.numero_compra
-                                FROM compras
-                                ORDER BY compras.numero_compra DESC
-                                LIMIT 1")->result_array();
+                                 FROM compras
+                                 WHERE compras.usuario_id = $usuario_id
+                                 ORDER BY compras.numero_compra DESC
+                                 LIMIT 1")->result_array();
     }
 
     function get_factura($numero_compra)

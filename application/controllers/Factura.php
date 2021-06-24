@@ -11,7 +11,7 @@ class Factura extends CI_Controller
 
     function index()
     {
-        $num_compra = $this->Factura_model->ultimo_numero_compra();
+        $num_compra = $this->Factura_model->ultimo_numero_compra($this->session->userdata['logged_in']['usuario_id']);
         $ult_num_compra = 0;
 
         foreach ($num_compra as $n) {
