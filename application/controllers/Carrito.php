@@ -44,6 +44,12 @@ class Carrito extends CI_Controller
     function comprar()
     {
         $productos = $this->Carrito_model->get_producto($this->session->userdata['logged_in']['usuario_id']);
+        $num_compra = $this->Carrito_model->ultimo_numero_compra();
+        $ult_num_compra = 0;
+
+        foreach ($num_compra as $n) {
+            $ult_num_compra = $n["numero_compra"];
+        }
 
         $cvv_encriptado = $this->input->post('txt_cvv');
         $exist = $this->Carrito_model->get_claves();
@@ -69,6 +75,7 @@ class Carrito extends CI_Controller
                             'fecha' => date('Y-m-d'),
                             'producto_id' => $p['producto_id'],
                             'precio_producto' => $p['precio'],
+                            'numero_compra' => $ult_num_compra + 1,
                         );
 
                         $params2 = array(
@@ -83,7 +90,6 @@ class Carrito extends CI_Controller
                         );
 
                         $this->Carrito_model->add_notificacion($params_not);
-
                         $this->Carrito_model->update_unidades_producto($p['producto_id'], $params2);
                         $this->Carrito_model->add_compra($params);
                         $this->Carrito_model->delete($p['carrito_id']);
