@@ -60,13 +60,15 @@ class Carrito extends CI_Controller
 
                 if ($puede_comprar == true) {
                     foreach ($productos as $p) {
+
+                       for ($i =0; $i < $p['cantidad_productos']; $i++){
                         $params = array(
                             'usuario_id' => $this->session->userdata['logged_in']['usuario_id'],
                             'precio_compra' => $this->input->post('id_precio_compra'),
                             'numero_tarjeta' => $this->input->post('select_categoria'),
                             'fecha' => date('Y-m-d'),
                             'producto_id' => $p['producto_id'],
-                            'precio_producto' => $p['cantidad_productos'] * $p['precio'],
+                            'precio_producto' => $p['precio'],
                         );
 
                         $params2 = array(
@@ -85,6 +87,10 @@ class Carrito extends CI_Controller
                         $this->Carrito_model->update_unidades_producto($p['producto_id'], $params2);
                         $this->Carrito_model->add_compra($params);
                         $this->Carrito_model->delete($p['carrito_id']);
+
+                       } 
+                    
+                       
                     }
 
                     foreach ($tarjetas as $t) {
