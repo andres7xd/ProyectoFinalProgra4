@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" >
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>Ruleta 1a2</title>
-  
-  
-  <link rel='stylesheet prefetch' href='https://noesishosting.com/cdn/estilos.css'>
-
-      <link rel="stylesheet" href="css/style.css">
+-	<meta charset="utf-8">
+	<html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Chatwitter</title>
+	<!-- Tell the browser to be responsive to screen width -->
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<link rel="icon" href="<?php echo site_url('resources/img/favicon.png'); ?>" type="image/x-icon">
+	<link rel="stylesheet" type="text/css" href="<?php echo site_url('resources/css/login.css'); ?>">
 
   
 </head>
@@ -16,34 +16,39 @@
 <body>
 
   
-<audio id="fxClick">
-  <source type="audio/ogg" src="https://noesishosting.com/drive/tmp/click-boton.ogg"/>
-</audio>
-<audio id="fxRuleta">
-  <source type="audio/ogg" src="https://noesishosting.com/drive/tmp/ruleta-tick.ogg"/>
-</audio>
-<audio id="fxWin">
-  <source type="audio/ogg" src="https://noesishosting.com/drive/tmp/winner.ogg"/>
-</audio>
-<div class="div-tabla viewport sin-overflow">
-  <div class="div-fila">
-    <div class="div-celda alinear-medio">
-      <div class="espacio centrado">
-        <div class="base-ruleta"></div>
-        <div class="ruleta"></div>
-        <div class="clickable oculto"></div>
-        <div class="sombras"></div>
-        <div class="boton-ruleta"></div>
-        <div class="tap-pointer"></div>
-      </div>
-    </div>
-  </div>
-</div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<?php
+	if (isset($logout_message)) {
+		echo "<div class='login_msg_box success'>" . $logout_message . "</div>";
+	}
 
-  
+	if (isset($message_display)) {
+		echo "<div class='login_msg_box success' >" . $message_display . "</div>";
+	}
 
-    <script  src="js/index.js"></script>
+	if (isset($error_message)) {
+		echo "<div class='login_msg_box warning'>" . $error_message . "</div>";
+	}
+
+	if (validation_errors() !== "") {
+		echo "<div class='login_msg_box warning'>" . validation_errors() . "</div>";
+	}
+
+	?>
+	<div id="main">
+	<img id="icono_login" src="<?php echo site_url("/resources/icons/marketplace.png") ?>" width=200 height=200>
+		<div id="login">
+			<div id="form_container">
+				<?php echo form_open('auth/login');	?>
+				<input type="text" name="txt_username" id="txt_username" placeholder="USUARIO" title="Usuario" class="cajatexto" /><br />
+				<input type="password" name="txt_password" id="txt_password" placeholder="**********" title="Contraseña" class="cajatexto" /><br />
+				<input type="submit" value="OK" name="btn_login" id="btn_login" /><br />
+				<?php echo form_close(); ?>
+				<div id="actions">
+					<a href="<?php echo site_url('user/add'); ?>" id="btn_adduser" name="btn_adduser" title="Registrarse">Registrarse</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 
