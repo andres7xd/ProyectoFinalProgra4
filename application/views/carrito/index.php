@@ -36,7 +36,6 @@ if (validation_errors() !== "") {
       ?>
     </a>
 
-   
       <?php echo form_open('factura/index'); ?>
       <input type="submit" class="btn btn-primary" style="float:right; position:relative; left:-3%; top:20px;" value="Factura de la última compra">
       <?php echo form_close(); ?>
@@ -108,7 +107,6 @@ if (validation_errors() !== "") {
           <a href="<?php echo site_url('carrito/aumentar_producto/' . $p['carrito_id'] . '/' . $p['cantidad_productos'] . '/' . $p['unidades']); ?>" id="btn_aumentar_producto_carrito" name="btn_aumentar_producto_carrito" title="Aumentar la cantidad del producto">➕</a>
           <br>
           <span class="precio_2">₡<?php echo $p["precio"] * $p["cantidad_productos"] ?></span>
-
           <br>
 
           <div class="actions_products">

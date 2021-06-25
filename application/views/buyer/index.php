@@ -47,7 +47,7 @@ if (validation_errors() !== "") {
       ?>
     </a>
 
-    <img id="icono_marketplace" src="<?php echo site_url("/resources/icons/marketplace.png") ?>" width=170 height=170>
+    <img id="icono_marketplace" src="<?php echo site_url("/resources/icons/marketplace.png") ?>" width=205 height=205>
 
 
     <!-- 
@@ -73,23 +73,9 @@ if (validation_errors() !== "") {
       <?php echo form_close(); ?>
 
     </div>
-
   </div>
-
-  <div id="post_box">
-
-    <?php echo form_open('buyer/process'); ?>
-    <br>
-    <input type="text" class="cajatexto_search" id="txt_prod_search" name="txt_nombre" placeholder="Escribe aquí para buscar!">
-    <button type="submit" name="btn_search" id="btn_search" value="btn_search" class="boton" title="Buscar">🔍</button>
-    <span style="color: #f00"><?php echo form_error('txt_post'); ?></span>
-    <?php echo form_close(); ?>
-
-  </div>
-
   <br>
 </div>
-
 <div>
 
   <div id="main_panel">
@@ -130,8 +116,6 @@ if (validation_errors() !== "") {
         </div>
       </div>
 
-
-
       <!-- Modal ofertas -->
       <div class="modal fade" id="reporteOfertasModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -159,9 +143,103 @@ if (validation_errors() !== "") {
       </div>
 
     </div>
+    <br><br><br>
 
-    <br><br><br><br>
-    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE PRODUCTOS</h1>
+    <div style="text-align:center">
+      <?php echo form_open('buyer/process_tienda'); ?>
+      <br>
+      <input type="text" class="cajatexto_search" id="txt_prod_search" name="txt_nombre_tienda" placeholder="Escribe aquí para buscar una tienda">
+      <button type="submit" name="btn_search" id="btn_search" value="btn_search" class="boton" title="Buscar">🔍</button>
+      <span style="color: #f00"><?php echo form_error('txt_post'); ?></span>
+      <?php echo form_close(); ?>
+    </div>
+
+    <br>
+
+    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE TIENDAS</h1>
+    <?php foreach ($nombre_usuario as $u) { ?>
+
+      <div class="div_tiendas">
+        <span class="imagen_tienda"><?php echo "<img src='" . site_url('/resources/photos/' . $u['foto'])
+                                      . "' alt=' Foto' title=' Foto' width=50 height=50 id='foto_file'/>"; ?></span>
+        <br>
+        <span class="nombre_real"><?php echo $u["nombre_real"] ?></span>
+        <br>
+
+
+        <?php
+        $una_estrella = 0;
+        $dos_estrellas = 0;
+        $tres_estrellas = 0;
+        $cuatro_estrellas = 0;
+        $cinco_estrellas = 0;
+        $promedio = 0;
+        $cant_estrellas = "";
+
+        foreach ($calificacion_tienda as $ct) {
+          if ($ct["tienda_id"] == $u["usuario_id"]) {
+            if ($ct["calificacion"] == 1) {
+              $una_estrella =  $una_estrella + 1;
+            }
+            if ($ct["calificacion"] == 2) {
+              $dos_estrellas =  $dos_estrellas + 1;
+            }
+            if ($ct["calificacion"] == 3) {
+              $tres_estrellas =  $tres_estrellas + 1;
+            }
+            if ($ct["calificacion"] == 4) {
+              $cuatro_estrellas =  $cuatro_estrellas + 1;
+            }
+            if ($ct["calificacion"] == 5) {
+              $cinco_estrellas =  $cinco_estrellas + 1;
+            }
+
+            $promedio = (((1 * $una_estrella) + (2 * $dos_estrellas) + (3 * $tres_estrellas) + (4 * $cuatro_estrellas) +
+              (5 * $cinco_estrellas)) / (($una_estrella + $dos_estrellas + $tres_estrellas + $cuatro_estrellas + $cinco_estrellas)));
+
+            if (round($promedio) == 1) {
+              $cant_estrellas = "⭐";
+            }
+            if (round($promedio) == 2) {
+              $cant_estrellas = "⭐⭐";
+            }
+            if (round($promedio) == 3) {
+              $cant_estrellas = "⭐⭐⭐";
+            }
+            if (round($promedio) == 4) {
+              $cant_estrellas = "⭐⭐⭐⭐";
+            }
+            if (round($promedio) == 5) {
+              $cant_estrellas = "⭐⭐⭐⭐⭐";
+            }
+          }
+        }
+        ?>
+        <span class="estrellas"><?php echo $cant_estrellas ?></span>
+        <br>
+        <?php echo form_open('profile_buyer/index/' . $u['usuario_id']); ?>
+        <input type="submit" class="btnPerfil" value="Ver perfil">
+        <?php echo form_close(); ?>
+      </div>
+    <?php } ?>
+    </table>
+
+  </div>
+
+
+  <div id="main_panel">
+
+    <div style="text-align:center">
+      <?php echo form_open('buyer/process'); ?>
+      <br>
+      <input type="text" class="cajatexto_search" id="txt_prod_search" name="txt_nombre" placeholder="Escribe aquí para buscar un producto">
+      <button type="submit" name="btn_search" id="btn_search" value="btn_search" class="boton" title="Buscar">🔍</button>
+      <span style="color: #f00"><?php echo form_error('txt_post'); ?></span>
+      <?php echo form_close(); ?>
+    </div>
+
+    <br>
+    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">PRODUCTOS MÁS VENDIDOS</h1>
     <?php foreach ($productos as $p) { ?>
       <div class="div_productos">
         <input id='id_h' name='id_h' type='hidden' value='<?php echo $p['producto_id']; ?>'>
@@ -204,6 +282,8 @@ if (validation_errors() !== "") {
         <span class="nombre_producto"><?php echo $p["nombre"] ?></span>
         <br>
         <span class="nombre_real">Tienda: <?php echo $p["nombre_real"] ?></span>
+        <br>
+        <span class="unidades_vendidas">Unidades vendidas: <?php echo $p["unidades_vendidas"] ?></span>
         <br>
         <span class="unidades_vendidas">Unidades disponibles: <?php echo $p["unidades"] ?></span>
         <br>
@@ -325,23 +405,5 @@ if (validation_errors() !== "") {
     </div>
   </div>
 
-  <div id="main_panel">
-    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE TIENDAS</h1>
-    <?php foreach ($nombre_usuario as $u) { ?>
-
-      <div class="div_tiendas">
-        <span class="imagen_tienda"><?php echo "<img src='" . site_url('/resources/photos/' . $u['foto'])
-                                      . "' alt=' Foto' title=' Foto' width=50 height=50 id='foto_file'/>"; ?></span>
-        <br>
-        <span class="nombre_real"><?php echo $u["nombre_real"] ?></span>
-        <br>
-        <?php echo form_open('profile_buyer/index/' . $u['usuario_id']); ?>
-        <input type="submit" class="btnPerfil" value="Ver perfil">
-        <?php echo form_close(); ?>
-      </div>
-    <?php } ?>
-    </table>
-
-  </div>
 
 </div>
