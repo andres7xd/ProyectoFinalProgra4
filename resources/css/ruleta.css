@@ -1,0 +1,95 @@
+/*Downloaded from https://www.codeseek.co/jjyepez/ruleta-1a2-oeXdWr */
+@media screen and (max-width: 480px) {
+	.boton-ruleta {
+	  top: 56.35%;
+	}
+	.viewport {
+	  background: #6c0305 url(https://noesishosting.com/drive/tmp/cortina-v.png) center center no-repeat;
+	  background-size: 100% 100%;
+	}
+  }
+  @media screen and (min-width: 481px) {
+	.boton-ruleta {
+	  top: 55.35%;
+	}
+	.viewport {
+	  background: #6c0305 url(https://noesishosting.com/drive/tmp/cortina.jpg) center center no-repeat;
+	  background-size: 100% 100%;
+	}
+  }
+  .espacio {
+	position: relative;
+	width: 100%;
+	height: 100vw;
+	max-height: 33em;
+	max-width: 33em;
+  }
+  .boton-ruleta {
+	cursor: pointer;
+	position: absolute;
+	left: 50%;
+	margin-left: -17.5% !important;
+	margin-top: -17.5% !important;
+	width: 35%;
+	height: 35%;
+  }
+  .boton-ruleta.presionado {
+	transform: scale3d(0.9, 0.9, 1);
+  }
+  .tap-pointer {
+	cursor: pointer;
+	position: absolute;
+	left: 51%;
+	margin-left: -6% !important;
+	top: 64%;
+	margin-top: -6% !important;
+	width: 12%;
+	height: 12%;
+  }
+  .base-ruleta {
+	position: absolute;
+	top: 50%;
+	margin-top: -75% !important;
+	left: 50%;
+	margin-left: -75% !important;
+	width: 150%;
+	height: 150%;
+  }
+  .ruleta {
+	position: absolute;
+	left: 50%;
+	margin-left: -45% !important;
+	top: 55%;
+	margin-top: -45% !important;
+	width: 90%;
+	height: 90%;
+	transition: transform 5s ease-in-out;
+  }
+  .clickable {
+	position: absolute;
+	left: 50%;
+	margin-left: -45% !important;
+	top: 55%;
+	margin-top: -45% !important;
+	width: 90%;
+	height: 90%;
+  }
+  svg {
+	width: 100%;
+	height: 100%;
+  }
+  .desaparecer {
+	animation: desaparecer 3s;
+  }
+  @keyframes desaparecer {
+	50% {
+	  opacity: 1;
+	}
+	100% {
+	  opacity: 0;
+	}
+  }
+  #sCG {
+	cursor: pointer;
+  }
+  
