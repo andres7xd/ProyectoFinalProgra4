@@ -3,6 +3,9 @@
 class Profile_buyer extends CI_Controller
 {
 
+    public $mensaje = null;
+    public $mensaje_error = null;
+
     function __construct()
     {
         parent::__construct();
@@ -17,6 +20,8 @@ class Profile_buyer extends CI_Controller
         $data['fotos_producto'] = $this->Profile_buyer_model->get_fotos_producto();
         $data['calificacion_producto'] = $this->Profile_buyer_model->get_calificacion();
         $data['calificacion_tienda'] = $this->Profile_buyer_model->get_calificacion_tienda($this->session->userdata['logged_in']['usuario_id'], $id);
+        $data['message_display'] = $this->mensaje;
+        $data['error_message'] = $this->mensaje_error;
         $data['_view'] = 'profile_buyer/index';
         $this->load->view('layouts/main', $data);
     }
@@ -57,5 +62,26 @@ class Profile_buyer extends CI_Controller
             }
         }
         $this->index($id_tienda);
+    }
+
+    function add_abuso($tienda_id){
+        
+        $existe =  $this->Profile_buyer_model->get_denuncia($tienda_id,$this->session->userdata['logged_in']['usuario_id']);
+        
+        if(empty($existe)){
+            $params = array(
+                'comprador_id' =>  $this->session->userdata['logged_in']['usuario_id'], 
+                'tienda_id' => $tienda_id,
+              );
+              
+              $this->mensaje = "Se ha registrado el reporte a la empresa!";
+              $this->Profile_buyer_model->add_abuso($params);
+
+        }
+        else{
+            $this->mensaje_error = "La empresa cuenta ya con reporte. Solo se puede hacer un único reporte a la tienda";
+        }
+
+        $this->index($tienda_id);
     }
 }

@@ -3,6 +3,8 @@
 class Profile_buyer_model extends CI_Model
 {
 
+   
+
     function __construct()
     {
         parent::__construct();
@@ -81,6 +83,18 @@ class Profile_buyer_model extends CI_Model
     {
         $this->db->where('calificacion_tienda_id', $id_calificacion);
         return $this->db->update('calificaciones_tiendas', $params);
+    }
+
+    function add_abuso($params){
+        $this->db->insert('denuncias', $params);
+        return $this->db->insert_id();
+    }
+
+    function get_denuncia($tienda_id, $usuario_id){
+
+        return $this->db->query("SELECT*
+        FROM denuncias
+        WHERE denuncias.tienda_id = $tienda_id AND denuncias.comprador_id = $usuario_id")->result_array();
     }
 
 }

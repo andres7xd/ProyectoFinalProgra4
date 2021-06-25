@@ -1,3 +1,29 @@
+<?php
+if ($message_display != null) {
+  if (isset($message_display)) {
+    echo "<div class='alert alert-primary alert-dismissible fade show' role='alert' style='font-size: 15px';>" . $message_display . "
+    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>";
+  }
+}
+
+if (isset($error_message)) {
+  echo "<div class='alert alert-danger alert-dismissible fade show' role='alert' style='font-size: 15px';>" . $error_message . "
+  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+  </div>";
+}
+
+if (validation_errors() !== "") {
+  echo "<<div class='alert alert-warning alert-dismissible fade show' role='alert' style='font-size: 15px';>>" . validation_errors() . "
+  <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+  </div>";
+}
+?>
+
+
+
+
+
 <head>
   <link rel="stylesheet" type="text/css" href="<?php echo site_url('resources/css/style.css'); ?>">
 </head>
@@ -57,6 +83,7 @@
 
 
     <div id="div_calificacion_tienda">
+    
 
       <?php foreach ($usuario as $u) { ?>
 
@@ -128,11 +155,14 @@
         <?php echo form_close(); ?>
       <?php } ?>
     </div>
+    <?php foreach ($usuario as $u) { ?>
 
-    <?php echo form_open('profile_buyer/process/' . $u['usuario_id']); ?>
+    <?php echo form_open('profile_buyer/add_abuso/' . $u['usuario_id']); ?>
     <button type="submit" class="btn btn-danger" name="btn_abuso" id="btn_abuso" value="btn_abuso" class="boton"
     style="position:relative; top:200px; left:5%;" >Reportar abuso</button>
     <?php echo form_close(); ?>
+
+    <?php } ?>
 
   </div>
 
