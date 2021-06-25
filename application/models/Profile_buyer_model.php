@@ -1,6 +1,6 @@
 <?php
 
-class Profile_model extends CI_Model
+class Profile_buyer_model extends CI_Model
 {
 
     function __construct()
@@ -55,6 +55,32 @@ class Profile_model extends CI_Model
     function get_calificacion(){
         return $this->db->query("SELECT *
                                  FROM calificaciones_productos")->result_array();
+    }
+
+    function get_calificacion_tienda($comprador_id, $tienda_id)
+    {
+        return $this->db->query("SELECT * 
+        FROM calificaciones_tiendas 
+        WHERE calificaciones_tiendas.comprador_id = $comprador_id and calificaciones_tiendas.tienda_id = $tienda_id")->result_array();
+    }
+
+    function add_calificacion_tienda($params)
+    {
+        $this->db->insert('calificaciones_tiendas', $params);
+        return $this->db->insert_id();
+    }
+
+    function existe_calificacion($id_comprador, $id_tienda)
+    {
+        return $this->db->query("SELECT*
+        FROM calificaciones_tiendas
+        WHERE calificaciones_tiendas.comprador_id = $id_comprador AND calificaciones_tiendas.tienda_id = $id_tienda")->result_array();
+    }
+
+    function update_calificacion($id_calificacion, $params)
+    {
+        $this->db->where('calificacion_tienda_id', $id_calificacion);
+        return $this->db->update('calificaciones_tiendas', $params);
     }
 
 }

@@ -20,14 +20,13 @@ class Buyer extends CI_Controller
         $data['usuarios'] = $this->Buyer_model->get_usuario_tienda();
         $data['fotos_producto'] = $this->Buyer_model->get_fotos_producto();
         $data['calificacion_producto'] = $this->Buyer_model->get_calificacion();
+        $data['nombre_usuario'] = $this->Buyer_model->get_usuario_tienda();
         $data['notificaciones'] = $this->Buyer_model->get_notificaciones($this->session->userdata['logged_in']['usuario_id'],$this->session->userdata['logged_in']['nombre_usuario']);
         $data['notificaciones_disponibles'] =$this->Buyer_model->get_notificaciones_activas($this->session->userdata['logged_in']['usuario_id']);
         $data['categorias'] = $this->Buyer_model->get_categorias();
         $data['message_display'] = $this->mensaje;
         $data['error_message'] = $this->mensaje_error;
 
-     
-        
         if ($productos_data == null) {
             $data['productos'] = $this->Buyer_model->get_productos_vendidos();
         } else
@@ -99,16 +98,4 @@ class Buyer extends CI_Controller
         $this->mensaje = "La notificacion se eliminó correctamente";
         $this->index('');
     }
-
-    // function mostrar_mensaje(){
-    //     $notificaciones = $this->Buyer_model->get_notificaciones_activas($this->session->userdata['logged_in']['usuario_id']);
-
-        
-       
-    //     if(!empty($notificaciones)){
-    //         print_r("Hay notificaciones disponibles");
-    //          $this->mensaje = "Hay notificaciones disponibles";
-    //     }
-       
-    // }
 }

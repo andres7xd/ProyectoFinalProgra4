@@ -7,7 +7,7 @@
   <div id="user_box_prod">
 
     <div id="logout">
-      <?php echo form_open('home/index'); ?>
+      <?php echo form_open('buyer/index'); ?>
       <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">🗙</button>
       <?php echo form_close(); ?>
     </div>
@@ -51,22 +51,103 @@
         <?php } ?>
         </div>
     </div>
+
+
+
+
+
+    <div id="div_calificacion_tienda">
+
+      <?php foreach ($usuario as $u) { ?>
+
+        <?php echo form_open('profile_buyer/add_calificacion/' . $this->session->userdata['logged_in']['usuario_id'] . '/' . $u['usuario_id']) ?>
+        <div class="form-group">
+          <select id="select_calificacion" name="select_calificacion" value="">
+
+            <?php $aux = 0; ?>
+
+            <?php if (!empty($calificacion_tienda)) { ?>
+
+              <?php foreach ($calificacion_tienda as $c) { ?>
+
+                <?php if ($c["calificacion"] == 1) { ?>
+                  <option value="1" selected>⭐</option>
+                  <option value="2">⭐⭐</option>
+                  <option value="3">⭐⭐⭐</option>
+                  <option value="4">⭐⭐⭐⭐</option>
+                  <option value="5">⭐⭐⭐⭐⭐</option>
+                <?php } ?>
+
+                <?php if ($c["calificacion"] == 2) { ?>
+                  <option value="1">⭐</option>
+                  <option value="2" selected>⭐⭐</option>
+                  <option value="3">⭐⭐⭐</option>
+                  <option value="4">⭐⭐⭐⭐</option>
+                  <option value="5">⭐⭐⭐⭐⭐</option>
+                <?php } ?>
+
+                <?php if ($c["calificacion"] == 3) { ?>
+                  <option value="1">⭐</option>
+                  <option value="2">⭐⭐</option>
+                  <option value="3" selected>⭐⭐⭐</option>
+                  <option value="4">⭐⭐⭐⭐</option>
+                  <option value="5">⭐⭐⭐⭐⭐</option>
+                <?php } ?>
+
+                <?php if ($c["calificacion"] == 4) { ?>
+                  <option value="1">⭐</option>
+                  <option value="2">⭐⭐</option>
+                  <option value="3">⭐⭐⭐</option>
+                  <option value="1" selected>⭐⭐⭐⭐</option>
+                  <option value="5">⭐⭐⭐⭐⭐</option>
+                <?php } ?>
+
+                <?php if ($c["calificacion"] == 5) { ?>
+                  <option value="1">⭐</option>
+                  <option value="2">⭐⭐</option>
+                  <option value="3">⭐⭐⭐</option>
+                  <option value="4">⭐⭐⭐⭐</option>
+                  <option value="5" selected>⭐⭐⭐⭐⭐</option>
+                <?php } ?>
+              <?php } ?>
+
+            <?php } else { ?>
+
+              <option value="1">⭐</option>
+              <option value="2">⭐⭐</option>
+              <option value="3">⭐⭐⭐</option>
+              <option value="4">⭐⭐⭐⭐</option>
+              <option value="5">⭐⭐⭐⭐⭐</option>
+
+            <?php } ?>
+          </select>
+
+        </div>
+        <br>
+        <button type="submit" id="btn_calificar" name="btn_calificar" class="btn btn-primary">Calificar Tienda</button>
+        <?php echo form_close(); ?>
+      <?php } ?>
+    </div>
+
   </div>
 
   <div>
     <br><br><br><br>
 
     <div id="post_box">
-      <?php echo form_open('profile/process'); ?>
-      <br>
-      <input type="text" class="cajatexto_search" id="txt_prod_search" name="txt_nombre" placeholder="Escribe aquí para buscar un producto">
-      <button type="submit" name="btn_search" id="btn_search" value="btn_search" class="boton" title="Buscar">🔍</button>
-      <span style="color: #f00"><?php echo form_error('txt_post'); ?></span>
-      <?php echo form_close(); ?>
+
+      <?php foreach ($usuario as $u) { ?>
+        <?php echo form_open('profile_buyer/process/' . $u['usuario_id']); ?>
+        <br>
+        <input type="text" class="cajatexto_search" id="txt_prod_search" name="txt_nombre" placeholder="Escribe aquí para buscar un producto">
+        <button type="submit" name="btn_search" id="btn_search" value="btn_search" class="boton" title="Buscar">🔍</button>
+        <span style="color: #f00"><?php echo form_error('txt_post'); ?></span>
+        <?php echo form_close(); ?>
+      <?php } ?>
     </div>
 
     <br><br>
-    
+
     <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE PRODUCTOS</h1>
     <?php foreach ($usuario as $u) { ?>
       <?php foreach ($productos as $p) { ?>
@@ -185,4 +266,6 @@
         <?php } ?>
       <?php } ?>
     <?php } ?>
+
+
   </div>

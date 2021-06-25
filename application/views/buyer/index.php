@@ -137,13 +137,10 @@ if (validation_errors() !== "") {
               <?php echo form_open('reporte_ofertas/index'); ?>
               <input type="date" class="dates" id="fecha_1" name="fecha_1" title="Primer fecha">
               <input type="date" class="dates" id="fecha_2" name="fecha_2" title="Segunda fecha">
-              <input type="number" class="text" id="txt_precio_ini" name="txt_precio_ini" title="Precio inicio" placeholder="Precio inicio"
-              style="position: relative; left: 60px; border-radius: 10px; margin: 15px;width: 150px;height: 30px;">
-              <input type="number" class="text" id="txt_precio_fin" name="txt_precio_fin" title="Precio fin" placeholder="Precio fin"
-              style="position: relative; left: 60px; border-radius: 10px; margin: 15px; width: 150px;height: 30px;">
+              <input type="number" class="text" id="txt_precio_ini" name="txt_precio_ini" title="Precio inicio" placeholder="Precio inicio" style="position: relative; left: 60px; border-radius: 10px; margin: 15px;width: 150px;height: 30px;">
+              <input type="number" class="text" id="txt_precio_fin" name="txt_precio_fin" title="Precio fin" placeholder="Precio fin" style="position: relative; left: 60px; border-radius: 10px; margin: 15px; width: 150px;height: 30px;">
               <br>
-              <select id="select_categoria" name="select_categoria" value="<?php echo $this->input->post('select_categoria'); ?>" class="cajatexto" 
-              style="background: white; color:black; border-color:black; position:relative; left:35%;">
+              <select id="select_categoria" name="select_categoria" value="<?php echo $this->input->post('select_categoria'); ?>" class="cajatexto" style="background: white; color:black; border-color:black; position:relative; left:35%;">
                 <?php foreach ($categorias as $ca) { ?>
                   <option><?php echo $ca['categoria'] ?></option>
                 <?php } ?>
@@ -323,6 +320,25 @@ if (validation_errors() !== "") {
         </div>
       </div>
     </div>
+  </div>
+
+  <div id="main_panel">
+    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE TIENDAS</h1>
+    <?php foreach ($nombre_usuario as $u) { ?>
+
+      <div class="div_tiendas">
+        <span class="imagen_tienda"><?php echo "<img src='" . site_url('/resources/photos/' . $u['foto'])
+                                      . "' alt=' Foto' title=' Foto' width=50 height=50 id='foto_file'/>"; ?></span>
+        <br>
+        <span class="nombre_real"><?php echo $u["nombre_real"] ?></span>
+        <br>
+        <?php echo form_open('profile_buyer/index/' . $u['usuario_id']); ?>
+        <input type="submit" class="btnPerfil" value="Ver perfil">
+        <?php echo form_close(); ?>
+      </div>
+    <?php } ?>
+    </table>
 
   </div>
+
 </div>

@@ -55,7 +55,6 @@ class Product_model extends CI_Model
 
     function add_calificacion_producto($params)
     {
-
         $this->db->insert('calificaciones_productos', $params);
         return $this->db->insert_id();
     }

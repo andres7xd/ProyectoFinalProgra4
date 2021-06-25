@@ -555,8 +555,8 @@ td{
 	background-position: top center;
 	background-color: #253341;
 	text-align: center;
-	border-color: #567ea5;
-	border-style: solid;
+	border-color: #4f657a;
+	border-style: ridge;
 	border-radius: 20px;
 }
 
@@ -571,6 +571,15 @@ td{
 	cursor: pointer;
 	background-position: top center;
 	width: 600px;
+}
+
+#carrucel_tienda{
+	position: relative;
+	margin: 16px;
+	float: left;
+	cursor: pointer;
+	background-position: top center;
+	width: 330px;
 }
 
 #carousel_buyer{
@@ -634,6 +643,21 @@ td{
 	background-color: #3f4a55;
 	padding: 1%;
 	height: 450px;
+	width: 640px;
+	border-color: #4f657a;
+	border-style: ridge;
+	border-radius: 20px;
+}
+
+#info_tiendas{
+	position: relative;
+	margin: 16px;
+	float: left;
+	cursor: pointer;
+	background-position: top center;
+	background-color: #3f4a55;
+	padding: 1%;
+	height: 250px;
 	width: 640px;
 	border-color: #4f657a;
 	border-style: ridge;
@@ -1055,6 +1079,22 @@ td{
 	margin: 16px;
 	float: right;
 	right: 16%;
+	cursor: pointer;
+	background-position: top center;
+	background-color: #3f4a55;
+	padding: 1%;
+	height: 120px;
+	width: 230px;
+	border-color: #4f657a;
+	border-style: ridge;
+	border-radius: 20px;
+}
+
+#div_calificacion_tienda{
+	position: relative;
+	margin: 16px;
+	float: right;
+	right: 11%;
 	cursor: pointer;
 	background-position: top center;
 	background-color: #3f4a55;
