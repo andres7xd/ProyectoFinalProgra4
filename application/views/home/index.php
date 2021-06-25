@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" type="text/css" href="<?php echo site_url('resources/css/style.css'); ?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo site_url('resources/css/style.css'); ?>">
 </head>
 
 <div id="panel_app">
@@ -17,23 +17,6 @@
 </div>
 
 <div>
-  <div id="main_panel">
-    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE TIENDAS</h1>
-    <?php foreach ($nombre_usuario as $u) { ?>
-
-      <div class="div_tiendas">
-        <span class="imagen_tienda"><?php echo "<img src='" . site_url('/resources/photos/' . $u['foto'])
-                                          . "' alt=' Foto' title=' Foto' width=50 height=50 id='foto_file'/>"; ?></span>
-        <br>
-        <span class="nombre_real"><?php echo $u["nombre_real"] ?></span>
-        <br>
-        <?php echo form_open('profile/index/' . $u['usuario_id'] . '/' . 'home/index'); ?>
-        <input type="submit" class="btnPerfil" value="Ver perfil">
-        <?php echo form_close(); ?>
-      </div>
-    <?php } ?>
-    </table>
-  </div>
 
   <div id="main_panel">
     <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">PRODUCTOS MÁS VENDIDOS</h1>
@@ -52,4 +35,23 @@
     <?php } ?>
     </table>
   </div>
+
+  <div id="main_panel">
+    <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE TIENDAS</h1>
+    <?php foreach ($nombre_usuario as $u) { ?>
+
+      <div class="div_tiendas">
+        <span class="imagen_tienda"><?php echo "<img src='" . site_url('/resources/photos/' . $u['foto'])
+                                      . "' alt=' Foto' title=' Foto' width=50 height=50 id='foto_file'/>"; ?></span>
+        <br>
+        <span class="nombre_real"><?php echo $u["nombre_real"] ?></span>
+        <br>
+        <?php echo form_open('profile/index/' . $u['usuario_id'] . '/' . 'home/index'); ?>
+        <input type="submit" class="btnPerfil" value="Ver perfil">
+        <?php echo form_close(); ?>
+      </div>
+    <?php } ?>
+    </table>
+  </div>
+  
 </div>
