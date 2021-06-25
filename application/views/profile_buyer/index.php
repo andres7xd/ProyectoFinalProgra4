@@ -129,6 +129,11 @@
       <?php } ?>
     </div>
 
+    <?php echo form_open('profile_buyer/process/' . $u['usuario_id']); ?>
+    <button type="submit" class="btn btn-danger" name="btn_abuso" id="btn_abuso" value="btn_abuso" class="boton"
+    style="position:relative; top:200px; left:5%;" >Reportar abuso</button>
+    <?php echo form_close(); ?>
+
   </div>
 
   <div>
@@ -266,6 +271,5 @@
         <?php } ?>
       <?php } ?>
     <?php } ?>
-
 
   </div>
