@@ -1,6 +1,7 @@
 <?php
 
 Class Auth extends CI_Controller {
+	
 
 	public function __construct() {
 		parent::__construct();
@@ -69,18 +70,34 @@ Class Auth extends CI_Controller {
 						'nombre_real' => $result[0]->nombre_real,
 						'foto' => $result[0]->foto,
 						'tipo_usuario'  => $result[0]->tipo_usuario,
+						'cantidad_denuncias' =>  $result[0]->cantidad_denuncias,
+						
 					);
 
 					// Agregamos la infomación del usuario en forma de arreglo a la Variable de Sesion con nombre logged_in
 					$this->session->set_userdata('logged_in', $session_data);
 					//Función propia para cargar la vista indicada con datos precargados
-					if($session_data['tipo_usuario']== 'Comprador'){
-						redirect('buyer/index', 'refresh'); //redireccionamos a la URL raíz para evitar que nos quede auth/login/ en la URL
+					
+					if($session_data['cantidad_denuncias'] < 10){
+						if($session_data['tipo_usuario']== 'Comprador'){
+							redirect('buyer/index', 'refresh'); //redireccionamos a la URL raíz para evitar que nos quede auth/login/ en la URL
+						}
+	
+						else{
+							redirect('store/index', 'refresh');
+						}
 					}
-
 					else{
-						redirect('store/index', 'refresh');
+						
+						$data = array(
+							'error_message' => 'Empresa Bloqueada'
+						);
+		
+						$this->load->view('auth/login', $data);
+						
 					}
+				
+					
 					
 					$this->load_data_view('buyer/index'); //luego cargamos la vista
 
