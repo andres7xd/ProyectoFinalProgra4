@@ -33,6 +33,7 @@ class Ruleta extends CI_Controller
                     'usuario_id' => $this->session->userdata['logged_in']['usuario_id'],
                     'fecha_premio' => $hoy['year'] . '-' . $hoy['mon'] . '-' . $hoy['mday'],
                     'giros_disponibles' =>2,
+                    'estado' => 1,
                 );
                 
              
@@ -45,6 +46,7 @@ class Ruleta extends CI_Controller
                     'premio'=> $this->input->post('txt_premio'),
                     'fecha_premio' => $hoy['year'] . '-' . $hoy['mon'] . '-' . $hoy['mday'],
                     'giros_disponibles' => $cantidad_giros - 1,
+                    'estado' => 1,
                 );
         
         

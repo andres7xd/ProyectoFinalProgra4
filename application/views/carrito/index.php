@@ -122,7 +122,21 @@ if (validation_errors() !== "") {
     </div>
 
     <div id="info_compra">
+
+    <?php foreach ($premios as $p) { ?>
+        <?php if($p['premio'] == 'Desc 10%' and $p['estado'] == 1 ){ ?>
+          <?php $descuento = ($suma_precios + $costo_envio) * 0.10?>
+        <?php } ?>
+
+        <?php if($p['premio'] == 'Envío gratis' and $p['estado'] == 1 ){ ?>
+          <?php $costo_envio = 0?>
+        <?php } ?>
+
+        <?php } ?>
+
       <?php $total = ($suma_precios + $costo_envio) - $descuento ?>
+
+    
 
       <span class="info_compra2">Subtotal: ₡<?php echo $suma_precios ?></span>
       <br>
@@ -193,7 +207,7 @@ if (validation_errors() !== "") {
             
             <div class="modal-body">
             
-            <?php if($p['premio'] == 'Bon $50') { ?> 
+            <?php if($p['premio'] == 'Bon $50' and $p['estado'] ==1) { ?> 
 
               <?php echo form_open('carrito/actualizar_monto_tarjeta'); ?>
               <select id="select_tarjeta" name="select_tarjeta" id="" value="cmb_numero_tarjeta" name="cmb_numero_tarjeta" class="cajatexto">
@@ -209,6 +223,7 @@ if (validation_errors() !== "") {
             <?php echo form_close(); ?>
 
             <?php } ?>
+
            
            
              

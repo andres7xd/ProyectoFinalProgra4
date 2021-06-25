@@ -130,4 +130,11 @@ class Carrito_model extends CI_Model
         $this->db->where('numero_tarjeta', $numero);
         return $this->db->update('tarjetas', $params);
     }
+
+    function update_premio($usuario_id, $params){
+       
+
+        $this->db->where('usuario_id', $usuario_id);
+        return $this->db->update('premios', $params);
+    }
 }
