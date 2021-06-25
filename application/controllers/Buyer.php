@@ -59,15 +59,35 @@ class Buyer extends CI_Controller
     function add_carrito($id)
     {
         $existe = $this->Buyer_model->get_carritos($id, $this->session->userdata['logged_in']['usuario_id']);
+        $productos = $this->Buyer_model->get_all_productos($id);
+       
+               
+                foreach($productos as $p){
+                    $cantidad_denuncias = $this->Buyer_model->get_denuncias($p['usuario_id']);
+  
+                }
+
         if (empty($existe)) {
-            $params = array(
-                'usuario_id' =>  $this->session->userdata['logged_in']['usuario_id'],
-                'producto_id' =>  $id,
-                'cantidad_productos' =>  1,
-            );
-            $this->Product_model->add_carrito($params);
-            $params = array();
-            $this->mensaje = "Se ha añadido el producto al carrito";
+            foreach($cantidad_denuncias as $cd){
+            if($cd['cantidad_denuncias']< 10  ){
+                $params = array(
+                    'usuario_id' =>  $this->session->userdata['logged_in']['usuario_id'],
+                    'producto_id' =>  $id,
+                    'cantidad_productos' =>  1,
+                );
+                $this->Product_model->add_carrito($params);
+                $params = array();
+                $this->mensaje = "Se ha añadido el producto al carrito";
+            }
+
+            else {
+                $this->mensaje_error = "El producto no se puede añadir al carrito por que la empresa distribuidora esta bloqueada";
+            }
+        }
+
+
+
+
         } else {
             $this->mensaje_error = "El producto ya existe en carrito";
         }
