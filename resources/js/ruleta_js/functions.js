@@ -32,7 +32,10 @@ function mensaje() {
   var SegmentoSeleccionado = miRuleta.getIndicatedSegment();
   alert("Elemento seleccionado: " + SegmentoSeleccionado.text);
 
-  document.getElementById("txt_premio").value = SegmentoSeleccionado.text;
+
+
+  document.getElementById('txt_premio').value = SegmentoSeleccionado.text;
+
   miRuleta.stopAnimation(false);
   miRuleta.rotationAngle = 0;
   miRuleta.draw();

@@ -21,45 +21,15 @@
 
   <br /><br />
 
+  <?php echo form_open('ruleta/add_premio'); ?>
   <input type="text" id="txt_premio" name="txt_premio"></input>
 
   <button type="submit" class="btn btn-primary" id="btn_reclamar_premio" data-bs-toggle="modal" data-bs-target="#premioModal">
   Reclamar Premio
       </button>
+  
+   <?php echo form_close(); ?>
 
-
-
- 
-      
-
-  <!-- Modal -->
-  <div class="modal fade" id="premioModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body">
-          
-        <?php if( $this->input->post('txt_premio')  == 'Bon $50'){  ?>
-          
-          <?php echo form_open('reporte_compras/index'); ?>
-          <select id="select_categoria" name="select_categoria" value="<?php echo $this->input->post('select_categoria'); ?>" class="cajatexto" >
-            <?php foreach ($tarjetas as $t) { ?>
-              <option><?php echo $t['numero_tarjeta'] ?></option>
-              <?php } ?>
-
-          </select>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Aplicar premio</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        </div>
-        <?php echo form_close(); ?>
-
-        <?php }?>
-
-          
-      </div>
-    </div>
-  </div>
 
 </body>
 
