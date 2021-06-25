@@ -115,4 +115,19 @@ class Carrito_model extends CI_Model
                                 ORDER BY compras.numero_compra DESC
                                 LIMIT 1")->result_array();
     }
+
+
+    function get_premio($id_usuario){
+        return $this->db->query("SELECT *
+        FROM premios
+        WHERE premios.usuario_id = $id_usuario")->result_array();
+    }
+
+
+    function update_tarjeta($numero, $params){
+       
+
+        $this->db->where('numero_tarjeta', $numero);
+        return $this->db->update('tarjetas', $params);
+    }
 }

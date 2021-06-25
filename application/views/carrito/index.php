@@ -36,9 +36,13 @@ if (validation_errors() !== "") {
       ?>
     </a>
 
+   
       <?php echo form_open('factura/index'); ?>
       <input type="submit" class="btn btn-primary" style="float:right; position:relative; left:-3%; top:20px;" value="Factura de la última compra">
       <?php echo form_close(); ?>
+
+      <button type="submit" id="prod_comprar_carrito" name="prod_comprar" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#aplicarPremioModal">Aplicar Premio</button>
+
 
     <?php echo form_open('buyer/index'); ?>
     <button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir">🗙</button>
@@ -179,5 +183,43 @@ if (validation_errors() !== "") {
         </div>
       </div>
     </div>
+
+<!-- < Modal aplicar premio> -->
+
+    <div class="modal fade" id="aplicarPremioModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+          <?php foreach ($premios as $p) { ?>
+            
+            <div class="modal-body">
+            
+            <?php if($p['premio'] == 'Bon $50') { ?> 
+
+              <?php echo form_open('carrito/actualizar_monto_tarjeta'); ?>
+              <select id="select_tarjeta" name="select_tarjeta" id="" value="cmb_numero_tarjeta" name="cmb_numero_tarjeta" class="cajatexto">
+                <?php foreach ($tarjetas as $t) { ?>
+                  <option id="" name="" value="<?php echo $t["numero_tarjeta"]; ?>"><?php echo $t["numero_tarjeta"]; ?></option>
+                <?php } ?>
+              </select>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Aplicar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+            <?php echo form_close(); ?>
+
+            <?php } ?>
+           
+           
+             
+
+            <?php  } ?>
+          </div>
+        </div>
+      </div>
+
+
+
+
 
   </div>

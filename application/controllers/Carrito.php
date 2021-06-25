@@ -17,6 +17,7 @@ class Carrito extends CI_Controller
         $data['productos'] = $this->Carrito_model->get_producto($this->session->userdata['logged_in']['usuario_id']);
         $data['tarjetas'] = $this->Carrito_model->get_tarjetas($this->session->userdata['logged_in']['usuario_id']);
         $data['fotos_producto'] = $this->Carrito_model->get_fotos_producto();
+        $data['premios'] = $this->Carrito_model->get_premio($this->session->userdata['logged_in']['usuario_id']);
         $data['message_display'] = $this->mensaje;
         $data['error_message'] = $this->mensaje_error;
         $data['_view'] = 'carrito/index';
@@ -115,6 +116,26 @@ class Carrito extends CI_Controller
                 $this->mensaje_error = "CVV Invalido";
             }
         }
+        $this->index();
+    }
+
+
+
+    function actualizar_monto_tarjeta(){
+
+        $tarjetas = $this->Carrito_model->get_tarjetas($this->session->userdata['logged_in']['usuario_id']);
+        $saldo =0;
+        foreach ($tarjetas as $t ) {
+            if($t['numero_tarjeta'] ==$this->input->post('select_tarjeta')){
+                $saldo = $t['saldo'] +50;
+            }
+        }
+
+        $params = array(
+            'saldo' => $saldo,
+        );
+
+        $this->Carrito_model->update_tarjeta($this->input->post('select_tarjeta'),$params);
         $this->index();
     }
 }
