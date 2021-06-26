@@ -22,7 +22,7 @@
       <button type="submit" name="btn_return" id="btn_return" class="boton" title="Regresar">←</button>
       <?php echo form_close(); ?>
     </div>
-    <?php echo form_open('user/add'); ?>
+  
   </div>
 
   <div id="div_principal_ruleta">
@@ -36,7 +36,7 @@
       <br /><br />
 
       <?php echo form_open('ruleta/add_premio'); ?>
-      <input type="text" id="txt_premio" name="txt_premio" Disabled="true"></input>
+      <input type="text" id="txt_premio" name="txt_premio" ></input>
 
       <button type="submit" class="btn btn-primary" id="btn_reclamar_premio" data-bs-toggle="modal" data-bs-target="#premioModal">
         Reclamar Premio

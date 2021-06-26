@@ -26,7 +26,7 @@ class Ruleta extends CI_Controller
             $cantidad_giros = $e['giros_disponibles'];
         }
 
-        if($e['giros_disponibles'] != 0){
+
             if(empty($existe)){
                 $params = array(
                     'premio'=> $this->input->post('txt_premio'),
@@ -42,17 +42,20 @@ class Ruleta extends CI_Controller
             }
 
             else{
-                $params = array(
-                    'premio'=> $this->input->post('txt_premio'),
-                    'fecha_premio' => $hoy['year'] . '-' . $hoy['mon'] . '-' . $hoy['mday'],
-                    'giros_disponibles' => $cantidad_giros - 1,
-                    'estado' => 1,
-                );
-        
-        
-                $this->Ruleta_model->update_ruleta($this->session->userdata['logged_in']['usuario_id'],$params);
+                if($cantidad_giros >0){
+                    $params = array(
+                        'premio'=> $this->input->post('txt_premio'),
+                        'fecha_premio' => $hoy['year'] . '-' . $hoy['mon'] . '-' . $hoy['mday'],
+                        'giros_disponibles' => $cantidad_giros - 1,
+                        'estado' => 1,
+                    );
+            
+            
+                    $this->Ruleta_model->update_ruleta($this->session->userdata['logged_in']['usuario_id'],$params);
+                }
+              
             }
-        }
+       
 
            
         
