@@ -76,7 +76,7 @@ class Buyer extends CI_Controller
                     'cantidad_productos' =>  1,
                 );
                 $this->Product_model->add_carrito($params);
-                $params = array();
+              
                 $this->mensaje = "Se ha añadido el producto al carrito";
             }
 
