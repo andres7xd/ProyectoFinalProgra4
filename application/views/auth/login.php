@@ -1,7 +1,8 @@
 <html>
 
 <head>
--	<meta charset="utf-8">
+	-
+	<meta charset="utf-8">
 	<html lang="es" xml:lang="es" xmlns="http://www.w3.org/1999/xhtml">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Chatwitter</title>
@@ -10,13 +11,13 @@
 	<link rel="icon" href="<?php echo site_url('resources/img/favicon.png'); ?>" type="image/x-icon">
 	<link rel="stylesheet" type="text/css" href="<?php echo site_url('resources/css/login.css'); ?>">
 
-  
+
 </head>
 
 <body>
 
-  
-<?php
+
+	<?php
 	if (isset($logout_message)) {
 		echo "<div class='login_msg_box success'>" . $logout_message . "</div>";
 	}
@@ -34,8 +35,20 @@
 	}
 
 	?>
+
+	<div>
+		<div class="box-header">
+			<?php echo form_open('home/index'); ?>
+			<button type="submit" name="btn_logout" id="btn_logout" class="boton" title="Salir"
+			style="color:white; background:red; text-align:center; margin-right:5px; float:right; 
+			font-size:20px; border-radius: 5px; cursor:pointer">🗙</button>
+			<?php echo form_close(); ?>
+		</div>
+	</div>
+	<br><br><br>
+
 	<div id="main">
-	<img id="icono_login" src="<?php echo site_url("/resources/icons/marketplace.png") ?>" width=200 height=200>
+		<img id="icono_login" src="<?php echo site_url("/resources/icons/marketplace.png") ?>" width=200 height=200>
 		<div id="login">
 			<div id="form_container">
 				<?php echo form_open('auth/login');	?>
