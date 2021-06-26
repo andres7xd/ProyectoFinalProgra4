@@ -28,21 +28,18 @@
   <div id="div_principal_ruleta">
     <div id="div_ruleta">
       <?php if (empty($ruleta)) { ?>
-
-        
-
+        <input type="button" class="btn btn-primary" value="Girar" onclick="miRuleta.startAnimation();" />
+        <br /><br />
       <?php } else { ?>
-
         <?php foreach ($ruleta as $r) { ?>
 
-          <?php if ($r['giros_disponibles'] >0) { ?>
+          <?php if ($r['giros_disponibles'] > 0) { ?>
             <input type="button" class="btn btn-primary" value="Girar" onclick="miRuleta.startAnimation();" />
-        <br /><br />
-        <?php } ?>
+            <br /><br />
+          <?php } ?>
         <?php } ?>
 
       <?php } ?>
-
 
       <canvas id="canvas" height="400" width="400"></canvas>
       <script type="text/javascript" src="<?php echo site_url('resources/js/ruleta_js/functions.js'); ?>"></script>

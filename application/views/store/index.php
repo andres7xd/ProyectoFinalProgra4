@@ -100,7 +100,7 @@ if (validation_errors() !== "") {
           <div class="modal-content">
             <div class="modal-body">
               <?php echo form_open('store/add_categoria'); ?>
-              <input type="text" id="txt_create_categoria" name="txt_create_categoria" placeholder="Nombre de la categoría" value="">
+              <input type="text" id="txt_create_categoria" name="txt_create_categoria" placeholder="Nombre de la categoría" value="" required="true">
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary">Crear</button>

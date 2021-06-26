@@ -562,6 +562,7 @@ td{
 
 .div_tiendas:hover{
 	background-color: #435363;
+	-webkit-transform:scale(1.1);
 }
 
 #carrucel_producto{

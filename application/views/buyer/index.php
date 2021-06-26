@@ -124,8 +124,8 @@ if (validation_errors() !== "") {
               <?php echo form_open('reporte_ofertas/index'); ?>
               <input type="date" class="dates" id="fecha_1" name="fecha_1" title="Primer fecha">
               <input type="date" class="dates" id="fecha_2" name="fecha_2" title="Segunda fecha">
-              <input type="number" class="text" id="txt_precio_ini" name="txt_precio_ini" title="Precio inicio" placeholder="Precio inicio" style="position: relative; left: 60px; border-radius: 10px; margin: 15px;width: 150px;height: 30px;">
-              <input type="number" class="text" id="txt_precio_fin" name="txt_precio_fin" title="Precio fin" placeholder="Precio fin" style="position: relative; left: 60px; border-radius: 10px; margin: 15px; width: 150px;height: 30px;">
+              <input type="number" class="text" id="txt_precio_ini" required="true" name="txt_precio_ini" title="Precio inicio" placeholder="Precio inicio" style="position: relative; left: 60px; border-radius: 10px; margin: 15px;width: 150px;height: 30px;">
+              <input type="number" class="text" id="txt_precio_fin" required="true" name="txt_precio_fin" title="Precio fin" placeholder="Precio fin" style="position: relative; left: 60px; border-radius: 10px; margin: 15px; width: 150px;height: 30px;">
               <br>
               <select id="select_categoria" name="select_categoria" value="<?php echo $this->input->post('select_categoria'); ?>" class="cajatexto" style="background: white; color:black; border-color:black; position:relative; left:35%;">
                 <?php foreach ($categorias as $ca) { ?>

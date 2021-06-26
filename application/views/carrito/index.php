@@ -182,7 +182,7 @@ if (validation_errors() !== "") {
 
           <input id='id_precio_compra' name='id_precio_compra' type='hidden' value='<?php echo $total ?>'>
           <br>
-          <input type="text" id="txt_cvv" name="txt_cvv" title="CVV" placeholder="CVV" value="" style="border-color:black; border-radius:5px; font-size: 17px;">
+          <input type="text" id="txt_cvv" name="txt_cvv" required="true" title="CVV" placeholder="CVV" value="" style="border-color:black; border-radius:5px; font-size: 17px;">
           <br>
         </div>
 

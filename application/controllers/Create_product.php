@@ -2,6 +2,10 @@
 
 class Create_product extends CI_Controller
 {
+
+    public $mensaje = null;
+    public $mensaje_error = null;
+
     function __construct()
     {
         parent::__construct();
@@ -12,6 +16,7 @@ class Create_product extends CI_Controller
     function index()
     {
         $data['categorias'] = $this->Create_product_model->get_categorias();
+        $data['message_display'] = $this->mensaje;
         $data['_view'] = 'create_product/index';
         $this->load->view('layouts/main', $data);
     }
@@ -31,6 +36,7 @@ class Create_product extends CI_Controller
             'usuario_id' =>  $this->session->userdata['logged_in']['usuario_id'],
         );
         $this->Create_product_model->add_product($params);
+        $this->mensaje = "Producto creado con éxito!";
         $this->index();
     }
 }

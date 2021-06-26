@@ -155,7 +155,7 @@ if (validation_errors() !== "") {
       if ($c['comentario'] == null) { ?>
 
         <?php echo form_open('product/agregar_comentario/' . $p['producto_id'] . '/' . $this->session->userdata['logged_in']['usuario_id']) ?>
-        <input type="text" name="txt_comentario" id="txt_comentario" placeholder="Comentario" style="width:310px; height:30px; border-radius:10px; border-style:ridge; border-color:black; font-size:13px; float:left;">
+        <input type="text" name="txt_comentario" required="true" id="txt_comentario" placeholder="Comentario" style="width:310px; height:30px; border-radius:10px; border-style:ridge; border-color:black; font-size:13px; float:left;">
         <br>
         <button type="submit" id="btn_calificar" name="btn_calificar" class="btn btn-primary" style="margin-top:20px; left:0%;">Comentar</button>
         <?php echo form_close(); ?>
