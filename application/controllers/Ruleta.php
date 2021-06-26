@@ -13,6 +13,7 @@ class Ruleta extends CI_Controller
     function index()
     {
         $data['tarjetas'] = $this->Ruleta_model->get_tarjetas();
+        $data['ruleta'] = $this->Ruleta_model->get_premio($this->session->userdata['logged_in']['usuario_id']);
         $data['_view'] = 'ruleta/index';
         $this->load->view('layouts/main', $data);
     }

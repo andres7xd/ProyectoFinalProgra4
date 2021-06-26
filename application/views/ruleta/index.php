@@ -22,21 +22,35 @@
       <button type="submit" name="btn_return" id="btn_return" class="boton" title="Regresar">←</button>
       <?php echo form_close(); ?>
     </div>
-  
+
   </div>
 
   <div id="div_principal_ruleta">
     <div id="div_ruleta">
+      <?php if (empty($ruleta)) { ?>
 
-      <input type="button" class="btn btn-primary" value="Girar" onclick="miRuleta.startAnimation();" />
-      <br /><br />
+        
+
+      <?php } else { ?>
+
+        <?php foreach ($ruleta as $r) { ?>
+
+          <?php if ($r['giros_disponibles'] >0) { ?>
+            <input type="button" class="btn btn-primary" value="Girar" onclick="miRuleta.startAnimation();" />
+        <br /><br />
+        <?php } ?>
+        <?php } ?>
+
+      <?php } ?>
+
+
       <canvas id="canvas" height="400" width="400"></canvas>
       <script type="text/javascript" src="<?php echo site_url('resources/js/ruleta_js/functions.js'); ?>"></script>
 
       <br /><br />
 
       <?php echo form_open('ruleta/add_premio'); ?>
-      <input type="text" id="txt_premio" name="txt_premio" ></input>
+      <input type="text" id="txt_premio" name="txt_premio"></input>
 
       <button type="submit" class="btn btn-primary" id="btn_reclamar_premio" data-bs-toggle="modal" data-bs-target="#premioModal">
         Reclamar Premio
