@@ -135,9 +135,9 @@
 </div>
 
 <div>
-    <div style="width:60%; font-size:17px; position:relative; left:15%">
+    <div style="width:60%; font-size:17px; position:relative; left:15%;">
 
-        <table class="table" style="color:white">
+        <table class="table" style="color:white;">
             <thead>
                 <tr>
                     <th>Usuario que comentó</th>
@@ -153,13 +153,29 @@
                         <td><?php echo $c['comentario'] ?></td>
                         <td><?php echo $c['respuesta'] ?></td>
 
-                        <?php echo form_open() ?>
-                        <td><button type="submit" class="btn btn-primary">Responder</button>
                         <td>
-                            <?php echo form_close(); ?>
-                        <?php } ?>
-                </tr>
+                            <button type="button" class="btn btn-primary" id="btn_create_red" data-bs-toggle="modal" data-bs-target="#respuesta" style="float:left; margin:5px;">
+                                Responder
+                            </button>
+                        <td>
 
+                            <div class="modal fade" id="respuesta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <?php echo form_open('user/add_red'); ?>
+                                            <input type="text" class="text" id="txt_nombre_red" name="txt_nombre_red" placeholder="Respuesta" style="position: relative; left:-6%; border-radius: 10px; margin: 15px; width:493px; height: 30px;" required="true">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Responder</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                            <?php echo form_close(); ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                </tr>
+            <?php } ?>
 
             </tbody>
         </table>
