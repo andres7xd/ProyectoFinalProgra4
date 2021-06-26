@@ -40,7 +40,7 @@ if (validation_errors() !== "") {
     <input type="submit" class="btn btn-primary" style="float:right; position:relative; left:-3%; top:20px;" value="Factura de la última compra">
     <?php echo form_close(); ?>
 
-    <button type="submit" id="prod_comprar_carrito" style="float:right; position:relative; left:-3%; top:20px; margin-right:5px;" name="prod_comprar" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#aplicarPremioModal">Aplicar premio a una tarjeta</button>
+    <button type="submit" id="prod_comprar_carrito" style="float:right; position:relative; left:-3%; top:20px; margin-right:10px;" name="prod_comprar" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#aplicarPremioModal">Aplicar premio a una tarjeta</button>
 
 
     <?php echo form_open('buyer/index'); ?>

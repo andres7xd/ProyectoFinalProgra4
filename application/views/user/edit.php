@@ -108,7 +108,7 @@
 
 							<?php echo form_close(); ?>
 
-							<table class="table">
+							<table class="table" style="font-size:15px;">
 								<thead>
 									<tr>
 										<th scope="col">Tipo de red</th>
