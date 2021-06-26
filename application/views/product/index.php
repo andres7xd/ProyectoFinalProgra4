@@ -21,7 +21,7 @@ if (validation_errors() !== "") {
 ?>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="<?php echo site_url('resources/css/style.css'); ?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo site_url('resources/css/style.css'); ?>">
 </head>
 
 <div id="panel_app_prod">
@@ -61,12 +61,12 @@ if (validation_errors() !== "") {
         <?php foreach ($fotos_productos as $f) { ?>
           <?php if ($cont == 0) { ?>
             <div class="carousel-item active">
-              <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="450px">
+              <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="530px">
             </div>
             <?php $cont = 1 ?>
           <?php } else { ?>
             <div class="carousel-item">
-              <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="450px">
+              <img src="<?php echo site_url('resources/img_productos/' . $f['foto']); ?>" class="d-block w-100" alt="..." height="530px">
             </div>
           <?php } ?>
         <?php } ?>
@@ -127,7 +127,13 @@ if (validation_errors() !== "") {
           <div class="div_info">
             <span class="pre_prod">Categoria: </span> <span class="resp_prod"><?php echo ($this->input->post('txt_categoria') ? $this->input->post('txt_categoria') : $p['categoria']); ?></span>
           </div>
+
+          <div class="div_info">
+            <span class="pre_prod_2">Descripción: </span> <span class="resp_prod"><?php echo ($this->input->post('txt_descripcion') ? $this->input->post('txt_descripcion') : $p['descripcion']); ?></span>
+          </div>
+
         </div>
+
         <?php echo form_open('product/index/' . $p['producto_id']) ?>
         <input type="number" name="txt_cantidad_prod" id="txt_cantidad_prod" value="<?php echo $this->input->post('txt_cantidad_prod'); ?>" placeholder="Cantidad" title="Cantidad a comprar o añadir al carrito">
 
@@ -153,7 +159,7 @@ if (validation_errors() !== "") {
       <select id="select_calificacion" name="select_calificacion" value="">
 
         <?php $aux = 0; ?>
-        
+
         <?php if (!empty($calificacion)) { ?>
 
           <?php foreach ($calificacion as $c) { ?>
@@ -198,7 +204,7 @@ if (validation_errors() !== "") {
               <option value="5" selected>⭐⭐⭐⭐⭐</option>
             <?php } ?>
           <?php } ?>
-      
+
         <?php } else { ?>
 
           <option value="1">⭐</option>

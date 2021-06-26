@@ -648,7 +648,7 @@ td{
 	background-position: top center;
 	background-color: #3f4a55;
 	padding: 1%;
-	height: 450px;
+	height: 530px;
 	width: 640px;
 	border-color: #4f657a;
 	border-style: ridge;
@@ -1084,7 +1084,7 @@ td{
 	position: relative;
 	margin: 16px;
 	float: right;
-	right: 16%;
+	right: 24%;
 	cursor: pointer;
 	background-position: top center;
 	background-color: #3f4a55;

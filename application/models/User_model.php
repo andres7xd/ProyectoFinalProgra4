@@ -27,4 +27,22 @@ class User_model extends CI_Model
     {
         return $this->db->delete('usuarios', array('usuario_id' => $users_id));
     }
+
+    function get_redes($usuario_id)
+    {
+      return $this->db->query("SELECT * 
+                               FROM redes_sociales
+                               WHERE redes_sociales.usuario_id = $usuario_id")->result_array();
+    }
+
+    function add_red($params)
+    {
+        $this->db->insert('redes_sociales', $params);
+        return $this->db->insert_id();
+    }
+
+    function delete_red($red_id)
+    {
+        return $this->db->delete('redes_sociales', array('red_social_id' => $red_id)); 
+    }
 }

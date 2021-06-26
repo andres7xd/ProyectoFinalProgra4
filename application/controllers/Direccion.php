@@ -37,8 +37,7 @@ class Direccion extends CI_Controller{
                 'observaciones' => $this->input->post('txt_observacion'),
             );
             
-            $this->Direccion_model->add_address($params);
-            
+            $this->Direccion_model->add_address($params); 
             $data['message_display'] = 'Direccion Registrada Exitosamente.';
             redirect('user/edit/' . $this->session->userdata['logged_in']['usuario_id']);
         }
@@ -49,16 +48,9 @@ class Direccion extends CI_Controller{
         }
     }  
 
-
-
-
-
     function delete($id_address)
     {  
         $this->Direccion_model->delete_address($id_address);
         $this->index();
-    
     }
-
- 
 }
