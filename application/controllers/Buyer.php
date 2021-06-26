@@ -132,4 +132,11 @@ class Buyer extends CI_Controller
         $result = $this->Buyer_model->buscar_tiendas($this->input->post('txt_nombre_tienda'));
         $this->index('', $result);
     }
+
+    function delete_notificaciones()
+    {
+        $this->Buyer_model->delete_notificaciones($this->session->userdata['logged_in']['nombre_usuario']);
+        $this->mensaje = "Notificaciones eliminadas";
+        $this->index('', '');
+    }
 }

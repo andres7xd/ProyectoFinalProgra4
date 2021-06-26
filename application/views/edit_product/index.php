@@ -158,11 +158,11 @@
                                 <button type="button" class="btn btn-primary" id="btn_create_red" data-bs-toggle="modal" data-bs-target="#respuesta" style="float:left; margin:5px;">
                                     Responder
                                 </button>
-                            <?php } else{?>
+                            <?php } else { ?>
                                 <button type="button" class="btn btn-primary" id="btn_create_red" data-bs-toggle="modal" data-bs-target="#respuesta" disabled="true" style="float:left; margin:5px;">
                                     Respondido
                                 </button>
-                                <?php } ?>
+                            <?php } ?>
 
 
                         <td>

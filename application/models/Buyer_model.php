@@ -100,7 +100,6 @@ class Buyer_model extends CI_Model
 
     function delete_notificaion($id_notificacion)
     {
-
         $this->db->delete('notificaciones', array('notificacion_id' => $id_notificacion));
     }
 
@@ -120,18 +119,25 @@ class Buyer_model extends CI_Model
     }
 
 
-    function get_denuncias($id_usuario){
-            return $this->db->query("SELECT  usuarios.cantidad_denuncias
+    function get_denuncias($id_usuario)
+    {
+        return $this->db->query("SELECT  usuarios.cantidad_denuncias
         FROM usuarios
         WHERE usuarios.usuario_id =$id_usuario")->result_array();
-    
     }
 
 
-    function get_all_productos($id_producto){
-        return $this->db->query("SELECT *
-    FROM productos
-    WHERE productos.producto_id =$id_producto")->result_array();
+    function get_all_productos($id_producto)
+    {
+       return $this->db->query("SELECT *
+       FROM productos
+       WHERE productos.producto_id =$id_producto")->result_array();
+    }
 
-}
+    function delete_notificaciones($nombre_usuario)
+    {
+        $this->db->query("DELETE notificaciones 
+        FROM notificaciones
+        WHERE notificaciones.nombre_usuario = '$nombre_usuario'");
+    }
 }

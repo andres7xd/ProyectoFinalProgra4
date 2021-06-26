@@ -71,7 +71,6 @@ class Edit_product extends CI_Controller
             foreach ($array_sin_cambio as $sc) {
                 foreach ($array_con_cambio as $cc) {
                     if ($sc['precio'] != $cc['precio']) {
-                        print_r('El precio del producto cambió');
                         $params = array(
                             'descripcion' => 'El precio del producto cambió',
                             'producto_id' => $id_producto,
@@ -82,7 +81,6 @@ class Edit_product extends CI_Controller
                     }
 
                     if ($sc['costo_envio'] != $cc['costo_envio']) {
-                        print_r('El costo_envio del producto cambió');
                         $params = array(
                             'descripcion' => 'El costo_envio del producto cambió',
                             'producto_id' => $id_producto,
@@ -93,7 +91,6 @@ class Edit_product extends CI_Controller
                     }
 
                     if ($sc['descripcion'] != $cc['descripcion']) {
-                        print_r('La descripcion del producto cambió');
                         $params = array(
                             'descripcion' => 'La descripcion del producto cambió',
                             'producto_id' => $id_producto,

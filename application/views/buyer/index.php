@@ -365,7 +365,7 @@ if (validation_errors() !== "") {
         <div class="modal-content">
           <div class="modal-body">
 
-            <table class="table">
+            <table class="table" style="font-size:15px;">
               <thead>
                 <tr>
                   <th scope="col">Nombre del Producto</th>
@@ -381,7 +381,7 @@ if (validation_errors() !== "") {
                     <td><?php echo $nt['descripcion'] ?></td>
 
                     <?php echo form_open('buyer/delete_notificacion/' . $nt['notificacion_id']) ?>
-                    <td><button type="submit" class="btn btn-danger" style="width: 60px; height: 25px; font-size: 15px; ">Delete</button>
+                    <td><button type="submit" class="btn btn-danger">Borrar</button>
                     <td>
                       <?php echo form_close(); ?>
                   </tr>
@@ -390,13 +390,10 @@ if (validation_errors() !== "") {
               </tbody>
             </table>
 
-
-
-            <!-- <input type="text" id="txt_create_categoria" name="txt_create_categoria" placeholder="Nombre de la categoría" value=""> -->
-
           </div>
-          <?php echo form_open('store/add_categoria'); ?>
+          <?php echo form_open('buyer/delete_notificaciones'); ?>
           <div class="modal-footer">
+            <button type="submit" class="btn btn-danger">Borrar notificaciones</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
           </div>
           <?php echo form_close(); ?>
