@@ -83,6 +83,7 @@ class Carrito extends CI_Controller
 
                             $params2 = array(
                                 'unidades' =>   $p['unidades'] - $p['cantidad_productos'],
+                                'unidades_vendidas' => $p['unidades_vendidas'] + $p['cantidad_productos'],
                             );
 
                             $params_not = array(

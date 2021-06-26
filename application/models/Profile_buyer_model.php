@@ -97,4 +97,17 @@ class Profile_buyer_model extends CI_Model
         WHERE denuncias.tienda_id = $tienda_id AND denuncias.comprador_id = $usuario_id")->result_array();
     }
 
+    function get_cantidad_denuncias($id_usuario){
+        return $this->db->query("SELECT  usuarios.cantidad_denuncias
+    FROM usuarios
+    WHERE usuarios.usuario_id =$id_usuario")->result_array();
+
+}
+
+function update_cantidad_denuncias($id_tienda, $params)
+    {
+        $this->db->where('usuario_id', $id_tienda);
+        return $this->db->update('usuarios', $params);
+    }
+
 }

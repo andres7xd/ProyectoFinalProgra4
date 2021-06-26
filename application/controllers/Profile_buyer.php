@@ -67,15 +67,28 @@ class Profile_buyer extends CI_Controller
     function add_abuso($tienda_id){
         
         $existe =  $this->Profile_buyer_model->get_denuncia($tienda_id,$this->session->userdata['logged_in']['usuario_id']);
+        $cantidad_denuncias = $this->Profile_buyer_model->get_cantidad_denuncias($tienda_id);
         
         if(empty($existe)){
             $params = array(
                 'comprador_id' =>  $this->session->userdata['logged_in']['usuario_id'], 
                 'tienda_id' => $tienda_id,
               );
+
+              
               
               $this->mensaje = "Se ha registrado el reporte a la empresa!";
               $this->Profile_buyer_model->add_abuso($params);
+
+              foreach($cantidad_denuncias as $den){
+                $params2 =array(
+                    'cantidad_denuncias' => $den['cantidad_denuncias'] +1,
+                );
+              }
+
+              $this->Profile_buyer_model->update_cantidad_denuncias($tienda_id,$params2);
+
+              
 
         }
         else{
@@ -84,4 +97,6 @@ class Profile_buyer extends CI_Controller
 
         $this->index($tienda_id);
     }
+
+    
 }

@@ -19,7 +19,7 @@ class Carrito_model extends CI_Model
     function get_producto($id_usuario)
     { // Obtiene la informacion de los productos mas vendidos
 
-        return $this->db->query("SELECT carritos.carrito_id, carritos.usuario_id, carritos.producto_id, carritos.cantidad_productos, productos.nombre, productos.ubicacion_actual, productos.costo_envio, productos.precio, usuarios.nombre_real, productos.unidades
+        return $this->db->query("SELECT carritos.carrito_id, carritos.usuario_id, carritos.producto_id, carritos.cantidad_productos, productos.nombre, productos.ubicacion_actual, productos.costo_envio, productos.precio, usuarios.nombre_real, productos.unidades, productos.unidades_vendidas
         FROM carritos
         join productos
         on productos.producto_id = carritos.producto_id

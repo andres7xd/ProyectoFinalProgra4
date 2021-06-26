@@ -118,4 +118,20 @@ class Buyer_model extends CI_Model
                                  AND usuarios.nombre_real LIKE '%" . $data . "%'
                                  ORDER BY usuarios.nombre_real ASC")->result_array();
     }
+
+
+    function get_denuncias($id_usuario){
+            return $this->db->query("SELECT  usuarios.cantidad_denuncias
+        FROM usuarios
+        WHERE usuarios.usuario_id =$id_usuario")->result_array();
+    
+    }
+
+
+    function get_all_productos($id_producto){
+        return $this->db->query("SELECT *
+    FROM productos
+    WHERE productos.producto_id =$id_producto")->result_array();
+
+}
 }
