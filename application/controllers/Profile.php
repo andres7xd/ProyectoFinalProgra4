@@ -15,7 +15,7 @@ class Profile extends CI_Controller
         $data['usuario'] = $this->Profile_model->get_info_usuario($id);
         $data['fotos_producto'] = $this->Profile_model->get_fotos_producto();
         $data['calificacion_producto'] = $this->Profile_model->get_calificacion();
-
+        $data['redes_sociales'] = $this->Profile_model->get_redes_sociales();
         if($productos_data == null){
             $data['productos'] = $this->Profile_model->get_productos_vendidos();
         }else

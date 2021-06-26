@@ -19,12 +19,13 @@ class Profile_buyer extends CI_Controller
         $data['fotos_producto'] = $this->Profile_buyer_model->get_fotos_producto();
         $data['calificacion_producto'] = $this->Profile_buyer_model->get_calificacion();
         $data['calificacion_tienda'] = $this->Profile_buyer_model->get_calificacion_tienda($this->session->userdata['logged_in']['usuario_id'], $id);
+        $data['redes_sociales'] = $this->Profile_buyer_model->get_redes_sociales();
         $data['message_display'] = $this->mensaje;
         $data['error_message'] = $this->mensaje_error;
 
-        if($productos_data == null){
+        if ($productos_data == null) {
             $data['productos'] = $this->Profile_buyer_model->get_productos_vendidos();
-        }else
+        } else
             $data['productos'] = $productos_data;
 
         $data['_view'] = 'profile_buyer/index';
@@ -69,36 +70,34 @@ class Profile_buyer extends CI_Controller
         $this->index($id_tienda, '');
     }
 
-    function add_abuso($tienda_id){
-        
-        $existe =  $this->Profile_buyer_model->get_denuncia($tienda_id,$this->session->userdata['logged_in']['usuario_id']);
+    function add_abuso($tienda_id)
+    {
+
+        $existe =  $this->Profile_buyer_model->get_denuncia($tienda_id, $this->session->userdata['logged_in']['usuario_id']);
         $cantidad_denuncias = $this->Profile_buyer_model->get_cantidad_denuncias($tienda_id);
-        
-        if(empty($existe)){
+
+        if (empty($existe)) {
             $params = array(
-                'comprador_id' =>  $this->session->userdata['logged_in']['usuario_id'], 
+                'comprador_id' =>  $this->session->userdata['logged_in']['usuario_id'],
                 'tienda_id' => $tienda_id,
-              );
+            );
 
-              
-              
-              $this->mensaje = "Se ha registrado el reporte a la empresa!";
-              $this->Profile_buyer_model->add_abuso($params);
 
-              foreach($cantidad_denuncias as $den){
-                $params2 =array(
-                    'cantidad_denuncias' => $den['cantidad_denuncias'] +1,
+
+            $this->mensaje = "Se ha registrado el reporte a la empresa!";
+            $this->Profile_buyer_model->add_abuso($params);
+
+            foreach ($cantidad_denuncias as $den) {
+                $params2 = array(
+                    'cantidad_denuncias' => $den['cantidad_denuncias'] + 1,
                 );
-              }
+            }
 
-              $this->Profile_buyer_model->update_cantidad_denuncias($tienda_id,$params2);
-        }
-        else{
+            $this->Profile_buyer_model->update_cantidad_denuncias($tienda_id, $params2);
+        } else {
             $this->mensaje_error = "La empresa cuenta ya con reporte. Solo se puede hacer un único reporte a la tienda";
         }
 
         $this->index($tienda_id, '');
     }
-
-    
 }

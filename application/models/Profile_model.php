@@ -56,4 +56,8 @@ class Profile_model extends CI_Model
                                  FROM calificaciones_productos")->result_array();
     }
 
+    function get_redes_sociales(){
+        return $this->db->query("SELECT *
+                                 FROM redes_sociales")->result_array();
+    }
 }

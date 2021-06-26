@@ -3,7 +3,7 @@
 class Profile_buyer_model extends CI_Model
 {
 
-   
+
 
     function __construct()
     {
@@ -18,7 +18,8 @@ class Profile_buyer_model extends CI_Model
         ORDER BY usuarios.nombre_real ASC")->result_array();
     }
 
-    function get_info_usuario($id_usuario){// Obtiene la informacion de los productos mas vendidos
+    function get_info_usuario($id_usuario)
+    { // Obtiene la informacion de los productos mas vendidos
 
         return $this->db->query("SELECT*
         FROM usuarios
@@ -26,7 +27,7 @@ class Profile_buyer_model extends CI_Model
     }
 
     function get_productos_vendidos()
-    { 
+    {
         return $this->db->query("SELECT productos.usuario_id, productos.nombre, productos.unidades, productos.precio, productos.unidades_vendidas, productos.producto_id, usuarios.nombre_real
                                  FROM productos
                                  JOIN usuarios
@@ -47,14 +48,16 @@ class Profile_buyer_model extends CI_Model
                                  ORDER BY productos.nombre ASC")->result_array();
     }
 
-    function get_fotos_producto(){
+    function get_fotos_producto()
+    {
         return $this->db->query("SELECT *
                                  FROM fotos
                                  JOIN productos
                                  ON fotos.producto_id = productos.producto_id")->result_array();
     }
 
-    function get_calificacion(){
+    function get_calificacion()
+    {
         return $this->db->query("SELECT *
                                  FROM calificaciones_productos")->result_array();
     }
@@ -85,29 +88,36 @@ class Profile_buyer_model extends CI_Model
         return $this->db->update('calificaciones_tiendas', $params);
     }
 
-    function add_abuso($params){
+    function add_abuso($params)
+    {
         $this->db->insert('denuncias', $params);
         return $this->db->insert_id();
     }
 
-    function get_denuncia($tienda_id, $usuario_id){
+    function get_denuncia($tienda_id, $usuario_id)
+    {
 
         return $this->db->query("SELECT*
         FROM denuncias
         WHERE denuncias.tienda_id = $tienda_id AND denuncias.comprador_id = $usuario_id")->result_array();
     }
 
-    function get_cantidad_denuncias($id_usuario){
+    function get_cantidad_denuncias($id_usuario)
+    {
         return $this->db->query("SELECT  usuarios.cantidad_denuncias
     FROM usuarios
     WHERE usuarios.usuario_id =$id_usuario")->result_array();
+    }
 
-}
-
-function update_cantidad_denuncias($id_tienda, $params)
+    function update_cantidad_denuncias($id_tienda, $params)
     {
         $this->db->where('usuario_id', $id_tienda);
         return $this->db->update('usuarios', $params);
     }
 
+    function get_redes_sociales()
+    {
+        return $this->db->query("SELECT *
+                                 FROM redes_sociales")->result_array();
+    }
 }

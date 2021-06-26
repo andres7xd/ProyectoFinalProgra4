@@ -74,6 +74,14 @@ if (validation_errors() !== "") {
             <span class="pre_prod">Email: </span> <span class="resp_prod"><?php echo ($this->input->post('txt_email') ? $this->input->post('txt_email') : $p['email']); ?></span>
           </div>
 
+          <?php foreach ($redes_sociales as $rs) { ?>
+            <?php if ($u['usuario_id'] == $rs['usuario_id']) { ?>
+              <div class="div_info">
+                <span class="pre_prod"><?php echo $rs['tipo_red'] ?></span> <span class="resp_prod"><?php echo $rs['nombre_red'] ?></span>
+              </div>
+            <?php } ?>
+          <?php } ?>
+
         <?php } ?>
         </div>
     </div>
@@ -83,7 +91,7 @@ if (validation_errors() !== "") {
 
 
     <div id="div_calificacion_tienda">
-    
+
 
       <?php foreach ($usuario as $u) { ?>
 
@@ -157,10 +165,9 @@ if (validation_errors() !== "") {
     </div>
     <?php foreach ($usuario as $u) { ?>
 
-    <?php echo form_open('profile_buyer/add_abuso/' . $u['usuario_id']); ?>
-    <button type="submit" class="btn btn-danger" name="btn_abuso" id="btn_abuso" value="btn_abuso" class="boton"
-    style="position:relative; top:200px; left:5%;" >Reportar abuso</button>
-    <?php echo form_close(); ?>
+      <?php echo form_open('profile_buyer/add_abuso/' . $u['usuario_id']); ?>
+      <button type="submit" class="btn btn-danger" name="btn_abuso" id="btn_abuso" value="btn_abuso" class="boton" style="position:relative; top:200px; left:5%;">Reportar abuso</button>
+      <?php echo form_close(); ?>
 
     <?php } ?>
 
@@ -171,18 +178,18 @@ if (validation_errors() !== "") {
 
     <div id="post_box">
 
-      <?php $tienda_id; 
-      foreach ($usuario as $u) { 
+      <?php $tienda_id;
+      foreach ($usuario as $u) {
         $tienda_id = $u['usuario_id'];
-      }?>
+      } ?>
 
-        <?php echo form_open('profile_buyer/process/' . $tienda_id); ?>
-        <br>
-        <input type="text" class="cajatexto_search" id="txt_prod_search" name="txt_nombre" placeholder="Escribe aquí para buscar un producto">
-        <button type="submit" name="btn_search" id="btn_search" value="btn_search" class="boton" title="Buscar">🔍</button>
-        <span style="color: #f00"><?php echo form_error('txt_post'); ?></span>
-        <?php echo form_close(); ?>
-     
+      <?php echo form_open('profile_buyer/process/' . $tienda_id); ?>
+      <br>
+      <input type="text" class="cajatexto_search" id="txt_prod_search" name="txt_nombre" placeholder="Escribe aquí para buscar un producto">
+      <button type="submit" name="btn_search" id="btn_search" value="btn_search" class="boton" title="Buscar">🔍</button>
+      <span style="color: #f00"><?php echo form_error('txt_post'); ?></span>
+      <?php echo form_close(); ?>
+
     </div>
 
     <br><br>
