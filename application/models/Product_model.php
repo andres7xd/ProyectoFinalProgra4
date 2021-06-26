@@ -115,4 +115,11 @@ class Product_model extends CI_Model
         where carritos.producto_id = $id_producto and carritos.usuario_id = $id_usuario")->result_array();
     }
 
+    function update_calificacion($id_calificacion, $params)
+    {
+        $this->db->where('calificacion_producto_id', $id_calificacion);
+        return $this->db->update('calificaciones_productos', $params);
+    }
+
+
 }

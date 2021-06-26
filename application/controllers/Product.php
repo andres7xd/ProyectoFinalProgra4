@@ -121,4 +121,25 @@ class Product extends CI_Controller
         }
         $this->index($id_producto);
     }
+
+    function agregar_comentario($id_producto, $id_usuario){
+        $existe_calificaion = $this->Product_model->existe_calificacion($id_producto, $id_usuario);
+
+
+        if(empty($extiste_calificaion)){
+            foreach ($existe_calificaion as $e) {
+            $params =array(
+                'comentario' => $this->input->post('txt_comentario'),
+            );
+        
+        $this->Product_model->update_user($e['calificacion_producto_id'], $params);
+
+    }
+        $this->index($id_producto);
+        
+    }
+    else{
+        $this->mensaje_error = "Primero debe asignar una cantidad de estrellas al producto";
+    }
+    }
 }
