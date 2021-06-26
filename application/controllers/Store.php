@@ -77,4 +77,10 @@ class Store extends CI_Controller
         $this->index('');
     }
 
+    function delete_notificaciones()
+    {
+        $this->Store_model->delete_notificaciones($this->session->userdata['logged_in']['nombre_usuario']);
+        $this->mensaje = "Notificaciones eliminadas";
+        $this->index('', '');
+    }
 }

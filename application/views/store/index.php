@@ -21,7 +21,7 @@ if (validation_errors() !== "") {
 ?>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="<?php echo site_url('resources/css/style.css'); ?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo site_url('resources/css/style.css'); ?>">
 </head>
 
 <?php if (!empty($notificaciones)) { ?>
@@ -44,7 +44,7 @@ if (validation_errors() !== "") {
       ?>
     </a>
 
-    <img id="icono_marketplace" src="<?php echo site_url("/resources/icons/marketplace.png") ?>" width=170 height=170>
+    <img id="icono_marketplace" src="<?php echo site_url("/resources/icons/marketplace.png") ?>" width=205 height=205>
 
     <div id="logout">
 
@@ -54,29 +54,12 @@ if (validation_errors() !== "") {
 
       <button type="submit" name="btn_notificaciones" id="btn_notificaciones" title="Notificaciones" data-bs-toggle="modal" data-bs-target="#notificacion_modal"><img src="<?php echo site_url("/resources/icons/notificacion.png") ?>" width="26px" height="26px"></button>
 
-      <?php echo form_open('suscripciones_tienda/index'); ?>
-      <button type="submit" name="btn_carrito" id="btn_carrito" title="Carrito"><img src="<?php echo site_url("/resources/icons/carrito.png") ?>" width="26px" height="26px"></button>
-      <?php echo form_close(); ?>
-
-      <?php echo form_open('deseos_tienda/index'); ?>
-      <button type="submit" name="btn_deseos" id="btn_deseos" title="Lista de deseos"><img src="<?php echo site_url("/resources/icons/deseos.png") ?>" width="26px" height="26px"></button>
-      <?php echo form_close(); ?>
-
-
-
-
     </div>
-
   </div>
 
   <div id="post_box">
 
-    <?php echo form_open('store/process'); ?>
-    <br>
-    <input type="text" class="cajatexto_search" id="txt_prod_search" name="txt_nombre" placeholder="Escribe aquí para buscar!">
-    <button type="submit" name="btn_search" id="btn_search" value="btn_search" class="boton" title="Buscar">🔍</button>
-    <span style="color: #f00"><?php echo form_error('txt_post'); ?></span>
-    <?php echo form_close(); ?>
+
 
   </div>
 
@@ -103,6 +86,14 @@ if (validation_errors() !== "") {
         Reporte de ventas
       </button>
 
+      <?php echo form_open('suscripciones_tienda/index'); ?>
+      <button type="submit" class="btn btn-primary" name="btn_carrito" style="float:right; margin:5px;" title="Carrito">Suscriptores</button>
+      <?php echo form_close(); ?>
+
+      <?php echo form_open('deseos_tienda/index'); ?>
+      <button type="submit" class="btn btn-primary" name="btn_deseos" style="float:right; margin:5px;" title="Lista de deseos">Mis productos en lista de deseos</button>
+      <?php echo form_close(); ?>
+
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -126,8 +117,8 @@ if (validation_errors() !== "") {
           <div class="modal-content">
             <div class="modal-body">
               <?php echo form_open('reporte_ventas/index'); ?>
-              <input type="date" class="dates" id="fecha_1" name="fecha_1" title="Primer fecha">  
-              <input type="date" class="dates" id="fecha_2" name="fecha_2" title="Segunda fecha">          
+              <input type="date" class="dates" id="fecha_1" name="fecha_1" title="Primer fecha">
+              <input type="date" class="dates" id="fecha_2" name="fecha_2" title="Segunda fecha">
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary">Crear</button>
@@ -144,7 +135,7 @@ if (validation_errors() !== "") {
           <div class="modal-content">
             <div class="modal-body">
 
-              <table class="table">
+              <table class="table" style="font-size:15px;">
                 <thead>
                   <tr>
                     <th scope="col">Nombre del Producto</th>
@@ -160,7 +151,7 @@ if (validation_errors() !== "") {
                       <td><?php echo $nt['descripcion'] ?></td>
 
                       <?php echo form_open('store/delete_notificacion/' . $nt['notificacion_id']) ?>
-                      <td><button type="submit" class="btn btn-danger">Delete</button>
+                      <td><button type="submit" class="btn btn-danger">Eliminar</button>
                       <td>
                         <?php echo form_close(); ?>
                     </tr>
@@ -170,6 +161,9 @@ if (validation_errors() !== "") {
               </table>
             </div>
             <div class="modal-footer">
+              <?php echo form_open('store/delete_notificaciones'); ?>
+              <button type="submit" class="btn btn-danger">Borrar notificaciones</button>
+              <?php echo form_close(); ?>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
           </div>
@@ -179,7 +173,18 @@ if (validation_errors() !== "") {
 
 
     </div>
+
     <br><br><br><br>
+    <div style="text-align:center;">
+      <?php echo form_open('store/process'); ?>
+      <br>
+      <input type="text" class="cajatexto_search" id="txt_prod_search" name="txt_nombre" placeholder="Escribe aquí para buscar tu producto">
+      <button type="submit" name="btn_search" id="btn_search" value="btn_search" class="boton" title="Buscar">🔍</button>
+      <span style="color: #f00"><?php echo form_error('txt_post'); ?></span>
+      <?php echo form_close(); ?>
+    </div>
+
+    <br>
     <h1 align="center" style="text-decoration: underline; font-family: Century Gothic; font-size:25px;">LISTA DE MIS PRODUCTOS</h1>
 
     <?php foreach ($productos as $p) { ?>

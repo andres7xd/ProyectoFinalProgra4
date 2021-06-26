@@ -92,4 +92,11 @@ class Store_model extends CI_Model
 
         $this->db->delete('notificaciones', array('notificacion_id' => $id_notificacion));
     }
+
+    function delete_notificaciones($nombre_usuario)
+    {
+        $this->db->query("DELETE notificaciones 
+        FROM notificaciones
+        WHERE notificaciones.nombre_usuario = '$nombre_usuario'");
+    }
 }
