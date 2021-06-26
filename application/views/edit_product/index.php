@@ -154,17 +154,25 @@
                         <td><?php echo $c['respuesta'] ?></td>
 
                         <td>
-                            <button type="button" class="btn btn-primary" id="btn_create_red" data-bs-toggle="modal" data-bs-target="#respuesta" style="float:left; margin:5px;">
-                                Responder
-                            </button>
+                            <?php if ($c['respuesta'] == null) { ?>
+                                <button type="button" class="btn btn-primary" id="btn_create_red" data-bs-toggle="modal" data-bs-target="#respuesta" style="float:left; margin:5px;">
+                                    Responder
+                                </button>
+                            <?php } else{?>
+                                <button type="button" class="btn btn-primary" id="btn_create_red" data-bs-toggle="modal" data-bs-target="#respuesta" disabled="true" style="float:left; margin:5px;">
+                                    Respondido
+                                </button>
+                                <?php } ?>
+
+
                         <td>
 
                             <div class="modal fade" id="respuesta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-body">
-                                            <?php echo form_open('user/add_red'); ?>
-                                            <input type="text" class="text" id="txt_nombre_red" name="txt_nombre_red" placeholder="Respuesta" style="position: relative; left:-6%; border-radius: 10px; margin: 15px; width:493px; height: 30px;" required="true">
+                                            <?php echo form_open('edit_product/agregar_respuesta/' . '/' . $c['calificacion_producto_id'] . '/' . $c['producto_id']); ?>
+                                            <input type="text" class="text" id="txt_respuesta" name="txt_respuesta" placeholder="Respuesta" style="position: relative; left:-6%; border-radius: 10px; margin: 15px; width:493px; height: 30px;" required="true">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="submit" class="btn btn-primary">Responder</button>

@@ -76,7 +76,13 @@ class Edit_product_model extends CI_Model
         FROM calificaciones_productos
         JOIN usuarios
         ON calificaciones_productos.usuario_id = usuarios.usuario_id
-        WHERE calificaciones_productos.producto_id = $id_producto")->result_array();
+        WHERE calificaciones_productos.producto_id = $id_producto and calificaciones_productos.comentario != ''" )->result_array();
+    }
+
+    function update_calificacion($id_calificacion, $params)
+    {
+        $this->db->where('calificacion_producto_id', $id_calificacion);
+        return $this->db->update('calificaciones_productos', $params);
     }
     
 }

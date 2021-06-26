@@ -106,4 +106,17 @@ class Edit_product extends CI_Controller
             }
         }
     }
+
+
+    function agregar_respuesta($id_calificacion,$id_producto){
+      
+
+        $params =array(
+            'respuesta' =>  $this->input->post('txt_respuesta'),  
+        );
+
+
+        $this->Edit_product_model->update_calificacion($id_calificacion,$params);
+        $this->index($id_producto);
+    }
 }
