@@ -173,6 +173,17 @@ if (validation_errors() !== "") {
             </div>
 
 
+
+            <div class="div_info">
+              <span class="pre_prod_2">Direccion de envío (casillero): </span>
+              <select id="select_direccion" name="select_direccion" id="" value="cmb_direccion_envío" name="cmb_direccion_envío" class="cajatexto">
+                <?php foreach ($direcciones_envio as $den) { ?>
+                  <option id="" name="" value="<?php echo $den["numero_casillero"] . '-' . $den["provincia"] . '-' . $den["pais"] ; ?>"><?php echo $den["numero_casillero"]; ?></option>
+                <?php } ?>
+              </select>
+            </div>
+
+
             <input id='id_precio_compra' name='id_precio_compra' type='hidden' value='<?php echo $total ?>'>
 
 

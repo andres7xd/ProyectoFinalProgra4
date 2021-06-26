@@ -137,4 +137,10 @@ class Carrito_model extends CI_Model
         $this->db->where('usuario_id', $usuario_id);
         return $this->db->update('premios', $params);
     }
+
+    function get_direccion_envio($id_usuario){
+        return $this->db->query("SELECT *
+        FROM direcciones_envio
+        WHERE direcciones_envio.usuario_id = $id_usuario")->result_array();
+    }
 }

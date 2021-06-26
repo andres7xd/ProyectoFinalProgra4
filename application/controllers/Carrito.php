@@ -18,6 +18,7 @@ class Carrito extends CI_Controller
         $data['tarjetas'] = $this->Carrito_model->get_tarjetas($this->session->userdata['logged_in']['usuario_id']);
         $data['fotos_producto'] = $this->Carrito_model->get_fotos_producto();
         $data['premios'] = $this->Carrito_model->get_premio($this->session->userdata['logged_in']['usuario_id']);
+        $data['direcciones_envio'] = $this->Carrito_model->get_direccion_envio($this->session->userdata['logged_in']['usuario_id']);
         $data['message_display'] = $this->mensaje;
         $data['error_message'] = $this->mensaje_error;
         $data['_view'] = 'carrito/index';
@@ -79,6 +80,7 @@ class Carrito extends CI_Controller
                                 'producto_id' => $p['producto_id'],
                                 'precio_producto' => $p['precio'],
                                 'numero_compra' => $ult_num_compra + 1,
+                                'direccion' => $this->input->post('select_direccion'),
                             );
 
                             $params2 = array(
