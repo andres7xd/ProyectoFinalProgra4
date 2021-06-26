@@ -1084,13 +1084,30 @@ td{
 	position: relative;
 	margin: 16px;
 	float: right;
-	right: 24%;
+	right: 12%;
 	cursor: pointer;
 	background-position: top center;
 	background-color: #3f4a55;
 	padding: 1%;
 	height: 120px;
 	width: 230px;
+	border-color: #4f657a;
+	border-style: ridge;
+	border-radius: 20px;
+}
+
+#div_comentarios{
+	position: relative;
+	margin: 16px;
+	float: right;
+	right: 10%;
+	cursor: pointer;
+	background-position: top center;
+	background-color: #3f4a55;
+	padding: 1%;
+	height: 120px;
+	width: 350px;
+	text-align: center;
 	border-color: #4f657a;
 	border-style: ridge;
 	border-radius: 20px;

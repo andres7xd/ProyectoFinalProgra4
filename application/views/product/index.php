@@ -144,13 +144,18 @@ if (validation_errors() !== "") {
 
           <button type="submit" id="prod_deseos" name="prod_deseos" class="btn btn-warning">Añadir a la lista de deseos</button>
         </div>
-
         <?php echo form_close(); ?>
-
     </div>
-
-
   <?php } ?>
+
+
+  <div id="div_comentarios">
+    <input type="text" name="txt_comentario" id="txt_comentario" placeholder="Comentario"
+    style="width:310px; height:30px; border-radius:10px; border-style:ridge; border-color:black; font-size:13px; float:left;">
+    <br>
+    <button type="submit" id="btn_calificar" name="btn_calificar" class="btn btn-primary"
+    style="margin-top:20px; left:0%;">Comentar</button>
+  </div>
 
   <div id="div_calificacion">
 
