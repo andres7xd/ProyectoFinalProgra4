@@ -10,28 +10,31 @@ class Profile extends CI_Controller
         $this->load->library('session');
     }
 
-    function index($id)
+    function index($id, $productos_data = array())
     {
         $data['usuario'] = $this->Profile_model->get_info_usuario($id);
-
-        $data['productos'] = $this->Profile_model->get_productos_vendidos();
         $data['fotos_producto'] = $this->Profile_model->get_fotos_producto();
         $data['calificacion_producto'] = $this->Profile_model->get_calificacion();
+
+        if($productos_data == null){
+            $data['productos'] = $this->Profile_model->get_productos_vendidos();
+        }else
+            $data['productos'] = $productos_data;
 
         $data['_view'] = 'profile/index';
         $this->load->view('layouts/main', $data);
     }
 
-    function process()
+    function process($tienda_id)
     {
         if ($this->input->post('btn_search')) {
-            $this->buscar();
+            $this->buscar($tienda_id);
         }
     }
 
-    function buscar()
+    function buscar($tienda_id)
     {
-        $this->Profile_model->buscar_productos($this->input->post('txt_nombre'), 5);
-        $this->index(5);
+        $result = $this->Profile_model->buscar_productos($this->input->post('txt_nombre'), $tienda_id);
+        $this->index($tienda_id, $result);
     }
 }

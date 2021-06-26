@@ -33,7 +33,6 @@ class Profile_model extends CI_Model
                                  ORDER BY productos.nombre ASC")->result_array();
     }
 
-
     function buscar_productos($data, $usuario_id)
     {
         return $this->db->query("SELECT productos.usuario_id, productos.nombre, productos.unidades, productos.precio, productos.unidades_vendidas, productos.producto_id, usuarios.nombre_real
@@ -42,7 +41,7 @@ class Profile_model extends CI_Model
                                  ON productos.usuario_id = usuarios.usuario_id
                                  WHERE  productos.usuario_id = $usuario_id 
                                  AND productos.nombre LIKE '%" . $data . "%'
-                                 ORDER BY productos.nombre DESC")->result_array();
+                                 ORDER BY productos.nombre ASC")->result_array();
     }
 
     function get_fotos_producto(){

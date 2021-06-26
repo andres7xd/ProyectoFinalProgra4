@@ -13,15 +13,20 @@ class Profile_buyer extends CI_Controller
         $this->load->library('session');
     }
 
-    function index($id)
+    function index($id, $productos_data = array())
     {
         $data['usuario'] = $this->Profile_buyer_model->get_info_usuario($id);
-        $data['productos'] = $this->Profile_buyer_model->get_productos_vendidos();
         $data['fotos_producto'] = $this->Profile_buyer_model->get_fotos_producto();
         $data['calificacion_producto'] = $this->Profile_buyer_model->get_calificacion();
         $data['calificacion_tienda'] = $this->Profile_buyer_model->get_calificacion_tienda($this->session->userdata['logged_in']['usuario_id'], $id);
         $data['message_display'] = $this->mensaje;
         $data['error_message'] = $this->mensaje_error;
+
+        if($productos_data == null){
+            $data['productos'] = $this->Profile_buyer_model->get_productos_vendidos();
+        }else
+            $data['productos'] = $productos_data;
+
         $data['_view'] = 'profile_buyer/index';
         $this->load->view('layouts/main', $data);
     }
@@ -35,8 +40,8 @@ class Profile_buyer extends CI_Controller
 
     function buscar($id)
     {
-        $this->Profile_buyer_model->buscar_productos($this->input->post('txt_nombre'), 5);
-        $this->index($id);
+        $result = $this->Profile_buyer_model->buscar_productos($this->input->post('txt_nombre'), $id);
+        $this->index($id, $result);
     }
 
     function add_calificacion($id_comprador, $id_tienda)
@@ -61,7 +66,7 @@ class Profile_buyer extends CI_Controller
                 $calificaciones = array();
             }
         }
-        $this->index($id_tienda);
+        $this->index($id_tienda, '');
     }
 
     function add_abuso($tienda_id){
@@ -87,15 +92,12 @@ class Profile_buyer extends CI_Controller
               }
 
               $this->Profile_buyer_model->update_cantidad_denuncias($tienda_id,$params2);
-
-              
-
         }
         else{
             $this->mensaje_error = "La empresa cuenta ya con reporte. Solo se puede hacer un único reporte a la tienda";
         }
 
-        $this->index($tienda_id);
+        $this->index($tienda_id, '');
     }
 
     

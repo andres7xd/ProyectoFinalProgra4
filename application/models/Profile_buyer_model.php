@@ -44,7 +44,7 @@ class Profile_buyer_model extends CI_Model
                                  ON productos.usuario_id = usuarios.usuario_id
                                  WHERE  productos.usuario_id = $usuario_id 
                                  AND productos.nombre LIKE '%" . $data . "%'
-                                 ORDER BY productos.nombre DESC")->result_array();
+                                 ORDER BY productos.nombre ASC")->result_array();
     }
 
     function get_fotos_producto(){

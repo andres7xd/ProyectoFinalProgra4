@@ -89,7 +89,7 @@
         <span class="estrellas"><?php echo $cant_estrellas ?></span>
 
         <br>
-        <?php echo form_open('profile/index/' . $u['usuario_id'] . '/' . 'home/index'); ?>
+        <?php echo form_open('profile/index/' . $u['usuario_id'] . '/' . ''); ?>
         <input type="submit" class="btnPerfil" value="Ver perfil">
         <?php echo form_close(); ?>
       </div>

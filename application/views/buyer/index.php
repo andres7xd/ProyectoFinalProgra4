@@ -217,7 +217,7 @@ if (validation_errors() !== "") {
         ?>
         <span class="estrellas"><?php echo $cant_estrellas ?></span>
         <br>
-        <?php echo form_open('profile_buyer/index/' . $u['usuario_id']); ?>
+        <?php echo form_open('profile_buyer/index/' . $u['usuario_id'] . '/' . ''); ?>
         <input type="submit" class="btnPerfil" value="Ver perfil">
         <?php echo form_close(); ?>
       </div>

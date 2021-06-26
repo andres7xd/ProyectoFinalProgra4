@@ -96,11 +96,7 @@ Class Auth extends CI_Controller {
 						$this->load->view('auth/login', $data);
 						
 					}
-				
-					
-					
 					$this->load_data_view('buyer/index'); //luego cargamos la vista
-
 				}
 			} else { //Si No autenticamos regreamos a la vista Login con un mensaje de error seteado
 				$data = array(
@@ -122,7 +118,7 @@ Class Auth extends CI_Controller {
 		);
 		$this->session->unset_userdata('logged_in', $sess_array);
 		$this->session->sess_destroy();
-		$data['message_display'] = 'Has cerrado tu sesión de forma exitosa.';
+		$data['message_display'] = 'Inicio de sesión.';
 		$this->load->view('auth/login', $data);
 	}
 

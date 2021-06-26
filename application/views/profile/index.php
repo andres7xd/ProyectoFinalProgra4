@@ -56,8 +56,14 @@
   <div>
     <br><br><br><br>
 
+    <?php
+    $id_tienda; 
+    foreach ($usuario as $u) { 
+      $id_tienda = $u['usuario_id'];
+    }?>
+
     <div id="post_box">
-      <?php echo form_open('profile/process'); ?>
+      <?php echo form_open('profile/process/' . $id_tienda); ?>
       <br>
       <input type="text" class="cajatexto_search" id="txt_prod_search" name="txt_nombre" placeholder="Escribe aquí para buscar un producto">
       <button type="submit" name="btn_search" id="btn_search" value="btn_search" class="boton" title="Buscar">🔍</button>
