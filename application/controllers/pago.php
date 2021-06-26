@@ -24,7 +24,7 @@ class Pago extends CI_Controller{
         $this->form_validation->set_rules('txt_numero','Numero_Tarjeta','required|max_length[19]', 'required|min_length[16]');
 		$this->form_validation->set_rules('txt_vencimiento','Fecha_Vencimiento','required|max_length[5]');
         $this->form_validation->set_rules('txt_codigo','CVV','required|max_length[4]');
-        $this->form_validation->set_rules('txt_saldo','Saldo','required|max_length[7]');
+        $this->form_validation->set_rules('txt_saldo','Saldo','required|max_length[50]');
 		
 		if($this->form_validation->run())     
         {   

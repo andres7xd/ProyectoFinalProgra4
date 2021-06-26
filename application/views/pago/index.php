@@ -46,7 +46,7 @@
 	<br>
 	<?php echo form_close(); ?>
 	<h4>Mis métodos de pago</h4>
-	<table class="table-responsive" width="550px" height="100px">
+	<table class="table-responsive" width="550px" height="100px" style="font-size:13px;">
 		<thead>
 			<tr>
 				<th>Numero de Tarjeta</th>

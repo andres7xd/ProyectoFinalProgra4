@@ -76,7 +76,8 @@
 		<br><br>
 		<div class="box-footer">
 			<button type="submit" class="btn btn-primary" style="float:left; margin:5px;">Guardar</button>
-
+			<?php echo form_close(); ?>
+			
 			<?php echo form_open('pago/index'); ?>
 			<button type="submit" name="btn_pago" id="btn_pago" class="btn btn-primary" style="float:left; margin:5px;">Agregar forma de pago</button>
 			<?php echo form_close(); ?>
@@ -100,6 +101,7 @@
 								<option>Instagram</option>
 								<option>Twitter</option>
 							</select>
+							
 							<input type="text" class="text" id="txt_nombre_red" name="txt_nombre_red" placeholder="Nombre en la red" style="position: relative; left:1%; border-radius: 10px; margin: 15px;width: 150px;height: 30px;" required="true">
 							
 							<button type="submit" class="btn btn-primary">Crear Red</button>
@@ -140,6 +142,7 @@
 			</div>
 
 		</div>
+		<br><br><br><br>
 		<div id="actions">
 			<a href="<?php echo site_url('user/delete/' . $user['usuario_id']); ?>" id="btn_eliminar" name="btn_eliminar" title="Eliminar" onclick="send()">🗙 Eliminar mi cuenta</a>
 		</div>

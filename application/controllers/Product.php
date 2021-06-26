@@ -97,7 +97,6 @@ class Product extends CI_Controller
         $this->index($id_producto);
     }
 
-
     function add_calificacion($id_producto, $id_usuario)
     {
         $existe =  $this->Product_model->existe_calificacion($id_producto, $id_usuario);
@@ -108,7 +107,6 @@ class Product extends CI_Controller
                 'producto_id' =>  $id_producto,
                 'calificacion' => $this->input->post('select_calificacion'),
             );
-
             $this->Product_model->add_calificacion_producto($calificaciones);
             $calificaciones = array();
         } else {

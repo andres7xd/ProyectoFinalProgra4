@@ -633,6 +633,12 @@ td{
 	font-size: 15px;
 }
 
+
+.pre_prod_3{
+	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 17px;
+}
+
 .resp_prod{
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	font-size: 20px;
@@ -992,6 +998,14 @@ td{
 #select_categoria{
 	width: 135px;
 	font-size: 13px;
+}
+
+#select_categoria_3{
+	background-color: rgb(100, 98, 98);
+	width: 170px;
+	font-size: 13px;
+	border-color: black;
+	border-style: ridge;
 }
 
 .cant_per_prod{

@@ -44,7 +44,7 @@
 </div>
 <?php echo form_close(); ?>
 <h3>Mis Direcciones</h3>
-<table class="table-responsive" width="650px" height="120px">
+<table class="table-responsive" width="650px" height="120px" style="font-size:13px;">
 	<thead>
 		<tr>
 			<th>Pais</th>
@@ -68,10 +68,7 @@
 					<td>
 						<div class="btn-group">
 							<?php echo form_open('direccion/delete/'  . $d['direccion_envio_id']); ?>
-							<button type="submit" class="btn btn-danger" style="width: 60px; height: 25px; font-size: 15px; ">Delete</button>
-							<?php echo form_close(); ?>
-							<?php echo form_open() ?>
-							<button type="submit" class="btn btn-primary" style="width: 60px; height: 25px; font-size: 15px;  ">Edit</button>
+							<button type="submit" class="btn btn-danger">Delete</button>
 							<?php echo form_close(); ?>
 						</div>
 					</td>
