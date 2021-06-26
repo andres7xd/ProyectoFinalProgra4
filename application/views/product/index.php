@@ -150,11 +150,34 @@ if (validation_errors() !== "") {
 
 
   <div id="div_comentarios">
-    <input type="text" name="txt_comentario" id="txt_comentario" placeholder="Comentario"
-    style="width:310px; height:30px; border-radius:10px; border-style:ridge; border-color:black; font-size:13px; float:left;">
-    <br>
-    <button type="submit" id="btn_calificar" name="btn_calificar" class="btn btn-primary"
-    style="margin-top:20px; left:0%;">Comentar</button>
+
+    <?php echo form_open('product/agregar_comentario/' . $p['producto_id'] . '/' . $this->session->userdata['logged_in']['usuario_id']) ?>
+
+    <?php foreach ($calificacion as $c) { ?>
+      <?php if ($c['comentario'] == null) { ?>
+        <input type="text" name="txt_comentario" id="txt_comentario" placeholder="Comentario" style="width:310px; height:30px; border-radius:10px; border-style:ridge; border-color:black; font-size:13px; float:left;">
+        <br>
+        <button type="submit" id="btn_calificar" name="btn_calificar" class="btn btn-primary" style="margin-top:20px; left:0%;">Comentar</button>
+
+        <?php echo form_close(); ?>
+      <?php } else { ?>
+
+        <input type="text" name="txt_comentario" id="txt_comentario" title="Comentario" placeholder="Comentario" value="<?php echo $c['comentario'] ?>" 
+        style="width:310px; height:30px; border-radius:10px; border-style:ridge; border-color:black; font-size:13px; float:left; color:white;" disabled="true" >
+        <br>
+
+        <input type="text" name="txt_comentario" id="txt_comentario" title="Respuesta" placeholder="Respuesta" value="<?php echo $c['respuesta'] ?>" 
+        style="width:310px; height:30px; margin-top:10px; border-radius:10px; border-style:ridge; border-color:black; font-size:13px; float:left; color:white;" disabled="true" >
+        <br>
+       
+
+        <?php echo form_close(); ?>
+      <?php } ?>
+
+    <?php } ?>
+
+
+
   </div>
 
   <div id="div_calificacion">
