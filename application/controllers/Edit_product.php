@@ -13,6 +13,7 @@ class Edit_product extends CI_Controller
     {
         $data['producto'] = $this->Edit_product_model->get_producto($id);
         $data['fotos_productos'] = $this->Edit_product_model->get_fotos_producto($id);
+        $data['comentarios'] = $this->Edit_product_model->get_lista_comentarios($id);
         $data['categorias'] = $this->Edit_product_model->get_categorias();
         $data['_view'] = 'edit_product/index';
         $this->load->view('layouts/main', $data);

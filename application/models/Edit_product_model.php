@@ -70,5 +70,13 @@ class Edit_product_model extends CI_Model
         ON usuarios.usuario_id = deseos.usuario_id
         where deseos.producto_id = $id_producto")->result_array();
     }
+
+    function get_lista_comentarios($id_producto){
+        return $this->db->query("SELECT *
+        FROM calificaciones_productos
+        JOIN usuarios
+        ON calificaciones_productos.usuario_id = usuarios.usuario_id
+        WHERE calificaciones_productos.producto_id = $id_producto")->result_array();
+    }
     
 }

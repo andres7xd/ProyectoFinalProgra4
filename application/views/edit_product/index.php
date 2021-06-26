@@ -129,4 +129,39 @@
 
     <?php } ?>
     </div>
+
+    <br><br>
+
+</div>
+
+<div>
+    <div style="width:60%; font-size:17px; position:relative; left:15%">
+
+        <table class="table" style="color:white">
+            <thead>
+                <tr>
+                    <th>Usuario que comentó</th>
+                    <th>Comentario</th>
+                    <th>Respuesta</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <?php foreach ($comentarios as $c) { ?>
+                        <td><?php echo $c['nombre_real'] ?></td>
+                        <td><?php echo $c['comentario'] ?></td>
+                        <td><?php echo $c['respuesta'] ?></td>
+
+                        <?php echo form_open() ?>
+                        <td><button type="submit" class="btn btn-primary">Responder</button>
+                        <td>
+                            <?php echo form_close(); ?>
+                        <?php } ?>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
 </div>

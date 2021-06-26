@@ -36,35 +36,28 @@ class Product extends CI_Controller
         $existe = $this->Buyer_model->get_carritos($id, $this->session->userdata['logged_in']['usuario_id']);
         $productos = $this->Buyer_model->get_all_productos($id);
 
-        
-        foreach($productos as $p){
-            $cantidad_denuncias = $this->Buyer_model->get_denuncias($p['usuario_id']);
 
+        foreach ($productos as $p) {
+            $cantidad_denuncias = $this->Buyer_model->get_denuncias($p['usuario_id']);
         }
 
         if (empty($existe)) {
-            foreach($cantidad_denuncias as $cd){
-                if($cd['cantidad_denuncias']< 10  and $this->input->post('txt_cantidad_prod') != null){
-            $params = array(
-                'usuario_id' =>  $this->session->userdata['logged_in']['usuario_id'],
-                'producto_id' =>  $id,
-                'cantidad_productos' =>  $this->input->post('txt_cantidad_prod'),
-            );
-            $this->Product_model->add_carrito($params);
-            $this->mensaje = "Se ha añadido el producto al carrito";
-
-        }
-        else{
-            $this->mensaje_error = "El producto no se puede añadir al carrito por que la empresa distribuidora esta bloqueada";
-        }
-    }
-
-        }
-        else{
+            foreach ($cantidad_denuncias as $cd) {
+                if ($cd['cantidad_denuncias'] < 10  and $this->input->post('txt_cantidad_prod') != null) {
+                    $params = array(
+                        'usuario_id' =>  $this->session->userdata['logged_in']['usuario_id'],
+                        'producto_id' =>  $id,
+                        'cantidad_productos' =>  $this->input->post('txt_cantidad_prod'),
+                    );
+                    $this->Product_model->add_carrito($params);
+                    $this->mensaje = "Se ha añadido el producto al carrito";
+                } else {
+                    $this->mensaje_error = "El producto no se puede añadir al carrito por que la empresa distribuidora esta bloqueada";
+                }
+            }
+        } else {
             $this->mensaje_error = "El producto ya existe en carrito";
         }
-
-        
     }
 
     function add_deseo($id)
@@ -122,24 +115,22 @@ class Product extends CI_Controller
         $this->index($id_producto);
     }
 
-    function agregar_comentario($id_producto, $id_usuario){
+    function agregar_comentario($id_producto, $id_usuario)
+    {
         $existe_calificaion = $this->Product_model->existe_calificacion($id_producto, $id_usuario);
 
 
-        if(empty($extiste_calificaion)){
+        if (empty($extiste_calificaion)) {
             foreach ($existe_calificaion as $e) {
-            $params =array(
-                'comentario' => $this->input->post('txt_comentario'),
-            );
-        
-        $this->Product_model->update_user($e['calificacion_producto_id'], $params);
+                $params = array(
+                    'comentario' => $this->input->post('txt_comentario'),
+                );
 
-    }
-        $this->index($id_producto);
-        
-    }
-    else{
-        $this->mensaje_error = "Primero debe asignar una cantidad de estrellas al producto";
-    }
+                $this->Product_model->update_user($e['calificacion_producto_id'], $params);
+            }
+            $this->index($id_producto);
+        } else {
+            $this->mensaje_error = "Primero debe asignar una cantidad de estrellas al producto";
+        }
     }
 }
